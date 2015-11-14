@@ -41,7 +41,7 @@ display a tablet zone that user can draw on.(check on youtube video, draw in xco
 slider that user can set border width
 provide 5 default colors.
 can choose from my colors.
-save the current image to photo library.
+save the current image to photo library / or just save it to local? maybe in my pockets?
 
 MixVC:
 2 buttons in the mid that user can click to choose colors(Can use the same model in DrawVC)
@@ -56,3 +56,23 @@ an + button to go to the color picking page.
 Color picking Page: (Plan B)
 current color on the top
 detail RGB value on the bottom. Save/Cancel button
+
+
+Be aware:
+
+We want to use auto layout so that it can be used in iphones of different sizes. So no hard coding of frame size.
+
+
+Optional:
+
+We might need to implement the best matching colors feature.
+The round palette that we can choose any color from.
+
+
+
+
+
+
+
+
+
