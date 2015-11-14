@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MyColorsVC.h
 //  iColor
 //
 //  Created by YuhanHao on 15/11/13.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MyColorsVC : UIViewController
 
 @end
-

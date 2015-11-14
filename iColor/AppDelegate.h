@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GenerateVC.h"
+#import "DrawVC.h"
+#import "MixVC.h"
+#import "MyColorsVC.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

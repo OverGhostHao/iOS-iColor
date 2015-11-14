@@ -9,11 +9,20 @@
 /* Begin PBXBuildFile section */
 		C7C854CC1BF6E11D006E910F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854CB1BF6E11D006E910F /* main.m */; };
 		C7C854CF1BF6E11D006E910F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854CE1BF6E11D006E910F /* AppDelegate.m */; };
-		C7C854D21BF6E11D006E910F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854D11BF6E11D006E910F /* ViewController.m */; };
 		C7C854D51BF6E11D006E910F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7C854D31BF6E11D006E910F /* Main.storyboard */; };
 		C7C854D71BF6E11D006E910F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C854D61BF6E11D006E910F /* Images.xcassets */; };
 		C7C854DA1BF6E11D006E910F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C854D81BF6E11D006E910F /* LaunchScreen.xib */; };
 		C7C854E61BF6E11D006E910F /* iColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854E51BF6E11D006E910F /* iColorTests.m */; };
+		C7C854F21BF6E1C4006E910F /* CoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854F01BF6E1C4006E910F /* CoverVC.m */; };
+		C7C854F31BF6E1C4006E910F /* CoverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C854F11BF6E1C4006E910F /* CoverVC.xib */; };
+		C7C854F71BF6E37C006E910F /* GenerateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854F51BF6E37C006E910F /* GenerateVC.m */; };
+		C7C854F81BF6E37C006E910F /* GenerateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C854F61BF6E37C006E910F /* GenerateVC.xib */; };
+		C7C854FC1BF6E42C006E910F /* DrawVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854FA1BF6E42C006E910F /* DrawVC.m */; };
+		C7C854FD1BF6E42C006E910F /* DrawVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C854FB1BF6E42C006E910F /* DrawVC.xib */; };
+		C7C855011BF6E4CD006E910F /* MixVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854FF1BF6E4CD006E910F /* MixVC.m */; };
+		C7C855021BF6E4CD006E910F /* MixVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C855001BF6E4CD006E910F /* MixVC.xib */; };
+		C7C855061BF6E519006E910F /* MyColorsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C855041BF6E519006E910F /* MyColorsVC.m */; };
+		C7C855071BF6E519006E910F /* MyColorsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C855051BF6E519006E910F /* MyColorsVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +41,27 @@
 		C7C854CB1BF6E11D006E910F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C7C854CD1BF6E11D006E910F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C7C854CE1BF6E11D006E910F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C7C854D01BF6E11D006E910F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C7C854D11BF6E11D006E910F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C7C854D41BF6E11D006E910F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C7C854D61BF6E11D006E910F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C7C854D91BF6E11D006E910F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		C7C854DF1BF6E11D006E910F /* iColorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iColorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C854E41BF6E11D006E910F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C854E51BF6E11D006E910F /* iColorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iColorTests.m; sourceTree = "<group>"; };
+		C7C854EF1BF6E1C4006E910F /* CoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverVC.h; sourceTree = "<group>"; };
+		C7C854F01BF6E1C4006E910F /* CoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverVC.m; sourceTree = "<group>"; };
+		C7C854F11BF6E1C4006E910F /* CoverVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverVC.xib; sourceTree = "<group>"; };
+		C7C854F41BF6E37C006E910F /* GenerateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateVC.h; sourceTree = "<group>"; };
+		C7C854F51BF6E37C006E910F /* GenerateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateVC.m; sourceTree = "<group>"; };
+		C7C854F61BF6E37C006E910F /* GenerateVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenerateVC.xib; sourceTree = "<group>"; };
+		C7C854F91BF6E42C006E910F /* DrawVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawVC.h; sourceTree = "<group>"; };
+		C7C854FA1BF6E42C006E910F /* DrawVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawVC.m; sourceTree = "<group>"; };
+		C7C854FB1BF6E42C006E910F /* DrawVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawVC.xib; sourceTree = "<group>"; };
+		C7C854FE1BF6E4CD006E910F /* MixVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixVC.h; sourceTree = "<group>"; };
+		C7C854FF1BF6E4CD006E910F /* MixVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixVC.m; sourceTree = "<group>"; };
+		C7C855001BF6E4CD006E910F /* MixVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MixVC.xib; sourceTree = "<group>"; };
+		C7C855031BF6E519006E910F /* MyColorsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyColorsVC.h; sourceTree = "<group>"; };
+		C7C855041BF6E519006E910F /* MyColorsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyColorsVC.m; sourceTree = "<group>"; };
+		C7C855051BF6E519006E910F /* MyColorsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyColorsVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +103,24 @@
 		C7C854C81BF6E11D006E910F /* iColor */ = {
 			isa = PBXGroup;
 			children = (
+				C7C854D31BF6E11D006E910F /* Main.storyboard */,
 				C7C854CD1BF6E11D006E910F /* AppDelegate.h */,
 				C7C854CE1BF6E11D006E910F /* AppDelegate.m */,
-				C7C854D01BF6E11D006E910F /* ViewController.h */,
-				C7C854D11BF6E11D006E910F /* ViewController.m */,
-				C7C854D31BF6E11D006E910F /* Main.storyboard */,
-				C7C854D61BF6E11D006E910F /* Images.xcassets */,
-				C7C854D81BF6E11D006E910F /* LaunchScreen.xib */,
+				C7C854EF1BF6E1C4006E910F /* CoverVC.h */,
+				C7C854F01BF6E1C4006E910F /* CoverVC.m */,
+				C7C854F11BF6E1C4006E910F /* CoverVC.xib */,
+				C7C854F41BF6E37C006E910F /* GenerateVC.h */,
+				C7C854F51BF6E37C006E910F /* GenerateVC.m */,
+				C7C854F61BF6E37C006E910F /* GenerateVC.xib */,
+				C7C854F91BF6E42C006E910F /* DrawVC.h */,
+				C7C854FA1BF6E42C006E910F /* DrawVC.m */,
+				C7C854FB1BF6E42C006E910F /* DrawVC.xib */,
+				C7C854FE1BF6E4CD006E910F /* MixVC.h */,
+				C7C854FF1BF6E4CD006E910F /* MixVC.m */,
+				C7C855001BF6E4CD006E910F /* MixVC.xib */,
+				C7C855031BF6E519006E910F /* MyColorsVC.h */,
+				C7C855041BF6E519006E910F /* MyColorsVC.m */,
+				C7C855051BF6E519006E910F /* MyColorsVC.xib */,
 				C7C854C91BF6E11D006E910F /* Supporting Files */,
 			);
 			path = iColor;
@@ -96,6 +129,8 @@
 		C7C854C91BF6E11D006E910F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C7C854D61BF6E11D006E910F /* Images.xcassets */,
+				C7C854D81BF6E11D006E910F /* LaunchScreen.xib */,
 				C7C854CA1BF6E11D006E910F /* Info.plist */,
 				C7C854CB1BF6E11D006E910F /* main.m */,
 			);
@@ -199,9 +234,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7C855071BF6E519006E910F /* MyColorsVC.xib in Resources */,
+				C7C854FD1BF6E42C006E910F /* DrawVC.xib in Resources */,
+				C7C854F31BF6E1C4006E910F /* CoverVC.xib in Resources */,
 				C7C854D51BF6E11D006E910F /* Main.storyboard in Resources */,
+				C7C854F81BF6E37C006E910F /* GenerateVC.xib in Resources */,
 				C7C854DA1BF6E11D006E910F /* LaunchScreen.xib in Resources */,
 				C7C854D71BF6E11D006E910F /* Images.xcassets in Resources */,
+				C7C855021BF6E4CD006E910F /* MixVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +259,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7C854D21BF6E11D006E910F /* ViewController.m in Sources */,
+				C7C855061BF6E519006E910F /* MyColorsVC.m in Sources */,
+				C7C854F21BF6E1C4006E910F /* CoverVC.m in Sources */,
 				C7C854CF1BF6E11D006E910F /* AppDelegate.m in Sources */,
 				C7C854CC1BF6E11D006E910F /* main.m in Sources */,
+				C7C855011BF6E4CD006E910F /* MixVC.m in Sources */,
+				C7C854FC1BF6E42C006E910F /* DrawVC.m in Sources */,
+				C7C854F71BF6E37C006E910F /* GenerateVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
