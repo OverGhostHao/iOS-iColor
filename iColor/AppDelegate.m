@@ -29,8 +29,11 @@
     vc3.title = @"Mix";
     MyColorsVC *vc4 = [[MyColorsVC alloc]init];
     vc4.title = @"My Colors";
+    CustomizedColorVC *vc5 = [[CustomizedColorVC alloc]init];
+    vc5.title = @"Customized color";
     
-    tab.viewControllers = [NSArray arrayWithObjects: vc1, vc2, vc3, vc4, nil];
+    
+    tab.viewControllers = [NSArray arrayWithObjects: vc1, vc2, vc3, vc4, vc5, nil];
     
     self.window.rootViewController = tab;
     

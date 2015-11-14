@@ -11,6 +11,7 @@
 #import "DrawVC.h"
 #import "MixVC.h"
 #import "MyColorsVC.h"
+#import "CustomizedColorVC.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -41,21 +41,33 @@ display a tablet zone that user can draw on.(check on youtube video, draw in xco
 slider that user can set border width
 provide 5 default colors.
 can choose from my colors.
+can choose customized color from color picking page.
+
+
 save the current image to photo library / or just save it to local? maybe in my pockets?
 
 MixVC:
-2 buttons in the mid that user can click to choose colors(Can use the same model in DrawVC)
+2 buttons in the mid that user can click to choose colors from 3 modes:
+    1. go to another page called simple colors which lists all the simple colors in a tableView.
+    2. go to my pockets.
+    3. go to customized color picking page.
+
 slider that user can set how many levels in between
+another alider user can use to set the brightness.
 set the color of each tableView cell
 
 My Pocket:
-collectionView to show the colors that have been saved.
-each one can be clicked to see the detail.
+collectionView to show the colors that have been saved (upper part)
+collectionView to show the images that we have saved (lower part)
+each one can be clicked and will go to customized color picking page.
 an + button to go to the color picking page.
 
 Color picking Page: (Plan B)
 current color on the top
 detail RGB value on the bottom. Save/Cancel button
+
+
+
 
 
 Be aware:
