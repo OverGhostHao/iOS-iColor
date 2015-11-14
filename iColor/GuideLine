@@ -1,0 +1,58 @@
+CSE 436 Final Project
+
+Project Name: iColor
+
+Members:
+Yuhan Hao 	439140	haoyuhan@wustl.edu
+Qi Wei 	440269	qiwei@wustl.edu
+Xinyu Yan 	437758	xinyu.yan@wustl.edu
+Bojian Li 	441218	li23@wustl.edu
+
+Description:
+
+Our product is a super-fast color generator!
+User can generate any color at light speed just by tapping on the screen.
+Save your favorite colors in your pocket!
+Try out every possibility in a palette!
+Mix any two chosen colors with any proportion.
+We will give you the best matching color combinations for the current color instantly!
+We will give you the name of the nearest known color.
+
+
+
+TODO:
+
+Side Navigation Bar:
+4 tab
+can be used in any children vc
+slide from aside and can be hidden by sliding back.
+each cell: Word or image.
+
+GenerateVC:
+tableView with 5 cells in it.
+each cell has the color associate with it and also the hex value.
+each cell clickable, collapse the top cells, expand the detail view from bottom, which will show the detail value for this color. including the save and cancel button.
+Or each cell is expandable so that if clicked it will expand and show the detail value.
+a button at bottom that can refresh the page so that user can generate another 5 colors.
+Detail view is hidden by default.
+
+DrawVC:
+display a tablet zone that user can draw on.(check on youtube video, draw in xcode)
+slider that user can set border width
+provide 5 default colors.
+can choose from my colors.
+save the current image to photo library.
+
+MixVC:
+2 buttons in the mid that user can click to choose colors(Can use the same model in DrawVC)
+slider that user can set how many levels in between
+set the color of each tableView cell
+
+My Pocket:
+collectionView to show the colors that have been saved.
+each one can be clicked to see the detail.
+an + button to go to the color picking page.
+
+Color picking Page: (Plan B)
+current color on the top
+detail RGB value on the bottom. Save/Cancel button
