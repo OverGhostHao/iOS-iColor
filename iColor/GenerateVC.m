@@ -20,7 +20,7 @@
     UILabel *generate = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 200)];
     [generate setText:@"Generating"];
     [self.view addSubview:generate];
-    
+    //git test
     
 }
 
