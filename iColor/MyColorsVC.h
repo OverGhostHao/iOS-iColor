@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MyColorsVC : UIViewController
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 @end

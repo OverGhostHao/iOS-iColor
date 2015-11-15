@@ -7,6 +7,7 @@
 //
 
 #import "DrawVC.h"
+#import "SWRevealViewController.h"
 
 @interface DrawVC ()
 
@@ -20,6 +21,16 @@
     UILabel *drawLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 200)];
     [drawLabel setText:@"Drawing"];
     [self.view addSubview:drawLabel];
+    
+    //Set the list page for navigation
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if (revealViewController) {
+        [self.sidebarButton setTarget:self.revealViewController];
+        [self.sidebarButton setAction:@selector(revealToggle:)];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+    
+    self.title = @"Draw For You";
 
 }
 

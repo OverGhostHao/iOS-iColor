@@ -7,6 +7,7 @@
 //
 
 #import "GenerateVC.h"
+#import "SWRevealViewController.h"
 
 @interface GenerateVC ()
 
@@ -20,6 +21,17 @@
     UILabel *generate = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 200)];
     [generate setText:@"Generating"];
     [self.view addSubview:generate];
+    
+    //Set the list page for navigation
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if (revealViewController) {
+        [self.sidebarButton setTarget:self.revealViewController];
+        [self.sidebarButton setAction:@selector(revealToggle:)];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+    
+    self.title = @"Generate Color";
+    
     //git test
     
 }
