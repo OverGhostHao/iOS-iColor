@@ -10,45 +10,34 @@
 
 @implementation ColorItem
 
-//@synthesize isSavedColor;
-//@synthesize hexString;
-
-//- (instancetype)init
-//{
-//    self = [super init];
-//    if (self) {
-//        self.hexString = @" ";
-//     //   self.isSavedColor = false;
-//        self.brightness = 1.0;
-//        self.rValue = 0.0;
-//        self.gValue = 0.0;
-//        self.bValue = 0.0;
-//    }
-//    return self;
-//}
+@synthesize saved;
+@synthesize rValue;
+@synthesize gValue;
+@synthesize bValue;
 
 
-//
-//-(void) setSaved:(BOOL) save {
-//    self.isSavedColor = save;
-//}
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.rValue = 0;
+        self.gValue = 0;
+        self.bValue = 0;
+        self.myUIColor = [[UIColor alloc]init];
+        self.hexString = @" ";
+        self.brightness = 1.0;
+        self.saved = false;
+        
+    }
+    return self;
+}
 
-//-(ColorItem *) initWithRGB:(NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue {
-//    self = [self initWithRed:newRValue green:newGValue blue:newBValue alpha:1.0];
-//    //self = [self initWithRed:<#(CGFloat)#> green:<#(CGFloat)#> blue:<#(CGFloat)#> alpha:<#(CGFloat)#>]
-//    //self.isSavedColor = NO;
-//    self.brightness = 1.0;
-//    self.rValue = newRValue;
-//    self.gValue = newGValue;
-//    self.bValue = newBValue;
-//    self.hexString = [NSString stringWithFormat:@"#%02X%02X%02X",(unsigned int)newRValue,(unsigned int)newGValue,(unsigned int)newBValue];
-//    return self;
-//}
 
 -(void) setRGB:(NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue{
 
-    //ColorItem *newColor = [[ColorItem alloc]initWithRed:newRValue green:newGValue blue:newBValue alpha:1.0];
+    UIColor *newColor = [[UIColor alloc]initWithRed:newRValue/255 green:newGValue/255 blue:newBValue/255 alpha:1.0];
+    self.myUIColor = newColor;
     self.rValue = newRValue;
     self.gValue = newGValue;
     self.bValue = newBValue;

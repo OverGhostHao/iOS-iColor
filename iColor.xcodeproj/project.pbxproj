@@ -60,11 +60,11 @@
 		C7143C631BF7CDD70004B223 /* MyImagesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagesVC.m; sourceTree = "<group>"; };
 		C7143C641BF7CDD70004B223 /* MyImagesVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyImagesVC.xib; sourceTree = "<group>"; };
 		C7143C6A1BF825CF0004B223 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = iColor/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C7143C6C1BF826250004B223 /* SidebarTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidebarTVC.h; path = iColor/SidebarTVC.h; sourceTree = "<group>"; };
-		C7143C6D1BF826250004B223 /* SidebarTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidebarTVC.m; path = iColor/SidebarTVC.m; sourceTree = "<group>"; };
-		C7143C6E1BF826250004B223 /* SidebarTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SidebarTVC.xib; path = iColor/SidebarTVC.xib; sourceTree = "<group>"; };
-		C7143C6F1BF826250004B223 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = iColor/SWRevealViewController.h; sourceTree = "<group>"; };
-		C7143C701BF826250004B223 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = iColor/SWRevealViewController.m; sourceTree = "<group>"; };
+		C7143C6C1BF826250004B223 /* SidebarTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTVC.h; sourceTree = "<group>"; };
+		C7143C6D1BF826250004B223 /* SidebarTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTVC.m; sourceTree = "<group>"; };
+		C7143C6E1BF826250004B223 /* SidebarTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidebarTVC.xib; sourceTree = "<group>"; };
+		C7143C6F1BF826250004B223 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		C7143C701BF826250004B223 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		C7C854C61BF6E11D006E910F /* iColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C854CA1BF6E11D006E910F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C854CB1BF6E11D006E910F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -113,6 +113,11 @@
 		C7143C671BF7DBC40004B223 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				C7143C6C1BF826250004B223 /* SidebarTVC.h */,
+				C7143C6D1BF826250004B223 /* SidebarTVC.m */,
+				C7143C6E1BF826250004B223 /* SidebarTVC.xib */,
+				C7143C6F1BF826250004B223 /* SWRevealViewController.h */,
+				C7143C701BF826250004B223 /* SWRevealViewController.m */,
 				C7143C5A1BF7CB390004B223 /* SimpleColors.h */,
 				C7143C5B1BF7CB390004B223 /* SimpleColors.m */,
 				C7143C5C1BF7CB390004B223 /* SimpleColors.xib */,
@@ -153,11 +158,6 @@
 		C7C854BD1BF6E11D006E910F = {
 			isa = PBXGroup;
 			children = (
-				C7143C6C1BF826250004B223 /* SidebarTVC.h */,
-				C7143C6D1BF826250004B223 /* SidebarTVC.m */,
-				C7143C6E1BF826250004B223 /* SidebarTVC.xib */,
-				C7143C6F1BF826250004B223 /* SWRevealViewController.h */,
-				C7143C701BF826250004B223 /* SWRevealViewController.m */,
 				C7143C691BF825CF0004B223 /* Main.storyboard */,
 				C7C854C81BF6E11D006E910F /* iColor */,
 				C7C854E21BF6E11D006E910F /* iColorTests */,

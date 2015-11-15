@@ -9,25 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface ColorItem : UIColor
+@interface ColorItem : NSObject
+
+@property UIColor* myUIColor;
 
 @property NSInteger rValue;
 @property NSInteger gValue;
 @property NSInteger bValue;
-@property NSString *hexString;
+@property NSString* hexString;
 @property float brightness;
 
-
-//@property BOOL isSavedColor;
-
-//-(void) setSaved:(BOOL) save;
-
-//-(void) setRGBValue:(NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue;
+@property BOOL saved;
 
 -(void) setRGB: (NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue;
-
-//-(void) getHexString;
-
-//-(ColorItem *) initWithRGB:(NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue;
 
 @end

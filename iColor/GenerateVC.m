@@ -9,6 +9,8 @@
 #import "GenerateVC.h"
 #import "SWRevealViewController.h"
 
+#import "ColorItem.h"
+
 @interface GenerateVC ()
 
 @end
@@ -17,10 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //const CGFloat* colors = CGColorGetComponents( color2.CGColor );
     // Do any additional setup after loading the view from its nib.
-    UILabel *generate = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 200)];
+    UILabel *generate = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 50)];
     [generate setText:@"Generating"];
     [self.view addSubview:generate];
+    
+    UILabel *generate1 = [[UILabel alloc]initWithFrame:CGRectMake(100, 400, 100, 50)];
+    [generate1 setText:@"Generating"];
+    [self.view addSubview:generate1];
     
     //Set the list page for navigation
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -32,7 +40,12 @@
     
     self.title = @"Generate Color";
     
-    //git test
+    ColorItem *testColor = [[ColorItem alloc]init];
+    [testColor setRGB:52 gValue:152 bValue:255];
+    [generate setBackgroundColor:testColor.myUIColor];
+    
+
+
     
 }
 
