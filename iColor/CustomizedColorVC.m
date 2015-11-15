@@ -22,19 +22,6 @@
     [customizedColors setText:@"customizedColors"];
     [self.view addSubview:customizedColors];
     
-    //Set the list page for navigation
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if (revealViewController) {
-        [self.sidebarButton setTarget:self.revealViewController];
-        [self.sidebarButton setAction:@selector(revealToggle:)];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    }
-
-    self.title = @"My Image";
-    self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
-    self.navigationController.navigationBar.tintColor = [UIColor yellowColor];
-    //self.navigationController.navigationBar.titleTextAttributes;
-    
 }
 
 - (void)didReceiveMemoryWarning {

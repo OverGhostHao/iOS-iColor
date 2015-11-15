@@ -171,10 +171,10 @@
             </objects>
             <point key="canvasLocation" x="-691" y="3053"/>
         </scene>
-        <!--Customized ColorVC-->
+        <!--My ImagesVC-->
         <scene sceneID="IPC-2c-2eP">
             <objects>
-                <viewController id="IIE-nk-M7g" customClass="CustomizedColorVC" sceneMemberID="viewController">
+                <viewController id="IIE-nk-M7g" customClass="MyImagesVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aza-MQ-C0E"/>
                         <viewControllerLayoutGuide type="bottom" id="ZkX-Bi-GbG"/>
@@ -188,7 +188,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="Bl4-0d-ooa"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="sidebarButton" destination="Bl4-0d-ooa" id="bhb-wP-x20"/>
+                        <outlet property="sidebarButton" destination="Bl4-0d-ooa" id="icV-m9-143"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0TN-a4-vf3" userLabel="First Responder" sceneMemberID="firstResponder"/>

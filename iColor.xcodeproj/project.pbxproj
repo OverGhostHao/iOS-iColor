@@ -136,12 +136,12 @@
 				C7C855031BF6E519006E910F /* MyColorsVC.h */,
 				C7C855041BF6E519006E910F /* MyColorsVC.m */,
 				C7C855051BF6E519006E910F /* MyColorsVC.xib */,
-				C7143C551BF7CAC70004B223 /* CustomizedColorVC.h */,
-				C7143C561BF7CAC70004B223 /* CustomizedColorVC.m */,
-				C7143C571BF7CAC70004B223 /* CustomizedColorVC.xib */,
 				C7143C621BF7CDD70004B223 /* MyImagesVC.h */,
 				C7143C631BF7CDD70004B223 /* MyImagesVC.m */,
 				C7143C641BF7CDD70004B223 /* MyImagesVC.xib */,
+				C7143C551BF7CAC70004B223 /* CustomizedColorVC.h */,
+				C7143C561BF7CAC70004B223 /* CustomizedColorVC.m */,
+				C7143C571BF7CAC70004B223 /* CustomizedColorVC.xib */,
 			);
 			name = VC;
 			sourceTree = "<group>";

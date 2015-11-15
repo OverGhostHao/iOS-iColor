@@ -31,6 +31,9 @@
     }
     
     self.title = @"Draw For You";
+    self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
+    self.navigationController.navigationBar.tintColor = [UIColor yellowColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0], NSForegroundColorAttributeName, [UIFont fontWithName:@"Arial Rounded MT Bold" size:20], NSFontAttributeName, nil]];
 
 }
 
