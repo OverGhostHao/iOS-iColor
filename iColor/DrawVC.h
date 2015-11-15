@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DrawVC : UIViewController
+@interface DrawVC : UIViewController{
+    CGPoint lastPoint;
+    CGFloat red;
+    CGFloat green;
+    CGFloat blue;
+    CGFloat brush;
+    CGFloat opacity;
+    BOOL mouseSwiped;
+}
 
 @end
