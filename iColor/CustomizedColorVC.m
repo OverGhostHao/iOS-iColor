@@ -7,6 +7,7 @@
 //
 
 #import "CustomizedColorVC.h"
+#import "SWRevealViewController.h"
 
 @interface CustomizedColorVC ()
 
@@ -20,7 +21,7 @@
     UILabel *customizedColors = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 200)];
     [customizedColors setText:@"customizedColors"];
     [self.view addSubview:customizedColors];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {

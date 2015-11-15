@@ -20,6 +20,21 @@
     UILabel *myImageItems = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 200)];
     [myImageItems setText:@"myImageItems"];
     [self.view addSubview:myImageItems];
+    
+    //Set the list page for navigation
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if (revealViewController) {
+        [self.sidebarButton setTarget:self.revealViewController];
+        [self.sidebarButton setAction:@selector(revealToggle:)];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+    
+    self.title = @"My Image";
+    self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
+    self.navigationController.navigationBar.tintColor = [UIColor yellowColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0], NSForegroundColorAttributeName, [UIFont fontWithName:@"Arial Rounded MT Bold" size:20], NSFontAttributeName, nil]];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -18,27 +18,27 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    UITabBarController *tab = [[UITabBarController alloc]init];
-    
-    
-    GenerateVC *vc1 = [[GenerateVC alloc]init];
-    vc1.title = @"Generate";
-    DrawVC *vc2 = [[DrawVC alloc]init];
-    vc2.title = @"Draw";
-    MixVC *vc3 = [[MixVC alloc]init];
-    vc3.title = @"Mix";
-    MyColorsVC *vc4 = [[MyColorsVC alloc]init];
-    vc4.title = @"My Colors";
-    MyImagesVC *vc5 = [[MyImagesVC alloc]init];
-    vc5.title = @"My Images";
-    
-    
-    tab.viewControllers = [NSArray arrayWithObjects: vc1, vc2, vc3, vc4, vc5, nil];
-    
-    self.window.rootViewController = tab;
-    
-    //self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+//    UITabBarController *tab = [[UITabBarController alloc]init];
+//    
+//    
+//    GenerateVC *vc1 = [[GenerateVC alloc]init];
+//    vc1.title = @"Generate";
+//    DrawVC *vc2 = [[DrawVC alloc]init];
+//    vc2.title = @"Draw";
+//    MixVC *vc3 = [[MixVC alloc]init];
+//    vc3.title = @"Mix";
+//    MyColorsVC *vc4 = [[MyColorsVC alloc]init];
+//    vc4.title = @"My Colors";
+//    MyImagesVC *vc5 = [[MyImagesVC alloc]init];
+//    vc5.title = @"My Images";
+//    
+//    
+//    tab.viewControllers = [NSArray arrayWithObjects: vc1, vc2, vc3, vc4, vc5, nil];
+//    
+//    self.window.rootViewController = tab;
+//    
+//    //self.window.backgroundColor = [UIColor whiteColor];
+//    [self.window makeKeyAndVisible];
 
     
     

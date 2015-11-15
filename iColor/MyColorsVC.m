@@ -7,6 +7,7 @@
 //
 
 #import "MyColorsVC.h"
+#import "SWRevealViewController.h"
 
 @interface MyColorsVC ()
 
@@ -20,6 +21,20 @@
     UILabel *myColorsLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 200)];
     [myColorsLabel setText:@"My colors!"];
     [self.view addSubview:myColorsLabel];
+    
+    //Set the list page for navigation
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if (revealViewController) {
+        [self.sidebarButton setTarget:self.revealViewController];
+        [self.sidebarButton setAction:@selector(revealToggle:)];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+    
+    self.title = @"My Color";
+    self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
+    self.navigationController.navigationBar.tintColor = [UIColor yellowColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0], NSForegroundColorAttributeName, [UIFont fontWithName:@"Arial Rounded MT Bold" size:20], NSFontAttributeName, nil]];
+
 }
 
 - (void)didReceiveMemoryWarning {
