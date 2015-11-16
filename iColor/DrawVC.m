@@ -10,8 +10,8 @@
 #import "SWRevealViewController.h"
 
 @interface DrawVC ()
-@property (weak, nonatomic) IBOutlet UIImageView *tempDrawImage;
-@property (weak, nonatomic) IBOutlet UIImageView *mainImage;
+@property UIImageView *tempDrawImage;
+@property UIImageView *mainImage;
 
 
 @end
@@ -21,9 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    UILabel *drawLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 200)];
-    [drawLabel setText:@"Drawing"];
-    [self.view addSubview:drawLabel];
+    
+    self.tempDrawImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    self.mainImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:self.tempDrawImage];
+    [self.view addSubview:self.mainImage];
     
     //Set the list page for navigation
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -33,7 +35,7 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    self.title = @"Draw For You";
+    self.title = @"Composing";
     self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
     self.navigationController.navigationBar.tintColor = [UIColor yellowColor];
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0], NSForegroundColorAttributeName, [UIFont fontWithName:@"Arial Rounded MT Bold" size:20], NSFontAttributeName, nil]];
@@ -49,14 +51,12 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    //NSLog(@"touched");
     mouseSwiped = NO;
     UITouch *touch = [touches anyObject];
     lastPoint = [touch locationInView:self.view];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    //NSLog(@"moved");
     mouseSwiped = YES;
     UITouch *touch = [touches anyObject];
     CGPoint currentPoint = [touch locationInView:self.view];
@@ -79,7 +79,6 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
     if(!mouseSwiped) {
         UIGraphicsBeginImageContext(self.view.frame.size);
         [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawVC">
             <connections>
-                <outlet property="mainImage" destination="U2b-nZ-3rd" id="KUj-B3-8HV"/>
-                <outlet property="tempDrawImage" destination="gwu-nE-97P" id="2zC-wv-WQI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,28 +13,8 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U2b-nZ-3rd" userLabel="mainImage">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <animations/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gwu-nE-97P" userLabel="tempDrawImage">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <animations/>
-                </imageView>
-            </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="gwu-nE-97P" firstAttribute="top" secondItem="U2b-nZ-3rd" secondAttribute="top" id="6dZ-E5-Nv7"/>
-                <constraint firstItem="U2b-nZ-3rd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DtN-p8-kWg"/>
-                <constraint firstItem="gwu-nE-97P" firstAttribute="bottom" secondItem="U2b-nZ-3rd" secondAttribute="bottom" id="NoM-Ng-Rgp"/>
-                <constraint firstItem="gwu-nE-97P" firstAttribute="trailing" secondItem="U2b-nZ-3rd" secondAttribute="trailing" id="Obi-92-QeN"/>
-                <constraint firstAttribute="trailing" secondItem="U2b-nZ-3rd" secondAttribute="trailing" id="aNt-31-ZiF"/>
-                <constraint firstItem="U2b-nZ-3rd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cfq-7U-Jx3"/>
-                <constraint firstAttribute="bottom" secondItem="U2b-nZ-3rd" secondAttribute="bottom" id="dsI-35-TyK"/>
-                <constraint firstItem="gwu-nE-97P" firstAttribute="leading" secondItem="U2b-nZ-3rd" secondAttribute="leading" id="elV-F4-cXJ"/>
-            </constraints>
         </view>
     </objects>
 </document>

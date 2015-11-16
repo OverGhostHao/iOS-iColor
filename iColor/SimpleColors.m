@@ -35,13 +35,13 @@
     self.simpleColorsHex = [[NSArray alloc]initWithObjects:@"#000000", @"#555555", @"#AAAAAA", @"#FFFFFF", @"#808080",@"#FF0000",@"#00FF00",@"#0000FF",@"#00FFFF",@"#FFFF00",@"#FF00FF",@"#FF8000",@"#800080", @"#996633", nil];
     
     //ADDING TABLEVIEW
-    UITableView *tableView = [[UITableView alloc]initWithFrame:[[UIScreen mainScreen]applicationFrame] style:UITableViewStylePlain];
-    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.tableView = [[UITableView alloc]initWithFrame:[[UIScreen mainScreen]applicationFrame] style:UITableViewStylePlain];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    tableView.dataSource = self;
-    tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
-    [self.view addSubview:tableView];
+    [self.view addSubview:self.tableView];
     
     
 }
