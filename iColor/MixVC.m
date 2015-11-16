@@ -149,6 +149,8 @@
     thisColor = [self.color objectAtIndex:indexPath.row];
     cell.backgroundColor = thisColor;
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
 }
 

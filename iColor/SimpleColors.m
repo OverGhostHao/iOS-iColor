@@ -64,6 +64,8 @@
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     cell.backgroundColor = self.simpleColors[indexPath.row];
     cell.textLabel.text = self.simpleColorsHex[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     return cell;
 }
 
