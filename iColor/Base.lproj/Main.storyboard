@@ -142,6 +142,17 @@
                     <view key="view" contentMode="scaleToFill" id="nTU-vs-1ru">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEV-vq-z4Z">
+                                <rect key="frame" x="288" y="271" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="aWL-kx-QZ9" kind="show" id="wC9-e3-BOP"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="NPN-QU-u9p">
@@ -170,6 +181,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzz-6k-eoo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-691" y="3053"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5Yj-8h-Hkr">
+            <objects>
+                <navigationController id="TuB-df-weP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9dR-d9-JH6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="aWL-kx-QZ9" kind="relationship" relationship="rootViewController" id="r4M-AB-pOQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qdX-fQ-uIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-697" y="3756"/>
         </scene>
         <!--My ImagesVC-->
         <scene sceneID="IPC-2c-2eP">
@@ -208,10 +235,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fIB-Sl-y2X">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="YJy-cR-2BG"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="sidebarButton" destination="YJy-cR-2BG" id="ojN-Nd-IzD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E47-ow-GTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="836" y="206"/>
+            <point key="canvasLocation" x="54" y="3762"/>
         </scene>
         <!--DrawVC-->
         <scene sceneID="oaj-Bk-NYf">
@@ -354,6 +387,7 @@
         <image name="menu" width="28" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fgi-7b-QGm"/>
+        <segue reference="wC9-e3-BOP"/>
+        <segue reference="NPL-CE-vhm"/>
     </inferredMetricsTieBreakers>
 </document>

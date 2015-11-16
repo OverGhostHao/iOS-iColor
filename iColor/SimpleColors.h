@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWRevealViewController.h"
 
-@interface SimpleColors : UIViewController
+@interface SimpleColors: UIViewController<UITabBarControllerDelegate, UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+
+@property (nonatomic, strong) NSArray *simpleColors;
+@property (nonatomic, strong) NSArray *simpleColorsHex;
+
 
 @end
