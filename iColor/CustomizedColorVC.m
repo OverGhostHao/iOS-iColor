@@ -20,7 +20,7 @@
     UILabel *customizedColors = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 200)];
     [customizedColors setText:@"customizedColors"];
     [self.view addSubview:customizedColors];
-
+//test
 }
 
 - (void)didReceiveMemoryWarning {
