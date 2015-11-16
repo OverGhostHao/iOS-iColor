@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GenerateVC : UIViewController
+@interface GenerateVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
