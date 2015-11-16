@@ -44,7 +44,8 @@ NSMutableArray *currentColors;
     self.generateColorTableView.dataSource = self;
     self.generateColorTableView.delegate = self;
     [self.generateColorTableView setScrollEnabled:false];
-
+    //hack way to delete the white space under the navigation bar.
+    self.generateColorTableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0);
     [self.view addSubview: self.generateColorTableView];
 
     CGFloat buttonY = self.generateColorTableView.frame.origin.y + height;
@@ -67,8 +68,6 @@ NSMutableArray *currentColors;
     
 
 }
-
-
 
 
 - (void)magicButtonTapped:(id)sender {
@@ -106,6 +105,7 @@ NSMutableArray *currentColors;
     ColorItem *color = [self generateRandomColor];
     cell.backgroundColor = color.myUIColor;
     cell.textLabel.text = color.hexString;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
