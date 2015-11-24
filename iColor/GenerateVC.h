@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ColorItem.h"
 
-@interface GenerateVC : UIViewController
+@interface GenerateVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (strong, nonatomic) UIButton *magicButton;
+
+@property (strong, nonatomic) UITableView *generateColorTableView;
 
 @end

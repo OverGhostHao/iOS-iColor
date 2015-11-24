@@ -36,7 +36,8 @@
 
 -(void) setRGB:(NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue{
 
-    UIColor *newColor = [[UIColor alloc]initWithRed:newRValue/255 green:newGValue/255 blue:newBValue/255 alpha:1.0];
+    UIColor *newColor = [[UIColor alloc]initWithRed:(CGFloat)newRValue/255 green:(CGFloat)newGValue/255 blue:(CGFloat)newBValue/255 alpha:1.0];
+    
     self.myUIColor = newColor;
     self.rValue = newRValue;
     self.gValue = newGValue;

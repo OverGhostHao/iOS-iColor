@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MixVC : UIViewController
+@interface MixVC : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NSMutableArray *color;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
