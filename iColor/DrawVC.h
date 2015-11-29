@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SimpleColorNoSidebarViewController.h"
+#import "SimpleColors.h"
+#import "MyColorsVC.h"
 
 @interface DrawVC : UIViewController {
     CGPoint lastPoint;

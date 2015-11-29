@@ -10,7 +10,7 @@
 #import "SWRevealViewController.h"
 
 @interface DrawVC ()
-@property UIImageView *tempDrawImage;
+@property UIImageView *drawImage;
 @property UIImageView *mainImage;
 
 
@@ -22,17 +22,74 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.tempDrawImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-    self.mainImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
-    [self.view addSubview:self.tempDrawImage];
+    self.drawImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height / 2)];
+    self.mainImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height / 2)];
+
     [self.view addSubview:self.mainImage];
+    [self.view addSubview:self.drawImage];
+    
+    UIButton *thin = [UIButton buttonWithType:UIButtonTypeCustom];
+    [thin setTitle:@"thin" forState:UIControlStateNormal];
+    thin.frame = CGRectMake(self.view.frame.origin.x + 10, self.view.frame.origin.y + self.view.frame.size.height / 2, 0, 0);
+    [thin sizeToFit];
+    [thin setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [thin addTarget:self action:@selector(thin:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:thin];
+    
+    UIButton *normal = [UIButton buttonWithType:UIButtonTypeCustom];
+    [normal setTitle:@"normal" forState:UIControlStateNormal];
+    normal.frame = CGRectMake(self.view.frame.origin.x + 10, self.view.frame.origin.y + self.view.frame.size.height / 2 + thin.frame.size.height, 0, 0);
+    [normal sizeToFit];
+    [normal setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [normal addTarget:self action:@selector(normal:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:normal];
+    
+    UIButton *thick = [UIButton buttonWithType:UIButtonTypeCustom];
+    [thick setTitle:@"thick" forState:UIControlStateNormal];
+    thick.frame = CGRectMake(self.view.frame.origin.x + 10, self.view.frame.origin.y + self.view.frame.size.height / 2 + thin.frame.size.height + normal.frame.size.height, 0, 0);
+    [thick sizeToFit];
+    [thick setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [thick addTarget:self action:@selector(thick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:thick];
+    
+    UIButton *simpleColor = [UIButton buttonWithType:UIButtonTypeCustom];
+    [simpleColor setTitle:@"simple colors" forState:UIControlStateNormal];
+    simpleColor.frame = CGRectMake(self.view.frame.origin.x + 10, self.view.frame.origin.y + self.view.frame.size.height / 2 + thin.frame.size.height + normal.frame.size.height + 50, 0, 0);
+    [simpleColor sizeToFit];
+    [simpleColor setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [simpleColor addTarget:self action:@selector(simpleColor:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:simpleColor];
+    
+    UIButton *myColor = [UIButton buttonWithType:UIButtonTypeCustom];
+    [myColor setTitle:@"my colors" forState:UIControlStateNormal];
+    myColor.frame = CGRectMake(self.view.frame.origin.x + 10, self.view.frame.origin.y + self.view.frame.size.height / 2 + thin.frame.size.height + normal.frame.size.height + 100, 0, 0);
+    [myColor sizeToFit];
+    [myColor setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [myColor addTarget:self action:@selector(myColor:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:myColor];
+    
+    UIButton *createColor = [UIButton buttonWithType:UIButtonTypeCustom];
+    [createColor setTitle:@"create colors" forState:UIControlStateNormal];
+    createColor.frame = CGRectMake(self.view.frame.origin.x + 10, self.view.frame.origin.y + self.view.frame.size.height / 2 + thin.frame.size.height + normal.frame.size.height + 150, 0, 0);
+    [createColor sizeToFit];
+    [createColor setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [createColor addTarget:self action:@selector(createColor:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:createColor];
+    
+    UIButton *currentColor = [UIButton buttonWithType:UIButtonTypeCustom];
+    [currentColor setTitle:@"current color" forState:UIControlStateNormal];
+    currentColor.frame = CGRectMake(self.view.frame.origin.x + self.view.frame.size.width - 150, self.view.frame.origin.y + self.view.frame.size.height / 2, 0, 0);
+    [currentColor sizeToFit];
+    UIColor *cc = [[UIColor alloc] initWithRed:red green:green blue:blue alpha:1.0];
+    [currentColor setBackgroundColor:cc];
+    [self.view addSubview:currentColor];
     
     //Set the list page for navigation
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController) {
         [self.sidebarButton setTarget:self.revealViewController];
         [self.sidebarButton setAction:@selector(revealToggle:)];
-        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+//        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
     self.title = @"Composing";
@@ -44,25 +101,47 @@
     red = 0.0/255.0;
     green = 0.0/255.0;
     blue = 0.0/255.0;
-    brush = 10.0;
+    brush = 5.0;
     opacity = 1.0;
     
 
+}
+- (void)simpleColor:(UIButton *) button {
+    SimpleColors *sc = [[SimpleColors alloc] init];
+    [self.navigationController pushViewController:sc animated:YES];
+}
+- (void)myColor:(UIButton *) button {
+    MyColorsVC *mc = [[MyColorsVC alloc] init];
+    [self.navigationController pushViewController:mc animated:YES];
+}
+- (void)createColor:(UIButton *) button {
+    MyColorsVC *mc = [[MyColorsVC alloc] init];
+    [self.navigationController pushViewController:mc animated:YES];
+}
+
+- (void)thin:(UIButton *) button {
+    brush = 3.0;
+}
+- (void)normal:(UIButton *) button {
+    brush = 5.0;
+}
+- (void)thick:(UIButton *) button {
+    brush = 10.0;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     mouseSwiped = NO;
     UITouch *touch = [touches anyObject];
-    lastPoint = [touch locationInView:self.view];
+    lastPoint = [touch locationInView:self.drawImage];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     mouseSwiped = YES;
     UITouch *touch = [touches anyObject];
-    CGPoint currentPoint = [touch locationInView:self.view];
+    CGPoint currentPoint = [touch locationInView:self.drawImage];
     
-    UIGraphicsBeginImageContext(self.view.frame.size);
-    [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    UIGraphicsBeginImageContext(self.drawImage.frame.size);
+    [self.drawImage.image drawInRect:CGRectMake(0, 0, self.drawImage.frame.size.width, self.drawImage.frame.size.height)];
     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
     CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
@@ -71,17 +150,16 @@
     CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
     
     CGContextStrokePath(UIGraphicsGetCurrentContext());
-    self.tempDrawImage.image = UIGraphicsGetImageFromCurrentImageContext();
-    [self.tempDrawImage setAlpha:opacity];
+    self.drawImage.image = UIGraphicsGetImageFromCurrentImageContext();
+    [self.drawImage setAlpha:opacity];
     UIGraphicsEndImageContext();
-    
     lastPoint = currentPoint;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     if(!mouseSwiped) {
-        UIGraphicsBeginImageContext(self.view.frame.size);
-        [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        UIGraphicsBeginImageContext(self.drawImage.frame.size);
+        [self.drawImage.image drawInRect:CGRectMake(0, 0, self.drawImage.frame.size.width, self.drawImage.frame.size.height)];
         CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
         CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush);
         CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), red, green, blue, opacity);
@@ -89,16 +167,16 @@
         CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
         CGContextStrokePath(UIGraphicsGetCurrentContext());
         CGContextFlush(UIGraphicsGetCurrentContext());
-        self.tempDrawImage.image = UIGraphicsGetImageFromCurrentImageContext();
+        self.drawImage.image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
     }
-    
     UIGraphicsBeginImageContext(self.mainImage.frame.size);
-    [self.mainImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:1.0];
-    [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:opacity];
+    [self.mainImage.image drawInRect:CGRectMake(0, 0, self.mainImage.frame.size.width, self.mainImage.frame.size.height) blendMode:kCGBlendModeNormal alpha:1.0];
+    [self.drawImage.image drawInRect:CGRectMake(0, 0, self.drawImage.frame.size.width, self.drawImage.frame.size.height) blendMode:kCGBlendModeNormal alpha:opacity];
     self.mainImage.image = UIGraphicsGetImageFromCurrentImageContext();
-    self.tempDrawImage.image = nil;
+    self.drawImage.image = nil;
     UIGraphicsEndImageContext();
+
 }
 
 
