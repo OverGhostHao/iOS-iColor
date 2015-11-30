@@ -11,7 +11,7 @@
 
 #import "ColorItem.h"
 
-@interface GenerateVC ()
+@interface GenerateVC () <updateColorDelegate>
 
 @end
 
@@ -78,10 +78,8 @@ NSMutableArray *currentColors;
         newC = [self generateRandomColor];
         currentColors[i] = newC;
     }
-    //endable selected cell
     ColorCell *preSelectedCell = [self.generateColorTableView cellForRowAtIndexPath:selectedIndex];
     [preSelectedCell collapseCell];
-    //preSelectedCell.userInteractionEnabled = YES;
     selectedIndex = nil;
     [self.generateColorTableView reloadData];
 }
@@ -107,21 +105,25 @@ NSMutableArray *currentColors;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //UITableViewCell *cell = [[UITableViewCell alloc]init];
     
+    ColorItem *color = currentColors[indexPath.row];
     //customized cell
     static NSString *cellID = @"cellID";
     ColorCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil){
-        cell = [[ColorCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[ColorCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID color:color];
     }
-    ColorItem *color = currentColors[indexPath.row];
-    
+    //ColorItem *color = currentColors[indexPath.row];
     cell.rValue = color.rValue;
     cell.gValue = color.gValue;
     cell.bValue = color.bValue;
+    cell.mycolor = color;
     
+    cell.delegate = self;
+    cell.tag = indexPath.row;
     cell.backgroundColor = color.myUIColor;
     cell.textLabel.text = color.hexString;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSLog(@"create, %ld, %@", (long)indexPath.row, color.hexString);
     return cell;
 }
 
@@ -138,13 +140,17 @@ NSMutableArray *currentColors;
         //select other row
         if (indexPath.row != selectedIndex.row){
             NSIndexPath *preSelected = selectedIndex;
-            selectedIndex = indexPath;
+            //selectedIndex = nil;
             
+            selectedIndex = indexPath;
+
             //collapse current selected cell
             NSArray *preSelectedPath = [NSArray arrayWithObject:preSelected];
             [tableView reloadRowsAtIndexPaths:preSelectedPath withRowAnimation:UITableViewRowAnimationNone];
             ColorCell *preSelectedCell = [self.generateColorTableView cellForRowAtIndexPath:preSelected];
             [preSelectedCell collapseCell];
+            
+            //selectedIndex = indexPath;
             
             //expand new selected cell
             [tableView reloadRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationNone];
@@ -156,7 +162,6 @@ NSMutableArray *currentColors;
             //collapse current selected cell
             selectedIndex = nil;
             [tableView reloadRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationNone];
-            NSLog(@"deselect");
             ColorCell *preSelectedCell = [self.generateColorTableView cellForRowAtIndexPath:indexPath];
             [preSelectedCell collapseCell];
         }
@@ -170,7 +175,7 @@ NSMutableArray *currentColors;
     else{
         if (indexPath == selectedIndex){
             return self.view.frame.size.height*5/12;
-            
+        
         }
         else{
             return self.view.frame.size.height*5/48;
@@ -178,5 +183,12 @@ NSMutableArray *currentColors;
     }
 }
 
+-(void)updateColor:(NSInteger)indexRow newColor:(ColorItem*)newColor{
+    currentColors[indexRow] = newColor;
+    ColorCell *preSelectedCell = [self.generateColorTableView cellForRowAtIndexPath:selectedIndex];
+    [preSelectedCell collapseCell];
+    selectedIndex = nil;
+    [self.generateColorTableView reloadData];    
+}
 
 @end

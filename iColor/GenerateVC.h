@@ -18,5 +18,7 @@
 @property (strong, nonatomic) UITableView *generateColorTableView;
 @property (strong, nonatomic) NSIndexPath *selectedIndex;
 
+-(void)updateColor: (NSInteger) indexRow newColor: (ColorItem*)newColor;
+
 @end
 

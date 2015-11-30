@@ -33,6 +33,31 @@
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    //Encode properties, other class variables, etc
+    [encoder encodeInteger: self.rValue forKey:@"rValue"];
+    [encoder encodeInteger: self.gValue forKey:@"gValue"];
+    [encoder encodeInteger: self.bValue forKey:@"bValue"];
+    [encoder encodeObject: self.myUIColor forKey:@"myUIColor"];
+    [encoder encodeObject: self.hexString forKey:@"hexString"];
+    [encoder encodeFloat: self.brightness forKey:@"brightness"];
+    [encoder encodeBool: self.saved forKey:@"saved"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if((self = [super init])) {
+        //decode properties, other class vars
+        self.rValue = [decoder decodeIntegerForKey:@"rValue"];
+        self.gValue = [decoder decodeIntegerForKey:@"gValue"];
+        self.bValue = [decoder decodeIntegerForKey:@"bValue"];
+        self.myUIColor = [decoder decodeObjectForKey:@"myUIColor"];
+        self.hexString = [decoder decodeObjectForKey:@"hexString"];
+        self.brightness = [decoder decodeFloatForKey:@"brightness"];
+        self.saved = [decoder decodeBoolForKey:@"saved"];
+    }
+    return self;
+}
+
 
 -(void) setRGB:(NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue{
 
