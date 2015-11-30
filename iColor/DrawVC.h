@@ -1,12 +1,8 @@
-//
-//  DrawVC.h
-//  iColor
-//
-//  Created by YuhanHao on 15/11/13.
-//  Copyright (c) 2015年 Skejul. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
+#import "SimpleColors.h"
+#import "CollectionViewController.h"
 
 @interface DrawVC : UIViewController {
     CGPoint lastPoint;
@@ -19,5 +15,6 @@
 }
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+-(void)changeColor:(NSString *)s;
 
 @end

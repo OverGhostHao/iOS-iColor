@@ -1,4 +1,3 @@
-//
 //  SimpleColors.m
 //  iColor
 //
@@ -17,7 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
+    
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController) {
         [self.sidebarButton setTarget:self.revealViewController];
@@ -29,7 +28,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
     self.navigationController.navigationBar.tintColor = [UIColor yellowColor];
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0], NSForegroundColorAttributeName, [UIFont fontWithName:@"Arial Rounded MT Bold" size:20], NSFontAttributeName, nil]];
-
+    
     self.simpleColors = [[NSArray alloc]initWithObjects: [UIColor blackColor], [UIColor darkGrayColor], [UIColor lightGrayColor], [UIColor whiteColor], [UIColor grayColor], [UIColor redColor], [UIColor greenColor], [UIColor blueColor], [UIColor cyanColor], [UIColor yellowColor], [UIColor magentaColor], [UIColor orangeColor], [UIColor purpleColor], [UIColor brownColor], nil];
     
     self.simpleColorsHex = [[NSArray alloc]initWithObjects:@"#000000", @"#555555", @"#AAAAAA", @"#FFFFFF", @"#808080",@"#FF0000",@"#00FF00",@"#0000FF",@"#00FFFF",@"#FFFF00",@"#FF00FF",@"#FF8000",@"#800080", @"#996633", nil];
@@ -51,6 +50,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellText = cell.textLabel.text;
+    DrawVC *dvc = (DrawVC*)self.draw;
+    [dvc changeColor:cellText];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.simpleColors.count;
@@ -65,20 +72,13 @@
     cell.backgroundColor = self.simpleColors[indexPath.row];
     cell.textLabel.text = self.simpleColorsHex[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
     return cell;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.view.frame.size.height/7;
 }
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    // Get the new view controller using [segue destinationViewController].
-//    // Pass the selected object to the new view controller.
-//}
-//*/
 
 @end
