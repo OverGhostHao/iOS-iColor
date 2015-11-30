@@ -78,7 +78,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="uic-Ke-T5e" kind="custom" identifier="showMyColor" customClass="SWRevealViewControllerSeguePushController" id="HN3-BW-iWu"/>
+                                    <segue destination="uic-Ke-T5e" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="x7O-IQ-kZf"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="My Image" id="xSu-ec-Oha">
@@ -286,29 +286,61 @@
             </objects>
             <point key="canvasLocation" x="-697" y="214"/>
         </scene>
-        <!--My ColorsVC-->
-        <scene sceneID="AvR-8n-tx9">
+        <!--Collection View Controller-->
+        <scene sceneID="hwu-QR-Qgg">
             <objects>
-                <viewController id="xOz-YN-Dgr" customClass="MyColorsVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="R8G-95-B9I"/>
-                        <viewControllerLayoutGuide type="bottom" id="OnM-nj-As8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="FWr-Zm-2YG">
+                <collectionViewController id="DJx-cE-Ged" customClass="CollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="oPP-ou-mDY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="nlL-bR-QZD">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="ks1-8W-3uq"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jdB-qT-H5d">
+                            <size key="itemSize" width="158" height="159"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="10" maxX="5" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="5e2-te-TTg" customClass="CollectionViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="158" height="159"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMY-QJ-Xnw">
+                                            <rect key="frame" x="61" y="65" width="44.5" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="rMY-QJ-Xnw" secondAttribute="centerX" constant="-4" id="PF3-pk-f40"/>
+                                    <constraint firstAttribute="centerY" secondItem="rMY-QJ-Xnw" secondAttribute="centerY" constant="4" id="czl-rA-roB"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="textLabel" destination="rMY-QJ-Xnw" id="NgO-YB-fyh"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="DJx-cE-Ged" id="6c4-rV-S5V"/>
+                            <outlet property="delegate" destination="DJx-cE-Ged" id="Tz2-OV-0F3"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="3Jw-rC-09j">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="yfQ-FT-Zgg"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="sidebarButton" destination="ks1-8W-3uq" id="gLW-2D-PYb"/>
+                        <outlet property="sidebarButton" destination="yfQ-FT-Zgg" id="3Bc-df-9Y7"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rR9-1t-7DT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lvk-OU-gFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="54" y="2325"/>
+            <point key="canvasLocation" x="48" y="2325"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z0U-9C-f36">
@@ -351,7 +383,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="xOz-YN-Dgr" kind="relationship" relationship="rootViewController" id="UNn-2H-fgG"/>
+                        <segue destination="DJx-cE-Ged" kind="relationship" relationship="rootViewController" id="PPK-Vl-5hb"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4v-3h-bVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -387,7 +419,7 @@
         <image name="menu" width="28" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Fgi-7b-QGm"/>
         <segue reference="wC9-e3-BOP"/>
-        <segue reference="NPL-CE-vhm"/>
     </inferredMetricsTieBreakers>
 </document>

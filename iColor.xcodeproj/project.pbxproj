@@ -19,6 +19,9 @@
 		C7143C711BF826250004B223 /* SidebarTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7143C6D1BF826250004B223 /* SidebarTVC.m */; };
 		C7143C721BF826250004B223 /* SidebarTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7143C6E1BF826250004B223 /* SidebarTVC.xib */; };
 		C7143C731BF826250004B223 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7143C701BF826250004B223 /* SWRevealViewController.m */; };
+		C741F4471C0BA1AD00D672A6 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4421C0BA1AC00D672A6 /* CollectionViewCell.m */; };
+		C741F4481C0BA1AD00D672A6 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4441C0BA1AC00D672A6 /* CollectionViewController.m */; };
+		C741F4491C0BA1AD00D672A6 /* detailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4461C0BA1AD00D672A6 /* detailView.m */; };
 		C7C854CC1BF6E11D006E910F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854CB1BF6E11D006E910F /* main.m */; };
 		C7C854CF1BF6E11D006E910F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854CE1BF6E11D006E910F /* AppDelegate.m */; };
 		C7C854D71BF6E11D006E910F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C854D61BF6E11D006E910F /* Images.xcassets */; };
@@ -65,6 +68,12 @@
 		C7143C6E1BF826250004B223 /* SidebarTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidebarTVC.xib; sourceTree = "<group>"; };
 		C7143C6F1BF826250004B223 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		C7143C701BF826250004B223 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		C741F4411C0BA1AC00D672A6 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		C741F4421C0BA1AC00D672A6 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		C741F4431C0BA1AC00D672A6 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		C741F4441C0BA1AC00D672A6 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		C741F4451C0BA1AC00D672A6 /* detailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailView.h; sourceTree = "<group>"; };
+		C741F4461C0BA1AD00D672A6 /* detailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailView.m; sourceTree = "<group>"; };
 		C7C854C61BF6E11D006E910F /* iColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C854CA1BF6E11D006E910F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C854CB1BF6E11D006E910F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -113,6 +122,8 @@
 		C7143C671BF7DBC40004B223 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				C741F4431C0BA1AC00D672A6 /* CollectionViewController.h */,
+				C741F4441C0BA1AC00D672A6 /* CollectionViewController.m */,
 				C7143C6C1BF826250004B223 /* SidebarTVC.h */,
 				C7143C6D1BF826250004B223 /* SidebarTVC.m */,
 				C7143C6E1BF826250004B223 /* SidebarTVC.xib */,
@@ -151,6 +162,10 @@
 			children = (
 				C7143C5F1BF7CC570004B223 /* ColorItem.h */,
 				C7143C601BF7CC570004B223 /* ColorItem.m */,
+				C741F4451C0BA1AC00D672A6 /* detailView.h */,
+				C741F4461C0BA1AD00D672A6 /* detailView.m */,
+				C741F4411C0BA1AC00D672A6 /* CollectionViewCell.h */,
+				C741F4421C0BA1AC00D672A6 /* CollectionViewCell.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -330,13 +345,16 @@
 				C7C855061BF6E519006E910F /* MyColorsVC.m in Sources */,
 				C7143C711BF826250004B223 /* SidebarTVC.m in Sources */,
 				C7143C651BF7CDD70004B223 /* MyImagesVC.m in Sources */,
+				C741F4491C0BA1AD00D672A6 /* detailView.m in Sources */,
 				C7143C5D1BF7CB390004B223 /* SimpleColors.m in Sources */,
 				C7C854F21BF6E1C4006E910F /* CoverVC.m in Sources */,
 				C7C854CF1BF6E11D006E910F /* AppDelegate.m in Sources */,
+				C741F4481C0BA1AD00D672A6 /* CollectionViewController.m in Sources */,
 				C7C854CC1BF6E11D006E910F /* main.m in Sources */,
 				C7C855011BF6E4CD006E910F /* MixVC.m in Sources */,
 				C7143C581BF7CAC70004B223 /* CustomizedColorVC.m in Sources */,
 				C7C854FC1BF6E42C006E910F /* DrawVC.m in Sources */,
+				C741F4471C0BA1AD00D672A6 /* CollectionViewCell.m in Sources */,
 				C7C854F71BF6E37C006E910F /* GenerateVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
