@@ -40,16 +40,6 @@ UILabel *alphaValue;
     
     [self setUpBackButton];
     [self setUpLabels];
-//    UISlider *redSlider = [[UISlider alloc] initWithFrame:CGRectMake(30.0, 50.0, 100.0, 10.0)];
-//    [redSlider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
-//    [redSlider setBackgroundColor:[UIColor clearColor]];
-//    redSlider.minimumValue = 0.0;
-//    redSlider.maximumValue = 50.0;
-//    redSlider.continuous = YES;
-//    redSlider.value = 25.0;
-//    [self addSubview:redSlider];
-//    
-    
     
     
     return self;
@@ -94,14 +84,6 @@ UILabel *alphaValue;
     [self addSubview:alphaLabel];
     
 }
-
-//-(void)sliderAction:(id)sender
-//{
-//    //UISlider *slider = (UISlider*)sender;
-//    //float value = slider.value;
-//    //-- Do further actions
-//}
-
 
 
 - (void) setContent:(ColorItem *)thisColor {

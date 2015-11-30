@@ -70,7 +70,7 @@ NSArray *colors;
 //    [defaults synchronize];
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:colors];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:encodedObject forKey:@"colors"];
+    [defaults setObject:encodedObject forKey:@"savedColors"];
     [defaults synchronize];
 
     myColors = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
@@ -157,7 +157,23 @@ NSArray *colors;
     detailView *tempView = [[detailView alloc]initWithFrame:CGRectMake(startX, startY, subviewWidth, subviewHeight)];
     [tempView setContent:tc];
     
+    tempView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    
     [self.view addSubview:tempView];
+    
+    [UIView animateWithDuration:0.3/1.5 animations:^{
+        tempView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3/2 animations:^{
+            tempView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3/2 animations:^{
+                tempView.transform = CGAffineTransformIdentity;
+            }];
+        }];
+    }];
+    
+    //[self.view addSubview:tempView];
     
 }
 
