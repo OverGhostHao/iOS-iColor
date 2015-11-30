@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ColorItem.h"
+#import "GlobalVars.h"
 
 @protocol updateColorDelegate <NSObject>;
 

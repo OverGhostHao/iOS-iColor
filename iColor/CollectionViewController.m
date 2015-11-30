@@ -22,7 +22,7 @@
 
 static NSString * const reuseIdentifier = @"Cell";
 
-NSArray *myColors;
+NSMutableArray *myColors;
 
 NSArray *colors;
 
@@ -64,17 +64,10 @@ NSArray *colors;
 
     colors = [[NSArray alloc] initWithObjects:color1, color2, color3, color4, color5, nil];
     // Do any additional setup after loading the view.
-    
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setObject:colors forKey:@"simpleColors"];
-//    [defaults synchronize];
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:colors];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:encodedObject forKey:@"savedColors"];
-    [defaults synchronize];
 
-    myColors = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
 
+    GlobalVars *globals = [GlobalVars sharedInstance];
+    myColors = globals.savedColors;
     
 }
 

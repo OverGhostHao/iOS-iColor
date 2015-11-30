@@ -143,6 +143,11 @@
     redSlider.value = mycolor.rValue;
     greenSlider.value = mycolor.gValue;
     blueSlider.value = mycolor.bValue;
+    
+    rIndicator.text = [NSString stringWithFormat:@"%ld", mycolor.rValue];
+    gIndicator.text = [NSString stringWithFormat:@"%ld", mycolor.gValue];
+    bIndicator.text = [NSString stringWithFormat:@"%ld", mycolor.bValue];
+    
     self.textLabel.hidden = NO;
     saveButton.hidden = YES;
     okButton.hidden = YES;
@@ -166,6 +171,11 @@
     redSlider.value = mycolor.rValue;
     greenSlider.value = mycolor.gValue;
     blueSlider.value = mycolor.bValue;
+    
+    rIndicator.text = [NSString stringWithFormat:@"%ld", mycolor.rValue];
+    gIndicator.text = [NSString stringWithFormat:@"%ld", mycolor.gValue];
+    bIndicator.text = [NSString stringWithFormat:@"%ld", mycolor.bValue];
+    
     self.textLabel.hidden = YES;
     saveButton.hidden = NO;
     okButton.hidden = NO;
@@ -184,23 +194,17 @@
 
 
 -(void) clickSaveButton{
-    //NSLog(@"click save");
+    
     [mycolor setRGB:rValue gValue:gValue bValue:bValue];
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:mycolor];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSInteger count;
-    if([defaults integerForKey:@"savedColorCount"] == 0){
-        [defaults setInteger:1 forKey:@"savedColorCount"];
-        count = 1;
-        //NSLog(@"%ld",(long)count);
-    }
-    else{
-        count = [defaults integerForKey:@"savedColorCount"];
-        //NSLog(@"%ld",(long)count);
-    }
-    NSString *countString = [NSString stringWithFormat:@"%ld",count];
-    [defaults setObject:encodedObject forKey:countString];
-    [defaults synchronize];
+    GlobalVars *globals = [GlobalVars sharedInstance];
+    
+    //NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", mycolor];
+    //NSArray *results = [globals.savedColors filteredArrayUsingPredicate:predicate];
+    //if (results.count == 0) {
+        [globals.savedColors addObject:mycolor];
+    //}
+    
+    
 }
 
 -(void) clickOkButton{

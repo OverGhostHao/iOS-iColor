@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ColorItem.h"
 #import "ColorCell.h"
+#import "GlobalVars.h"
+
 
 @interface GenerateVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

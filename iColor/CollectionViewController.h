@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GlobalVars.h"
+
 
 @interface CollectionViewController : UICollectionViewController
 
