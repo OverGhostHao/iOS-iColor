@@ -1,21 +1,17 @@
-//
-//  GenerateVC.m
-//  iColor
-//
-//  Created by YuhanHao on 15/11/13.
-//  Copyright (c) 2015年 Skejul. All rights reserved.
-//
+
 
 #import "GenerateVC.h"
 #import "SWRevealViewController.h"
 
 #import "ColorItem.h"
 
-@interface GenerateVC ()
+@interface GenerateVC () <updateColorDelegate>
 
 @end
 
 @implementation GenerateVC
+
+@synthesize selectedIndex;
 
 NSMutableArray *currentColors;
 
@@ -34,20 +30,24 @@ NSMutableArray *currentColors;
     self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
     self.navigationController.navigationBar.tintColor = [UIColor yellowColor];
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0], NSForegroundColorAttributeName, [UIFont fontWithName:@"Arial Rounded MT Bold" size:20], NSFontAttributeName, nil]];
-
+    
     CGFloat x = self.view.frame.origin.x;
     CGFloat y = self.view.frame.origin.y + self.navigationController.navigationBar.layer.frame.size.height;
     CGFloat width = self.view.frame.size.width;
     CGFloat height = self.view.frame.size.height/6 * 5;
+    
+    //create table view
     self.generateColorTableView = [[UITableView alloc]initWithFrame:CGRectMake(x,y,width,height) style:UITableViewStyleGrouped];
     [self.generateColorTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.generateColorTableView.dataSource = self;
     self.generateColorTableView.delegate = self;
     [self.generateColorTableView setScrollEnabled:false];
+    
     //hack way to delete the white space under the navigation bar.
     self.generateColorTableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0);
     [self.view addSubview: self.generateColorTableView];
-
+    
+    //magic button
     CGFloat buttonY = self.generateColorTableView.frame.origin.y + height;
     CGFloat buttonHeight = self.view.frame.size.height - buttonY;
     self.magicButton = [[UIButton alloc]initWithFrame:CGRectMake(x, buttonY, width, buttonHeight)];
@@ -63,12 +63,10 @@ NSMutableArray *currentColors;
         newC = [self generateRandomColor];
         [currentColors addObject:newC];
     }
-
     //NSLog(@"%@", currentColors);
     
-
+    
 }
-
 
 - (void)magicButtonTapped:(id)sender {
     for (int i = 0; i < 5; i++) {
@@ -76,10 +74,13 @@ NSMutableArray *currentColors;
         newC = [self generateRandomColor];
         currentColors[i] = newC;
     }
+    UITableViewCell *tempCell = [[UITableViewCell alloc]init];
+    tempCell = [self.generateColorTableView cellForRowAtIndexPath:selectedIndex];
+    ColorCell *preSelectedCell = (ColorCell *)tempCell;
+    [preSelectedCell collapseCell];
+    selectedIndex = nil;
     [self.generateColorTableView reloadData];
-    
 }
-
 
 -(ColorItem *) generateRandomColor {
     NSInteger red = arc4random_uniform(256);
@@ -88,7 +89,6 @@ NSMutableArray *currentColors;
     ColorItem *newColor = [[ColorItem alloc]init];
     [newColor setRGB:red gValue:green bValue:blue];
     return newColor;
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -101,17 +101,92 @@ NSMutableArray *currentColors;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc]init];
-    ColorItem *color = [self generateRandomColor];
+    //UITableViewCell *cell = [[UITableViewCell alloc]init];
+    
+    ColorItem *color = currentColors[indexPath.row];
+    //customized cell
+    static NSString *cellID = @"cellID";
+    ColorCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil){
+        cell = [[ColorCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID color:color];
+    }
+    //ColorItem *color = currentColors[indexPath.row];
+    cell.rValue = color.rValue;
+    cell.gValue = color.gValue;
+    cell.bValue = color.bValue;
+    cell.mycolor = color;
+    
+    cell.delegate = self;
+    cell.tag = indexPath.row;
     cell.backgroundColor = color.myUIColor;
     cell.textLabel.text = color.hexString;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //NSLog(@"create, %ld, %@", (long)indexPath.row, color.hexString);
     return cell;
 }
 
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.view.frame.size.height/6;
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSArray *path = [NSArray arrayWithObject:indexPath];
+    if (selectedIndex == nil){
+        selectedIndex = indexPath;
+        //expand cell
+        [tableView reloadRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationNone];
+        ColorCell *curerentSelectedCell = (ColorCell *)[self.generateColorTableView cellForRowAtIndexPath:indexPath];
+        [curerentSelectedCell expandCell];
+    }
+    else{
+        //select other row
+        if (indexPath.row != selectedIndex.row){
+            NSIndexPath *preSelected = selectedIndex;
+            //selectedIndex = nil;
+            
+            selectedIndex = indexPath;
+            
+            //collapse current selected cell
+            NSArray *preSelectedPath = [NSArray arrayWithObject:preSelected];
+            [tableView reloadRowsAtIndexPaths:preSelectedPath withRowAnimation:UITableViewRowAnimationNone];
+            ColorCell *preSelectedCell = (ColorCell *)[self.generateColorTableView cellForRowAtIndexPath:preSelected];
+            [preSelectedCell collapseCell];
+            
+            //selectedIndex = indexPath;
+            
+            //expand new selected cell
+            [tableView reloadRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationNone];
+            ColorCell *curerentSelectedCell = (ColorCell *)[self.generateColorTableView cellForRowAtIndexPath:indexPath];
+            [curerentSelectedCell expandCell];
+        }
+        //deselectd
+        else{
+            //collapse current selected cell
+            selectedIndex = nil;
+            [tableView reloadRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationNone];
+            ColorCell *preSelectedCell = (ColorCell *)[self.generateColorTableView cellForRowAtIndexPath:indexPath];
+            [preSelectedCell collapseCell];
+        }
+    }
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (selectedIndex == nil){
+        return self.view.frame.size.height/6;
+    }
+    else{
+        if (indexPath == selectedIndex){
+            return self.view.frame.size.height*5/12;
+            
+        }
+        else{
+            return self.view.frame.size.height*5/48;
+        }
+    }
+}
+
+-(void)updateColor:(NSInteger)indexRow newColor:(ColorItem*)newColor{
+    currentColors[indexRow] = newColor;
+    ColorCell *preSelectedCell = (ColorCell *)[self.generateColorTableView cellForRowAtIndexPath:selectedIndex];
+    [preSelectedCell collapseCell];
+    selectedIndex = nil;
+    [self.generateColorTableView reloadData];
+}
 
 @end

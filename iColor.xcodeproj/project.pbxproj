@@ -22,6 +22,8 @@
 		C741F4491C0BA1AD00D672A6 /* detailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4461C0BA1AD00D672A6 /* detailView.m */; };
 		C741F4531C0BF4A800D672A6 /* MyImagesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4521C0BF4A800D672A6 /* MyImagesVC.m */; };
 		C741F4561C0BF86900D672A6 /* MyImagesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4551C0BF86900D672A6 /* MyImagesViewCell.m */; };
+		C741F45A1C0CF76A00D672A6 /* ColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4581C0CF76A00D672A6 /* ColorCell.m */; };
+		C741F45B1C0CF76A00D672A6 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C741F4591C0CF76A00D672A6 /* ColorCell.xib */; };
 		C7C854CC1BF6E11D006E910F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854CB1BF6E11D006E910F /* main.m */; };
 		C7C854CF1BF6E11D006E910F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854CE1BF6E11D006E910F /* AppDelegate.m */; };
 		C7C854D71BF6E11D006E910F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C854D61BF6E11D006E910F /* Images.xcassets */; };
@@ -73,6 +75,9 @@
 		C741F4521C0BF4A800D672A6 /* MyImagesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagesVC.m; sourceTree = "<group>"; };
 		C741F4541C0BF86900D672A6 /* MyImagesViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImagesViewCell.h; sourceTree = "<group>"; };
 		C741F4551C0BF86900D672A6 /* MyImagesViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagesViewCell.m; sourceTree = "<group>"; };
+		C741F4571C0CF76A00D672A6 /* ColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCell.h; sourceTree = "<group>"; };
+		C741F4581C0CF76A00D672A6 /* ColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCell.m; sourceTree = "<group>"; };
+		C741F4591C0CF76A00D672A6 /* ColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		C7C854C61BF6E11D006E910F /* iColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C854CA1BF6E11D006E910F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C854CB1BF6E11D006E910F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -156,6 +161,9 @@
 				C7143C601BF7CC570004B223 /* ColorItem.m */,
 				C741F4451C0BA1AC00D672A6 /* detailView.h */,
 				C741F4461C0BA1AD00D672A6 /* detailView.m */,
+				C741F4571C0CF76A00D672A6 /* ColorCell.h */,
+				C741F4581C0CF76A00D672A6 /* ColorCell.m */,
+				C741F4591C0CF76A00D672A6 /* ColorCell.xib */,
 				C741F4411C0BA1AC00D672A6 /* CollectionViewCell.h */,
 				C741F4421C0BA1AC00D672A6 /* CollectionViewCell.m */,
 				C741F4541C0BF86900D672A6 /* MyImagesViewCell.h */,
@@ -313,6 +321,7 @@
 				C7C854F81BF6E37C006E910F /* GenerateVC.xib in Resources */,
 				C7143C721BF826250004B223 /* SidebarTVC.xib in Resources */,
 				C7C854DA1BF6E11D006E910F /* LaunchScreen.xib in Resources */,
+				C741F45B1C0CF76A00D672A6 /* ColorCell.xib in Resources */,
 				C7C854D71BF6E11D006E910F /* Images.xcassets in Resources */,
 				C7C855021BF6E4CD006E910F /* MixVC.xib in Resources */,
 			);
@@ -335,6 +344,7 @@
 				C7143C731BF826250004B223 /* SWRevealViewController.m in Sources */,
 				C7143C611BF7CC570004B223 /* ColorItem.m in Sources */,
 				C7143C711BF826250004B223 /* SidebarTVC.m in Sources */,
+				C741F45A1C0CF76A00D672A6 /* ColorCell.m in Sources */,
 				C741F4491C0BA1AD00D672A6 /* detailView.m in Sources */,
 				C741F4561C0BF86900D672A6 /* MyImagesViewCell.m in Sources */,
 				C7143C5D1BF7CB390004B223 /* SimpleColors.m in Sources */,
