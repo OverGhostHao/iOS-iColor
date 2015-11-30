@@ -17,6 +17,8 @@
 
 @implementation GenerateVC
 
+@synthesize selectedIndex;
+
 NSMutableArray *currentColors;
 
 - (void)viewDidLoad {
@@ -39,15 +41,19 @@ NSMutableArray *currentColors;
     CGFloat y = self.view.frame.origin.y + self.navigationController.navigationBar.layer.frame.size.height;
     CGFloat width = self.view.frame.size.width;
     CGFloat height = self.view.frame.size.height/6 * 5;
+    
+    //create table view
     self.generateColorTableView = [[UITableView alloc]initWithFrame:CGRectMake(x,y,width,height) style:UITableViewStyleGrouped];
     [self.generateColorTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.generateColorTableView.dataSource = self;
     self.generateColorTableView.delegate = self;
     [self.generateColorTableView setScrollEnabled:false];
+    
     //hack way to delete the white space under the navigation bar.
     self.generateColorTableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0);
     [self.view addSubview: self.generateColorTableView];
 
+    //magic button
     CGFloat buttonY = self.generateColorTableView.frame.origin.y + height;
     CGFloat buttonHeight = self.view.frame.size.height - buttonY;
     self.magicButton = [[UIButton alloc]initWithFrame:CGRectMake(x, buttonY, width, buttonHeight)];
@@ -63,12 +69,8 @@ NSMutableArray *currentColors;
         newC = [self generateRandomColor];
         [currentColors addObject:newC];
     }
-
     //NSLog(@"%@", currentColors);
-    
-
 }
-
 
 - (void)magicButtonTapped:(id)sender {
     for (int i = 0; i < 5; i++) {
@@ -76,10 +78,13 @@ NSMutableArray *currentColors;
         newC = [self generateRandomColor];
         currentColors[i] = newC;
     }
+    //endable selected cell
+    ColorCell *preSelectedCell = [self.generateColorTableView cellForRowAtIndexPath:selectedIndex];
+    [preSelectedCell collapseCell];
+    //preSelectedCell.userInteractionEnabled = YES;
+    selectedIndex = nil;
     [self.generateColorTableView reloadData];
-    
 }
-
 
 -(ColorItem *) generateRandomColor {
     NSInteger red = arc4random_uniform(256);
@@ -88,13 +93,11 @@ NSMutableArray *currentColors;
     ColorItem *newColor = [[ColorItem alloc]init];
     [newColor setRGB:red gValue:green bValue:blue];
     return newColor;
-    
 }
 
-//hi
-
-/*
-#pragma mark - Navigation
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
 
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -102,16 +105,77 @@ NSMutableArray *currentColors;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc]init];
-    ColorItem *color = [self generateRandomColor];
+    //UITableViewCell *cell = [[UITableViewCell alloc]init];
+    
+    //customized cell
+    static NSString *cellID = @"cellID";
+    ColorCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil){
+        cell = [[ColorCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    ColorItem *color = currentColors[indexPath.row];
+    
+    cell.rValue = color.rValue;
+    cell.gValue = color.gValue;
+    cell.bValue = color.bValue;
+    
     cell.backgroundColor = color.myUIColor;
     cell.textLabel.text = color.hexString;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSArray *path = [NSArray arrayWithObject:indexPath];
+    if (selectedIndex == nil){
+        selectedIndex = indexPath;
+        //expand cell
+        [tableView reloadRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationNone];
+        ColorCell *curerentSelectedCell = [self.generateColorTableView cellForRowAtIndexPath:indexPath];
+        [curerentSelectedCell expandCell];
+    }
+    else{
+        //select other row
+        if (indexPath.row != selectedIndex.row){
+            NSIndexPath *preSelected = selectedIndex;
+            selectedIndex = indexPath;
+            
+            //collapse current selected cell
+            NSArray *preSelectedPath = [NSArray arrayWithObject:preSelected];
+            [tableView reloadRowsAtIndexPaths:preSelectedPath withRowAnimation:UITableViewRowAnimationNone];
+            ColorCell *preSelectedCell = [self.generateColorTableView cellForRowAtIndexPath:preSelected];
+            [preSelectedCell collapseCell];
+            
+            //expand new selected cell
+            [tableView reloadRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationNone];
+            ColorCell *curerentSelectedCell = [self.generateColorTableView cellForRowAtIndexPath:indexPath];
+            [curerentSelectedCell expandCell];
+        }
+        //deselectd
+        else{
+            //collapse current selected cell
+            selectedIndex = nil;
+            [tableView reloadRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationNone];
+            NSLog(@"deselect");
+            ColorCell *preSelectedCell = [self.generateColorTableView cellForRowAtIndexPath:indexPath];
+            [preSelectedCell collapseCell];
+        }
+    }
+}
+
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return self.view.frame.size.height/6;
+    if (selectedIndex == nil){
+        return self.view.frame.size.height/6;
+    }
+    else{
+        if (indexPath == selectedIndex){
+            return self.view.frame.size.height*5/12;
+            
+        }
+        else{
+            return self.view.frame.size.height*5/48;
+        }
+    }
 }
 
 

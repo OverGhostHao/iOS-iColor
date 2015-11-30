@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ColorItem.h"
+#import "ColorCell.h"
 
 @interface GenerateVC : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -15,5 +16,7 @@
 @property (strong, nonatomic) UIButton *magicButton;
 
 @property (strong, nonatomic) UITableView *generateColorTableView;
+@property (strong, nonatomic) NSIndexPath *selectedIndex;
 
 @end
+
