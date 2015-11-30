@@ -22,5 +22,6 @@
 }
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+-(void)changeColor:(NSString *)s;
 
 @end

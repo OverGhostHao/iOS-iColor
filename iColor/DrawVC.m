@@ -12,7 +12,8 @@
 @interface DrawVC ()
 @property UIImageView *drawImage;
 @property UIImageView *mainImage;
-
+@property UIButton *currentC;
+@property UIImage *savedImage;
 
 @end
 
@@ -52,6 +53,38 @@
     [thick addTarget:self action:@selector(thick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:thick];
     
+    UIButton *eraze = [UIButton buttonWithType:UIButtonTypeCustom];
+    [eraze setTitle:@"erazer" forState:UIControlStateNormal];
+    eraze.frame = CGRectMake(self.view.frame.origin.x + 150, self.view.frame.origin.y + self.view.frame.size.height / 2 + thin.frame.size.height, 0, 0);
+    [eraze sizeToFit];
+    [eraze setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [eraze addTarget:self action:@selector(eraze:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:eraze];
+    
+    UIButton *clear = [UIButton buttonWithType:UIButtonTypeCustom];
+    [clear setTitle:@"clear" forState:UIControlStateNormal];
+    clear.frame = CGRectMake(self.view.frame.origin.x + 150, self.view.frame.origin.y + self.view.frame.size.height / 2 + thin.frame.size.height + normal.frame.size.height, 0, 0);
+    [clear sizeToFit];
+    [clear setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [clear addTarget:self action:@selector(clear:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:clear];
+    
+    UIButton *draw = [UIButton buttonWithType:UIButtonTypeCustom];
+    [draw setTitle:@"draw" forState:UIControlStateNormal];
+    draw.frame = CGRectMake(self.view.frame.origin.x + 150, self.view.frame.origin.y + self.view.frame.size.height / 2, 0, 0);
+    [draw sizeToFit];
+    [draw setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [draw addTarget:self action:@selector(draw:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:draw];
+    
+    UIButton *save = [UIButton buttonWithType:UIButtonTypeCustom];
+    [save setTitle:@"save" forState:UIControlStateNormal];
+    save.frame = CGRectMake(self.view.frame.origin.x + 300, self.view.frame.origin.y + self.view.frame.size.height / 2 + thin.frame.size.height + normal.frame.size.height, 0, 0);
+    [save sizeToFit];
+    [save setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [save addTarget:self action:@selector(save:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:save];
+    
     UIButton *simpleColor = [UIButton buttonWithType:UIButtonTypeCustom];
     [simpleColor setTitle:@"simple colors" forState:UIControlStateNormal];
     simpleColor.frame = CGRectMake(self.view.frame.origin.x + 10, self.view.frame.origin.y + self.view.frame.size.height / 2 + thin.frame.size.height + normal.frame.size.height + 50, 0, 0);
@@ -83,6 +116,8 @@
     UIColor *cc = [[UIColor alloc] initWithRed:red green:green blue:blue alpha:1.0];
     [currentColor setBackgroundColor:cc];
     [self.view addSubview:currentColor];
+    self.currentC = currentColor;
+    
     
     //Set the list page for navigation
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -106,8 +141,20 @@
     
 
 }
+-(void)changeColor:(NSString *)s {
+    unsigned int hexInt = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:s];
+    [scanner setCharactersToBeSkipped:[NSCharacterSet characterSetWithCharactersInString:@"#"]];
+    [scanner scanHexInt:&hexInt];
+    red   = ((hexInt & 0xFF0000) >> 16) / 255.0f;
+    green = ((hexInt & 0x00FF00) >>  8) / 255.0f;
+    blue  =  (hexInt & 0x0000FF) / 255.0f;
+    UIColor *cc = [[UIColor alloc] initWithRed:red green:green blue:blue alpha:1.0];
+    [self.currentC setBackgroundColor:cc];
+}
 - (void)simpleColor:(UIButton *) button {
     SimpleColors *sc = [[SimpleColors alloc] init];
+    sc.draw = self;
     [self.navigationController pushViewController:sc animated:YES];
 }
 - (void)myColor:(UIButton *) button {
@@ -118,7 +165,25 @@
     MyColorsVC *mc = [[MyColorsVC alloc] init];
     [self.navigationController pushViewController:mc animated:YES];
 }
-
+-(void) eraze:(UIButton *) button {
+    red = 1.0;
+    green = 1.0;
+    blue = 1.0;
+}
+-(void) draw:(UIButton *) button {
+    UIColor *c = self.currentC.backgroundColor;
+    [c getRed:&red green:&green blue:&blue alpha:nil];
+}
+-(void) clear:(UIButton *) button {
+    self.mainImage.image = nil;
+}
+-(void) save:(UIButton *) button {
+    UIImage *image = self.mainImage.image;
+    if (image) {
+        self.savedImage = image;
+        NSLog(@"saved");
+    }
+}
 - (void)thin:(UIButton *) button {
     brush = 3.0;
 }

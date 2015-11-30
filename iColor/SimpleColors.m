@@ -54,7 +54,8 @@
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *cellText = cell.textLabel.text;
-    NSLog(@"%@",cellText);
+    DrawVC *dvc = (DrawVC*)self.draw;
+    [dvc changeColor:cellText];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
