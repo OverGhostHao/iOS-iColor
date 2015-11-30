@@ -10,7 +10,7 @@
 #import "GenerateVC.h"
 #import "DrawVC.h"
 #import "MixVC.h"
-#import "MyColorsVC.h"
+#import "CollectionViewController.h"
 #import "MyImagesVC.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

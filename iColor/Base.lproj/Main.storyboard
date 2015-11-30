@@ -95,7 +95,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="8lN-2I-VBu" kind="custom" identifier="showMyImage" customClass="SWRevealViewControllerSeguePushController" id="uhv-Qv-KTS"/>
+                                    <segue destination="8lN-2I-VBu" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="nGd-8O-KF1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -175,7 +175,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="IIE-nk-M7g" kind="relationship" relationship="rootViewController" id="MOq-ng-cnN"/>
+                        <segue destination="wNj-7c-3rG" kind="relationship" relationship="rootViewController" id="qSH-K8-mlI"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzz-6k-eoo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,28 +199,45 @@
             <point key="canvasLocation" x="-697" y="3756"/>
         </scene>
         <!--My ImagesVC-->
-        <scene sceneID="IPC-2c-2eP">
+        <scene sceneID="Wmd-V2-OVK">
             <objects>
-                <viewController id="IIE-nk-M7g" customClass="MyImagesVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aza-MQ-C0E"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZkX-Bi-GbG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="KZq-3D-GP0">
+                <collectionViewController id="wNj-7c-3rG" customClass="MyImagesVC" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="PIH-tI-C2B">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="NxP-vK-GsC">
-                        <barButtonItem key="leftBarButtonItem" image="menu" id="Bl4-0d-ooa"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nNA-O6-krs">
+                            <size key="itemSize" width="149" height="117"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="10" maxX="5" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="RAj-mV-Bf9" customClass="MyImagesViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="149" height="117"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="wNj-7c-3rG" id="3yX-oc-sZN"/>
+                            <outlet property="delegate" destination="wNj-7c-3rG" id="vyU-zO-Y78"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="pRq-6O-sUk">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="2sY-jT-YSB"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="sidebarButton" destination="Bl4-0d-ooa" id="icV-m9-143"/>
+                        <outlet property="sidebarButton" destination="2sY-jT-YSB" id="fLa-El-S7g"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0TN-a4-vf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mFK-mA-mmJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="54" y="3053"/>
+            <point key="canvasLocation" x="48" y="3053"/>
         </scene>
         <!--Simple Colors-->
         <scene sceneID="6qI-mm-uyB">
@@ -420,6 +437,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Fgi-7b-QGm"/>
-        <segue reference="wC9-e3-BOP"/>
+        <segue reference="r4M-AB-pOQ"/>
     </inferredMetricsTieBreakers>
 </document>
