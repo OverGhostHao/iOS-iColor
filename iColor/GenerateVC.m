@@ -1,5 +1,4 @@
 
-
 #import "GenerateVC.h"
 #import "SWRevealViewController.h"
 
@@ -53,6 +52,8 @@ NSMutableArray *currentColors;
     self.magicButton = [[UIButton alloc]initWithFrame:CGRectMake(x, buttonY, width, buttonHeight)];
     self.magicButton.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
     [self.magicButton setTitle:@"MAGIC" forState:UIControlStateNormal];
+    self.magicButton.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:20];
+    [self.magicButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
     [self.magicButton addTarget:self action:@selector(magicButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.magicButton];
     
@@ -122,6 +123,8 @@ NSMutableArray *currentColors;
     cell.textLabel.text = color.hexString;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     //NSLog(@"create, %ld, %@", (long)indexPath.row, color.hexString);
+
+    
     return cell;
 }
 
