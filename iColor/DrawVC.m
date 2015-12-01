@@ -159,6 +159,7 @@
 }
 - (void)myColor:(UIButton *) button {
     SimpleSavedColorVC *mc = [[SimpleSavedColorVC alloc] init];
+    mc.draw = self;
     [self.navigationController pushViewController:mc animated:YES];
 }
 //- (void)createColor:(UIButton *) button {

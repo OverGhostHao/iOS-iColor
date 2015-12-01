@@ -10,7 +10,7 @@
 #import "DrawVC.h"
 #import "GlobalVars.h"
 
-@interface SimpleSavedColorVC : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@interface SimpleSavedColorVC : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 

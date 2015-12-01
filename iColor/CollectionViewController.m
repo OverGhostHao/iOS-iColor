@@ -26,13 +26,6 @@ NSMutableArray *myColors;
 
 NSArray *colors;
 
-- (void)loadView {
-    [super loadView];
-    //[self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
-    //[self.collectionView reloadData];
-    //self.view = self.collectionView;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     SWRevealViewController *revealViewController = self.revealViewController;
@@ -91,8 +84,7 @@ NSArray *colors;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CollectionViewCell *cell = [[CollectionViewCell alloc] init];
-    //[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     //UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 
     ColorItem *tempC = myColors[indexPath.row];

@@ -39,7 +39,9 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+    self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0);
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:107/255.0 green:185/255.0 blue:240/255.0 alpha:1]];
+
     [self.view addSubview:self.tableView];
     
     
