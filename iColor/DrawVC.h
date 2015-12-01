@@ -4,7 +4,7 @@
 #import "SimpleColors.h"
 #import "CollectionViewController.h"
 #import "CollectionViewCell.h"
-//#import "SimpleSavedColorVC.h"
+#import "SimpleSavedColorVC.h"
 
 @interface DrawVC : UIViewController {
     CGPoint lastPoint;

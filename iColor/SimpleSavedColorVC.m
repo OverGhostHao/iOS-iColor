@@ -5,13 +5,13 @@
 //  Copyright (c) 2015年 Skejul. All rights reserved.
 //
 
-#import "SimpleColors.h"
+#import "SimpleSavedColorVC.h"
 
-@interface SimpleColors ()
+@interface SimpleSavedColorVC ()
 
 @end
 
-@implementation SimpleColors
+@implementation SimpleSavedColorVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,14 +24,29 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    self.title = @"Simple Colors";
+    self.title = @"My Colors";
     self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
     self.navigationController.navigationBar.tintColor = [UIColor yellowColor];
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0], NSForegroundColorAttributeName, [UIFont fontWithName:@"Arial Rounded MT Bold" size:20], NSFontAttributeName, nil]];
     
-    self.simpleColors = [[NSArray alloc]initWithObjects: [UIColor blackColor], [UIColor darkGrayColor], [UIColor lightGrayColor], [UIColor whiteColor], [UIColor grayColor], [UIColor redColor], [UIColor greenColor], [UIColor blueColor], [UIColor cyanColor], [UIColor yellowColor], [UIColor magentaColor], [UIColor orangeColor], [UIColor purpleColor], [UIColor brownColor], nil];
     
-    self.simpleColorsHex = [[NSArray alloc]initWithObjects:@"#000000", @"#555555", @"#AAAAAA", @"#FFFFFF", @"#808080",@"#FF0000",@"#00FF00",@"#0000FF",@"#00FFFF",@"#FFFF00",@"#FF00FF",@"#FF8000",@"#800080", @"#996633", nil];
+    GlobalVars *globals = [GlobalVars sharedInstance];
+    NSMutableArray *myColors = globals.savedColors;
+    
+    
+    self.simpleColors = [[NSArray alloc]initWithArray:myColors];
+    self.simpleColorsHex = [[NSMutableArray alloc] init];
+    for (ColorItem *c in self.simpleColors) {
+        CGFloat r = c.rValue;
+        CGFloat g = c.gValue;
+        CGFloat b = c.bValue;
+        
+        NSString *s = [NSString stringWithFormat:@"#%02lX%02lX%02lX",
+                lroundf(r),
+                lroundf(g),
+                lroundf(b)];
+        [self.simpleColorsHex addObject:s];
+    }
     
     //ADDING TABLEVIEW
     self.tableView = [[UITableView alloc]initWithFrame:[[UIScreen mainScreen]applicationFrame] style:UITableViewStylePlain];
@@ -39,8 +54,9 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0);
     [self.tableView setBackgroundColor:[UIColor colorWithRed:107/255.0 green:185/255.0 blue:240/255.0 alpha:1]];
+
+    self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0);
 
     [self.view addSubview:self.tableView];
     
@@ -71,7 +87,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc]init];
-    cell.backgroundColor = self.simpleColors[indexPath.row];
+    ColorItem *tempColor = [[ColorItem alloc]init];
+    tempColor = self.simpleColors[indexPath.row];
+    cell.backgroundColor = tempColor.myUIColor;
     cell.textLabel.text = self.simpleColorsHex[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

@@ -25,6 +25,7 @@
 		C741F45A1C0CF76A00D672A6 /* ColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4581C0CF76A00D672A6 /* ColorCell.m */; };
 		C741F45B1C0CF76A00D672A6 /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C741F4591C0CF76A00D672A6 /* ColorCell.xib */; };
 		C741F45E1C0CFEDA00D672A6 /* GlobalVars.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F45D1C0CFEDA00D672A6 /* GlobalVars.m */; };
+		C741F4611C0D467600D672A6 /* SimpleSavedColorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4601C0D467600D672A6 /* SimpleSavedColorVC.m */; };
 		C7C854CC1BF6E11D006E910F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854CB1BF6E11D006E910F /* main.m */; };
 		C7C854CF1BF6E11D006E910F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854CE1BF6E11D006E910F /* AppDelegate.m */; };
 		C7C854D71BF6E11D006E910F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C854D61BF6E11D006E910F /* Images.xcassets */; };
@@ -81,6 +82,8 @@
 		C741F4591C0CF76A00D672A6 /* ColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		C741F45C1C0CFEDA00D672A6 /* GlobalVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVars.h; sourceTree = "<group>"; };
 		C741F45D1C0CFEDA00D672A6 /* GlobalVars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVars.m; sourceTree = "<group>"; };
+		C741F45F1C0D467600D672A6 /* SimpleSavedColorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleSavedColorVC.h; sourceTree = "<group>"; };
+		C741F4601C0D467600D672A6 /* SimpleSavedColorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleSavedColorVC.m; sourceTree = "<group>"; };
 		C7C854C61BF6E11D006E910F /* iColor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iColor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C854CA1BF6E11D006E910F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C854CB1BF6E11D006E910F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 		C7143C681BF7DBEC0004B223 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C741F45F1C0D467600D672A6 /* SimpleSavedColorVC.h */,
+				C741F4601C0D467600D672A6 /* SimpleSavedColorVC.m */,
 				C7143C5F1BF7CC570004B223 /* ColorItem.h */,
 				C7143C601BF7CC570004B223 /* ColorItem.m */,
 				C741F4451C0BA1AC00D672A6 /* detailView.h */,
@@ -358,6 +363,7 @@
 				C741F4481C0BA1AD00D672A6 /* CollectionViewController.m in Sources */,
 				C7C854CC1BF6E11D006E910F /* main.m in Sources */,
 				C7C855011BF6E4CD006E910F /* MixVC.m in Sources */,
+				C741F4611C0D467600D672A6 /* SimpleSavedColorVC.m in Sources */,
 				C7143C581BF7CAC70004B223 /* CustomizedColorVC.m in Sources */,
 				C741F4531C0BF4A800D672A6 /* MyImagesVC.m in Sources */,
 				C7C854FC1BF6E42C006E910F /* DrawVC.m in Sources */,
