@@ -59,31 +59,31 @@
     [self.tableView setScrollEnabled:NO];
     
     UIButton *button1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button1.layer.cornerRadius = 15;
+    button1.layer.cornerRadius = 10;
     button1.clipsToBounds = YES;
     [button1 addTarget:self action:@selector(button1Action:) forControlEvents:UIControlEventTouchUpInside];
     [button1 setTitle:@"COLOR1" forState:UIControlStateNormal];
     [button1 setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    button1.frame = CGRectMake(10, -13, 100, 40);
-    button1.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:18];
+    button1.frame = CGRectMake(5, -7, 70, 30);
+    button1.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:14];
     button1.backgroundColor = [UIColor darkGrayColor];
     [self.tableView addSubview:button1];
     
     UIButton *button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button2.layer.cornerRadius = 15;
+    button2.layer.cornerRadius = 10;
     button2.clipsToBounds = YES;
     [button2 addTarget:self action:@selector(button2Action:) forControlEvents:UIControlEventTouchUpInside];
     [button2 setTitle:@"COLOR2" forState:UIControlStateNormal];
     [button2 setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    button2.frame = CGRectMake(120, -13, 100, 40);
-    button2.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:18];
+    button2.frame = CGRectMake(300, -7, 70, 30);
+    button2.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:14];
     button2.backgroundColor = [UIColor darkGrayColor];
     [self.tableView addSubview:button2];
     
     //Create the slider
-    NSArray *itemArray = [NSArray arrayWithObjects:@"5",@"6",@"7",@"8",@"9",@"10", nil];
+    NSArray *itemArray = [NSArray arrayWithObjects:@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"15",@"20", nil];
     UISegmentedControl *levelSegment = [[UISegmentedControl alloc] initWithItems:itemArray];
-    levelSegment.frame = CGRectMake(230, -13, 180, 40);
+    levelSegment.frame = CGRectMake(77, -5, 220, 25);
     [levelSegment addTarget:self action:@selector(changeLevel:) forControlEvents:UIControlEventValueChanged];
     [levelSegment setTintColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0]];
     levelSegment.selectedSegmentIndex = 0;
@@ -112,6 +112,13 @@
 
 -(void)changeLevel: (UISegmentedControl *)sender{
     numLine = 5+sender.selectedSegmentIndex;
+    if (numLine == 13) {
+        numLine = 15;
+    }
+    if (numLine == 14) {
+        numLine = 20;
+    }
+    
     for (int i=5; i<numLine; i++) {
         ColorItem *newC = [[ColorItem alloc] init];
         newC = [self generateRandomColor];
@@ -161,27 +168,27 @@
     NSInteger rhigh = MAX(firstColor.rValue, lastColor.rValue);
     NSInteger rmix;
     if (firstColor.rValue == rlow) {
-       rmix = rlow + (float)(index-1)/(numLine) * (rhigh-rlow);
+       rmix = rlow + (float)(index)/(numLine - 1) * (rhigh-rlow);
     }else{
-        rmix = rlow - (float)(index-1)/(numLine) * (rhigh-rlow);
+        rmix = rhigh - (float)(index)/(numLine - 1) * (rhigh-rlow);
     }
     
     NSInteger glow = MIN(firstColor.gValue, lastColor.gValue);
     NSInteger ghigh = MAX(firstColor.gValue, lastColor.gValue);
     NSInteger gmix;
     if (firstColor.gValue == glow) {
-        gmix = glow + (float)(index-1)/(numLine) * (ghigh-glow);
+        gmix = glow + (float)(index)/(numLine - 1) * (ghigh-glow);
     }else{
-        gmix = glow - (float)(index-1)/(numLine) * (ghigh-glow);
+        gmix = ghigh - (float)(index)/(numLine - 1) * (ghigh-glow);
     }
     
     NSInteger blow = MIN(firstColor.bValue, lastColor.bValue);
     NSInteger bhigh = MAX(firstColor.bValue, lastColor.bValue);
     NSInteger bmix;
     if (firstColor.bValue == blow) {
-        bmix = blow + (float)(index-1)/(numLine) * (bhigh-blow);
+        bmix = blow + (float)(index)/(numLine - 1) * (bhigh-blow);
     }else{
-        bmix = blow - (float)(index-1)/(numLine) * (bhigh-blow);
+        bmix = bhigh - (float)(index)/(numLine - 1) * (bhigh-blow);
     }
     
     
@@ -211,7 +218,7 @@
     cell.textLabel.text = thisColor.hexString;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+//    NSLog(@"color: idx: %li, r: %li, g: %li, b: %li ", indexPath.row, thisColor.rValue, thisColor.gValue, thisColor.bValue);
     return cell;
 }
 

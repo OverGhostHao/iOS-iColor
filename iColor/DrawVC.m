@@ -1,4 +1,3 @@
-//
 //  DrawVC.m
 //  iColor
 //
@@ -98,7 +97,7 @@
     myColor.frame = CGRectMake(self.view.frame.origin.x + 10, self.view.frame.origin.y + self.view.frame.size.height / 2 + thin.frame.size.height + normal.frame.size.height + 100, 0, 0);
     [myColor sizeToFit];
     [myColor setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    //[myColor addTarget:self action:@selector(myColor:) forControlEvents:UIControlEventTouchUpInside];
+    [myColor addTarget:self action:@selector(myColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:myColor];
     
     UIButton *createColor = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -158,7 +157,7 @@
     [self.navigationController pushViewController:sc animated:YES];
 }
 //- (void)myColor:(UIButton *) button {
-//    MyColorsVC *mc = [[MyColorsVC alloc] init];
+//    SimpleSavedColorVC *mc = [[SimpleSavedColorVC alloc] init];
 //    [self.navigationController pushViewController:mc animated:YES];
 //}
 //- (void)createColor:(UIButton *) button {
@@ -180,8 +179,11 @@
 -(void) save:(UIButton *) button {
     UIImage *image = self.mainImage.image;
     if (image) {
-        self.savedImage = image;
-        NSLog(@"saved");
+        GlobalVars *globals = [GlobalVars sharedInstance];
+        if (![globals.savedImages containsObject:image]) {
+            [globals.savedImages addObject:image];
+        }
+        
     }
 }
 - (void)thin:(UIButton *) button {

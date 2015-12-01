@@ -12,13 +12,24 @@
 
 - (void)awakeFromNib {
     
+    UIView *bgView = [[UIView alloc]initWithFrame:self.bounds];
+    self.backgroundView = bgView;
+    ColorItem *c = [[ColorItem alloc]init];
+    [c setRGB:255 gValue:100 bValue:20];
+    self.backgroundView.backgroundColor = c.myUIColor;
+    
     
     //UIView *bgView = [[UIView alloc]initWithFrame:self.bounds];
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.bounds];
-    [imageView setBackgroundColor:[UIColor darkGrayColor]];
-    self.backgroundView = imageView;
+    
+    self.backgroundView = bgView;
     
     
 }
+
+-(void) setCellImage: (UIImage*)cellImage {
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:cellImage];
+    self.backgroundView = imageView;
+}
+
 
 @end

@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GlobalVars.h"
+#import "ColorItem.h" 
+
 
 @interface MyImagesViewCell : UICollectionViewCell
+
+-(void) setCellImage: (UIImage*)cellImage;
+
+
+
 
 @end

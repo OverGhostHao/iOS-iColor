@@ -64,6 +64,7 @@
     saveButton.backgroundColor = [UIColor whiteColor];
     [saveButton setTitle:@"Save" forState:UIControlStateNormal];
     [saveButton addTarget:self action:@selector(clickSaveButton) forControlEvents:UIControlEventTouchUpInside];
+    saveButton.showsTouchWhenHighlighted = YES;
     [self addSubview:saveButton];
     
     //ok button
@@ -72,6 +73,7 @@
     okButton.backgroundColor = [UIColor whiteColor];
     [okButton setTitle:@"OK" forState:UIControlStateNormal];
     [okButton addTarget:self action:@selector(clickOkButton) forControlEvents:UIControlEventTouchUpInside];
+    okButton.showsTouchWhenHighlighted = YES;
     [self addSubview:okButton];
     
     

@@ -14,6 +14,10 @@
 
 @implementation MyImagesVC
 
+NSMutableArray *myImages;
+
+
+
 static NSString * const reuseIdentifier = @"imageCell";
 
 - (void)viewDidLoad {
@@ -40,6 +44,8 @@ static NSString * const reuseIdentifier = @"imageCell";
     
     self.view.backgroundColor = [UIColor colorWithRed:107/255.0 green:185/255.0 blue:240/255.0 alpha:1];
     
+    GlobalVars *globals = [GlobalVars sharedInstance];
+    myImages = globals.savedImages;
     
 
 }
@@ -67,14 +73,16 @@ static NSString * const reuseIdentifier = @"imageCell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
+    return myImages.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MyImagesViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
-    cell.backgroundColor = [UIColor greenColor];
+    [cell setCellImage:myImages[indexPath.row]];
+    
+    
     
     return cell;
 }

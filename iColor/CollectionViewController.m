@@ -26,8 +26,21 @@ NSMutableArray *myColors;
 
 NSArray *colors;
 
+- (instancetype)init {
+    self = [super init];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    
+//    self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    
+//    UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
+//    _collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+
+    
+    
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController) {
         [self.sidebarButton setTarget:self.revealViewController];
