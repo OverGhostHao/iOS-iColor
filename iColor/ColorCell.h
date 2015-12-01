@@ -41,6 +41,8 @@
 @property UILabel *gIndicator;
 @property UILabel *bIndicator;
 
+@property UIFont *myFont;
+
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier color:(ColorItem*)color;
 

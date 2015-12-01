@@ -23,8 +23,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.drawImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height / 2)];
-    self.mainImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height / 2)];
+    self.drawImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, (NSInteger)self.view.frame.size.height / 2)];
+    self.mainImage = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, (NSInteger)self.view.frame.size.height / 2)];
     
     [self.view addSubview:self.mainImage];
     [self.view addSubview:self.drawImage];

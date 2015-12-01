@@ -32,6 +32,9 @@
 
 @synthesize delegate;
 
+@synthesize myFont;
+
+
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier color:(ColorItem *)color{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
@@ -52,6 +55,8 @@
 
 -(void) createButtonSlider{
     
+    myFont = [UIFont fontWithName:@"Arial Rounded MT Bold" size:20];
+    
     CGRect cellFrame = self.frame;
     CGFloat width = CGRectGetWidth(cellFrame);
     CGFloat height = CGRectGetHeight(cellFrame);
@@ -60,17 +65,28 @@
     self.contentView.frame = cellFrame;
     //save button
     saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    saveButton.frame = CGRectMake(width*0.15, height*4.8, 40, 40);
-    saveButton.backgroundColor = [UIColor whiteColor];
+    saveButton.layer.cornerRadius = 10;
+    saveButton.clipsToBounds = YES;
+    [saveButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
+    saveButton.titleLabel.font = myFont;
+    saveButton.backgroundColor = [UIColor darkGrayColor];
+
+    saveButton.frame = CGRectMake(width*0.15, height*4.8, 70, 50);
     [saveButton setTitle:@"Save" forState:UIControlStateNormal];
     [saveButton addTarget:self action:@selector(clickSaveButton) forControlEvents:UIControlEventTouchUpInside];
     saveButton.showsTouchWhenHighlighted = YES;
     [self addSubview:saveButton];
     
+    
     //ok button
     okButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    okButton.frame = CGRectMake(width*0.95, height*4.8, 40, 40);
-    okButton.backgroundColor = [UIColor whiteColor];
+    okButton.layer.cornerRadius = 10;
+    okButton.clipsToBounds = YES;
+    [okButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
+    okButton.titleLabel.font = myFont;
+    okButton.backgroundColor = [UIColor darkGrayColor];
+
+    okButton.frame = CGRectMake(width*0.85, height*4.8, 70, 50);
     [okButton setTitle:@"OK" forState:UIControlStateNormal];
     [okButton addTarget:self action:@selector(clickOkButton) forControlEvents:UIControlEventTouchUpInside];
     okButton.showsTouchWhenHighlighted = YES;
@@ -78,63 +94,73 @@
     
     
     //red slider
-    redSlider = [[UISlider alloc]initWithFrame:CGRectMake(width*0.15, height*1.3, width*0.8, 5)];
+    redSlider = [[UISlider alloc]initWithFrame:CGRectMake(width*0.25, height*1.3, width*0.75, 10)];
     redSlider.minimumValue = 0;
     redSlider.maximumValue = 255;
     redSlider.value = rValue;
+    redSlider.minimumTrackTintColor = [UIColor colorWithRed:231/255.0 green:76/255.0 blue:60/255.0 alpha:1];
     [redSlider addTarget:self action:@selector(moveRedSlider:) forControlEvents:UIControlEventValueChanged];
+    
     [self addSubview:redSlider];
     
     //green slider
-    greenSlider = [[UISlider alloc]initWithFrame:CGRectMake(width*0.15, height*2.5, width*0.8, 5)];
+    greenSlider = [[UISlider alloc]initWithFrame:CGRectMake(width*0.25, height*2.5, width*0.75, 10)];
     greenSlider.minimumValue = 0;
     greenSlider.maximumValue = 255;
     greenSlider.value = gValue;
+    greenSlider.minimumTrackTintColor = [UIColor colorWithRed:46/255.0 green:204/255.0 blue:113/255.0 alpha:1];
     [greenSlider addTarget:self action:@selector(moveGreenSlider:) forControlEvents:UIControlEventValueChanged];
     [self addSubview:greenSlider];
     
     //blue slider
-    blueSlider = [[UISlider alloc]initWithFrame:CGRectMake(width*0.15, height*3.7, width*0.8, 5)];
+    blueSlider = [[UISlider alloc]initWithFrame:CGRectMake(width*0.25, height*3.7, width*0.75, 10)];
     blueSlider.minimumValue = 0;
     blueSlider.maximumValue = 255;
     blueSlider.value = bValue;
+    blueSlider.minimumTrackTintColor = [UIColor colorWithRed:52/255.0 green:152/255.0 blue:219/255.0 alpha:1];
     [blueSlider addTarget:self action:@selector(moveBlueSlider:) forControlEvents:UIControlEventValueChanged];
     [self addSubview:blueSlider];
     
     //red left lable
-    rLabel = [[UILabel alloc]initWithFrame:CGRectMake(width*0.05, height*1.1, 20, 20)];
-    rLabel.text = @"R";
-    rLabel.textColor = [UIColor blackColor];
+    rLabel = [[UILabel alloc]initWithFrame:CGRectMake(width*0.05, height*1.1, 60, 30)];
+    rLabel.text = @"Red";
+    rLabel.textColor = [UIColor colorWithRed:231/255.0 green:76/255.0 blue:60/255.0 alpha:1];
+    rLabel.font = myFont;
     [self addSubview:rLabel];
     
     //green left lable
-    gLabel = [[UILabel alloc]initWithFrame:CGRectMake(width*0.05, height*2.3, 20, 20)];
-    gLabel.text = @"G";
-    gLabel.textColor = [UIColor blackColor];
+    gLabel = [[UILabel alloc]initWithFrame:CGRectMake(width*0.05, height*2.3, 60, 30)];
+    gLabel.text = @"Green";
+    gLabel.textColor = [UIColor colorWithRed:46/255.0 green:204/255.0 blue:113/255.0 alpha:1];
+    gLabel.font = myFont;
     [self addSubview:gLabel];
     
     //blue left labl3
-    bLabel = [[UILabel alloc]initWithFrame:CGRectMake(width*0.05, height*3.5, 20, 20)];
-    bLabel.text = @"B";
-    bLabel.textColor = [UIColor blackColor];
+    bLabel = [[UILabel alloc]initWithFrame:CGRectMake(width*0.05, height*3.5, 60, 30)];
+    bLabel.text = @"Blue";
+    bLabel.textColor = [UIColor colorWithRed:52/255.0 green:152/255.0 blue:219/255.0 alpha:1];
+    bLabel.font = myFont;
     [self addSubview:bLabel];
     
     //red value indicator
-    rIndicator = [[UILabel alloc]initWithFrame:CGRectMake(width*1, height*1.1, 30,20)];
+    rIndicator = [[UILabel alloc]initWithFrame:CGRectMake(width*1.03, height*1.1, 60, 30)];
     rIndicator.text = [NSString stringWithFormat:@"%ld",rValue];
-    rIndicator.textColor = [UIColor blackColor];
+    rIndicator.textColor = [UIColor colorWithRed:231/255.0 green:76/255.0 blue:60/255.0 alpha:1];
+    rIndicator.font = myFont;
     [self addSubview:rIndicator];
     
     //green value indicator
-    gIndicator = [[UILabel alloc]initWithFrame:CGRectMake(width*1, height*2.3, 30,20)];
+    gIndicator = [[UILabel alloc]initWithFrame:CGRectMake(width*1.03, height*2.3, 60, 30)];
     gIndicator.text = [NSString stringWithFormat:@"%ld",gValue];
-    gIndicator.textColor = [UIColor blackColor];
+    gIndicator.textColor = [UIColor colorWithRed:46/255.0 green:204/255.0 blue:113/255.0 alpha:1];
+    gIndicator.font = myFont;
     [self addSubview:gIndicator];
     
     //blue value indicator
-    bIndicator = [[UILabel alloc]initWithFrame:CGRectMake(width*1, height*3.5, 30,20)];
+    bIndicator = [[UILabel alloc]initWithFrame:CGRectMake(width*1.03, height*3.5, 60, 30)];
     bIndicator.text = [NSString stringWithFormat:@"%ld",bValue];
-    bIndicator.textColor = [UIColor blackColor];
+    bIndicator.textColor = [UIColor colorWithRed:52/255.0 green:152/255.0 blue:219/255.0 alpha:1];
+    bIndicator.font = myFont;
     [self addSubview:bIndicator];
     
     
