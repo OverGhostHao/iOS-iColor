@@ -18,6 +18,8 @@
     [c setRGB:255 gValue:100 bValue:20];
     self.backgroundView.backgroundColor = c.myUIColor;
     
+    self.layer.cornerRadius = 25;
+    self.clipsToBounds = YES;
     
     //UIView *bgView = [[UIView alloc]initWithFrame:self.bounds];
     
@@ -29,6 +31,8 @@
 -(void) setCellImage: (UIImage*)cellImage {
     UIImageView *imageView = [[UIImageView alloc]initWithImage:cellImage];
     self.backgroundView = imageView;
+    self.backgroundColor = [UIColor whiteColor
+                            ];
 }
 
 

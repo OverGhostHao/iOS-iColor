@@ -19,13 +19,11 @@
     [c setRGB:255 gValue:100 bValue:20];
     self.backgroundView.backgroundColor = c.myUIColor;
     
-//    UIView *selectedView = [[UIView alloc]initWithFrame:self.bounds];
-//    self.selectedBackgroundView = selectedView;
-//    ColorItem *s = [[ColorItem alloc]init];
-//    [s setRGB:255 gValue:255 bValue:255];
-//    self.selectedBackgroundView.backgroundColor = s.myUIColor;
+    self.layer.cornerRadius = 25;
+    self.clipsToBounds = YES;
     
     [self.textLabel setFont:[UIFont fontWithName:@"American Typewriter" size:20]];
+    
     
 }
 
