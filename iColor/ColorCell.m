@@ -197,7 +197,6 @@
     
     [mycolor setRGB:rValue gValue:gValue bValue:bValue];
     GlobalVars *globals = [GlobalVars sharedInstance];
-    
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.hexString contains[c] %@", mycolor.hexString];
     NSArray *results = [globals.savedColors filteredArrayUsingPredicate:predicate];
     if (results.count == 0) {

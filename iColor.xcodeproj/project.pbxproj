@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		780F41DF1C0D39BE00281640 /* SimpleSavedColorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 780F41DE1C0D39BE00281640 /* SimpleSavedColorVC.m */; };
 		C7143C541BF72B470004B223 /* GuideLine in Resources */ = {isa = PBXBuildFile; fileRef = C7143C531BF72B470004B223 /* GuideLine */; };
 		C7143C581BF7CAC70004B223 /* CustomizedColorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7143C561BF7CAC70004B223 /* CustomizedColorVC.m */; };
 		C7143C591BF7CAC70004B223 /* CustomizedColorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7143C571BF7CAC70004B223 /* CustomizedColorVC.xib */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		780F41DD1C0D39BE00281640 /* SimpleSavedColorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleSavedColorVC.h; sourceTree = "<group>"; };
+		780F41DE1C0D39BE00281640 /* SimpleSavedColorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleSavedColorVC.m; sourceTree = "<group>"; };
 		C7143C531BF72B470004B223 /* GuideLine */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GuideLine; sourceTree = "<group>"; };
 		C7143C551BF7CAC70004B223 /* CustomizedColorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizedColorVC.h; sourceTree = "<group>"; };
 		C7143C561BF7CAC70004B223 /* CustomizedColorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizedColorVC.m; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				C7143C6E1BF826250004B223 /* SidebarTVC.xib */,
 				C7143C6F1BF826250004B223 /* SWRevealViewController.h */,
 				C7143C701BF826250004B223 /* SWRevealViewController.m */,
+				780F41DD1C0D39BE00281640 /* SimpleSavedColorVC.h */,
+				780F41DE1C0D39BE00281640 /* SimpleSavedColorVC.m */,
 				C7143C5A1BF7CB390004B223 /* SimpleColors.h */,
 				C7143C5B1BF7CB390004B223 /* SimpleColors.m */,
 				C7143C5C1BF7CB390004B223 /* SimpleColors.xib */,
@@ -358,6 +363,7 @@
 				C741F4481C0BA1AD00D672A6 /* CollectionViewController.m in Sources */,
 				C7C854CC1BF6E11D006E910F /* main.m in Sources */,
 				C7C855011BF6E4CD006E910F /* MixVC.m in Sources */,
+				780F41DF1C0D39BE00281640 /* SimpleSavedColorVC.m in Sources */,
 				C7143C581BF7CAC70004B223 /* CustomizedColorVC.m in Sources */,
 				C741F4531C0BF4A800D672A6 /* MyImagesVC.m in Sources */,
 				C7C854FC1BF6E42C006E910F /* DrawVC.m in Sources */,

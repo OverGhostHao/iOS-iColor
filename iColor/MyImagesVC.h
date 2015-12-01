@@ -10,6 +10,7 @@
 
 #import "SWRevealViewController.h"
 #import "MyImagesViewCell.h"
+#import "GlobalVars.h"
 
 
 @interface MyImagesVC : UICollectionViewController
