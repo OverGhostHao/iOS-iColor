@@ -82,6 +82,7 @@
     UIButton *currentColor = [UIButton buttonWithType:UIButtonTypeCustom];
     [currentColor setTitle:@"current" forState:UIControlStateNormal];
     currentColor.frame = CGRectMake(currentColorX, currentColorY, currentColorWidth, palateHeight);
+    
     [currentColor setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
     currentColor.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
     currentColor.backgroundColor = [UIColor darkGrayColor];
@@ -96,9 +97,8 @@
     CGFloat simpleButtonX = viewX + 1.0 * simpleButtonWidth;
     CGFloat simpleButtonY = viewHeight - simpleButtonHeight;
     simpleColor.frame = CGRectMake(simpleButtonX, simpleButtonY, simpleButtonWidth, simpleButtonHeight);
-    [simpleColor setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    simpleColor.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
-    simpleColor.backgroundColor = [UIColor darkGrayColor];
+    UIImage *simpleColorImage = [UIImage imageNamed:@"rainbow"];
+    [simpleColor setImage:simpleColorImage forState:UIControlStateNormal];
     [simpleColor addTarget:self action:@selector(simpleColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:simpleColor];
     
@@ -110,9 +110,8 @@
     CGFloat myColorButtonX = viewX + 2.0 * myColorButtonWidth;
     CGFloat myColorButtonY = viewHeight - myColorButtonHeight;
     myColor.frame = CGRectMake(myColorButtonX, myColorButtonY, myColorButtonWidth, myColorButtonHeight);
-    [myColor setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    myColor.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
-    myColor.backgroundColor = [UIColor darkGrayColor];
+    UIImage *myColorImage = [UIImage imageNamed:@"loveheart"];
+    [myColor setImage:myColorImage forState:UIControlStateNormal];
     [myColor addTarget:self action:@selector(myColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:myColor];
     
@@ -124,9 +123,8 @@
     CGFloat createButtonX = viewX + 3.0 * createButtonWidth;
     CGFloat createButtonY = viewHeight - createButtonHeight;
     createColor.frame = CGRectMake(createButtonX, createButtonY, createButtonWidth, createButtonHeight);
-    [createColor setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    createColor.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
-    createColor.backgroundColor = [UIColor darkGrayColor];
+    UIImage *createColorImage = [UIImage imageNamed:@"rgb"];
+    [createColor setImage:createColorImage forState:UIControlStateNormal];
     //[createColor addTarget:self action:@selector(createColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:createColor];
     
@@ -136,41 +134,38 @@
     UIButton *draw = [UIButton buttonWithType:UIButtonTypeCustom];
     [draw setTitle:@"draw" forState:UIControlStateNormal];
     CGFloat drawButtonWidth = viewWidth / 6.0;
-    CGFloat functionBoardHeight = drawButtonWidth / 1.5;
+    CGFloat functionBoardHeight = drawButtonWidth;
     CGFloat drawButtonX = 0;
     CGFloat drawButtonY = viewHeight - palateHeight - functionBoardHeight;
     draw.frame = CGRectMake(drawButtonX, drawButtonY, drawButtonWidth, functionBoardHeight);
-    [draw setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    draw.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
-    draw.backgroundColor = [UIColor darkGrayColor];
+    UIImage *drawImage = [UIImage imageNamed:@"pencil1"];
+    [draw setImage:drawImage forState:UIControlStateNormal];
     [draw addTarget:self action:@selector(draw:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:draw];
     
     // Erase
-    UIButton *eraze = [UIButton buttonWithType:UIButtonTypeCustom];
-    [eraze setTitle:@"eraser" forState:UIControlStateNormal];
-    CGFloat erazeButtonWidth = drawButtonWidth;
-    CGFloat erazeButtonHeight = functionBoardHeight;
-    CGFloat erazeButtonX = viewX + drawButtonWidth;
-    CGFloat erazeButtonY = drawButtonY;
-    eraze.frame = CGRectMake(erazeButtonX, erazeButtonY, erazeButtonWidth, erazeButtonHeight);
-    [eraze setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    eraze.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
-    eraze.backgroundColor = [UIColor darkGrayColor];
-    [eraze addTarget:self action:@selector(eraze:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:eraze];
+    UIButton *erase = [UIButton buttonWithType:UIButtonTypeCustom];
+    [erase setTitle:@"eraser" forState:UIControlStateNormal];
+    CGFloat eraseButtonWidth = drawButtonWidth;
+    CGFloat eraseButtonHeight = functionBoardHeight;
+    CGFloat eraseButtonX = viewX + drawButtonWidth;
+    CGFloat eraseButtonY = drawButtonY;
+    erase.frame = CGRectMake(eraseButtonX, eraseButtonY, eraseButtonWidth, eraseButtonHeight);
+    UIImage *eraseImage = [UIImage imageNamed:@"Eraser1"];
+    [erase setImage:eraseImage forState:UIControlStateNormal];
+    [erase addTarget:self action:@selector(erase:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:erase];
     
     // Clear
     UIButton *clear = [UIButton buttonWithType:UIButtonTypeCustom];
     [clear setTitle:@"clear" forState:UIControlStateNormal];
     CGFloat clearButtonWidth = drawButtonWidth;
     CGFloat clearButtonHeight = functionBoardHeight;
-    CGFloat clearButtonX = erazeButtonX + erazeButtonWidth;
+    CGFloat clearButtonX = eraseButtonX + eraseButtonWidth;
     CGFloat clearButtonY = drawButtonY;
     clear.frame = CGRectMake(clearButtonX, clearButtonY, clearButtonWidth, clearButtonHeight);
-    [clear setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    clear.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
-    clear.backgroundColor = [UIColor darkGrayColor];
+    UIImage *clearImage = [UIImage imageNamed:@"trashbin1"];
+    [clear setImage:clearImage forState:UIControlStateNormal];
     [clear addTarget:self action:@selector(clear:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:clear];
     
@@ -184,9 +179,8 @@
     CGFloat thinButtonX = clearButtonX + clearButtonWidth;
     CGFloat thinButtonY = drawButtonY;
     thin.frame = CGRectMake(thinButtonX, thinButtonY, thinButtonWidth, thinButtonHeight);
-    [thin setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    thin.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
-    thin.backgroundColor = [UIColor darkGrayColor];
+    UIImage *thinImage = [UIImage imageNamed:@"dot1"];
+    [thin setImage:thinImage forState:UIControlStateNormal];
     [thin addTarget:self action:@selector(thin:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:thin];
     
@@ -198,9 +192,9 @@
     CGFloat normalButtonX = thinButtonX + thinButtonWidth;
     CGFloat normalButtonY = drawButtonY;
     normal.frame = CGRectMake(normalButtonX, normalButtonY, normalButtonWidth, normalButtonHeight);
-    [normal setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    normal.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
-    normal.backgroundColor = [UIColor darkGrayColor];
+    thin.frame = CGRectMake(thinButtonX, thinButtonY, thinButtonWidth, thinButtonHeight);
+    UIImage *normalImage = [UIImage imageNamed:@"dot2"];
+    [normal setImage:normalImage forState:UIControlStateNormal];
     [normal addTarget:self action:@selector(normal:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:normal];
     
@@ -212,9 +206,8 @@
     CGFloat thickButtonX = normalButtonX + normalButtonWidth;
     CGFloat thickButtonY = drawButtonY;
     thick.frame = CGRectMake(thickButtonX, thickButtonY, thickButtonWidth, thickButtonHeight);
-    [thick setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    thick.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
-    thick.backgroundColor = [UIColor darkGrayColor];
+    UIImage *thickImage = [UIImage imageNamed:@"dot3"];
+    [thick setImage:thickImage forState:UIControlStateNormal];
     [thick addTarget:self action:@selector(thick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:thick];
     
@@ -254,7 +247,7 @@
 //    MyColorsVC *mc = [[MyColorsVC alloc] init];
 //    [self.navigationController pushViewController:mc animated:YES];
 //}
--(void) eraze:(UIButton *) button {
+-(void) erase:(UIButton *) button {
     red = 1.0;
     green = 1.0;
     blue = 1.0;
