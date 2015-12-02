@@ -55,6 +55,8 @@ NSMutableArray *currentColors;
     self.magicButton.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:20];
     [self.magicButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
     [self.magicButton addTarget:self action:@selector(magicButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    self.magicButton.showsTouchWhenHighlighted = YES;
+
     [self.view addSubview:self.magicButton];
     
     //init random colors;
@@ -119,6 +121,15 @@ NSMutableArray *currentColors;
     cell.tag = indexPath.row;
     cell.backgroundColor = color.myUIColor;
     cell.textLabel.text = color.hexString;
+    ColorItem *textColor = [[ColorItem alloc]init];
+    if (color.rValue + color.gValue + color.bValue > 200) {
+        [textColor setRGB:color.rValue/2.0 gValue:color.gValue/2.0 bValue:color.bValue/2.0];
+    }else {
+        [textColor setRGB:255.0-color.rValue gValue:255.0-color.gValue bValue:255.0-color.bValue];
+    }
+    cell.textLabel.textColor = textColor.myUIColor;
+    [cell.textLabel setFont:[UIFont fontWithName:@"American Typewriter" size:20]];
+
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;

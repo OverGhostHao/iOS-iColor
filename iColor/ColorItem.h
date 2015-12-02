@@ -21,4 +21,5 @@
 
 -(void) setRGB: (NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue;
 
+-(void) updateUIColor: (NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue;
 @end

@@ -76,7 +76,7 @@ UIButton *currentColor;
     
     //current color:
     CGFloat currentColorWidth = viewWidth / 4.0;
-    CGFloat palateHeight = currentColorWidth / 1.5;
+    CGFloat palateHeight = currentColorWidth;
     CGFloat currentColorX = viewX;
     CGFloat currentColorY = viewHeight - palateHeight;
     currentColor = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -84,7 +84,7 @@ UIButton *currentColor;
     currentColor.frame = CGRectMake(currentColorX, currentColorY, currentColorWidth, palateHeight);
     
     [currentColor setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
-    currentColor.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:17];
+    currentColor.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:22];
     currentColor.backgroundColor = [UIColor darkGrayColor];
     [self.view addSubview:currentColor];
     self.currentC = currentColor;
@@ -97,8 +97,11 @@ UIButton *currentColor;
     CGFloat simpleButtonX = viewX + 1.0 * simpleButtonWidth;
     CGFloat simpleButtonY = viewHeight - simpleButtonHeight;
     simpleColor.frame = CGRectMake(simpleButtonX, simpleButtonY, simpleButtonWidth, simpleButtonHeight);
-    UIImage *simpleColorImage = [UIImage imageNamed:@"rainbow"];
+    UIImage *simpleColorImage = [UIImage imageNamed:@"simpleColors"];
     [simpleColor setImage:simpleColorImage forState:UIControlStateNormal];
+    simpleColor.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+    simpleColor.backgroundColor = [UIColor darkGrayColor];
+
     [simpleColor addTarget:self action:@selector(simpleColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:simpleColor];
     
@@ -110,8 +113,11 @@ UIButton *currentColor;
     CGFloat myColorButtonX = viewX + 2.0 * myColorButtonWidth;
     CGFloat myColorButtonY = viewHeight - myColorButtonHeight;
     myColor.frame = CGRectMake(myColorButtonX, myColorButtonY, myColorButtonWidth, myColorButtonHeight);
-    UIImage *myColorImage = [UIImage imageNamed:@"loveheart"];
+    UIImage *myColorImage = [UIImage imageNamed:@"favorite"];
     [myColor setImage:myColorImage forState:UIControlStateNormal];
+    myColor.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+    myColor.backgroundColor = [UIColor darkGrayColor];
+
     [myColor addTarget:self action:@selector(myColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:myColor];
     
@@ -123,8 +129,11 @@ UIButton *currentColor;
     CGFloat createButtonX = viewX + 3.0 * createButtonWidth;
     CGFloat createButtonY = viewHeight - createButtonHeight;
     createColor.frame = CGRectMake(createButtonX, createButtonY, createButtonWidth, createButtonHeight);
-    UIImage *createColorImage = [UIImage imageNamed:@"rgb"];
+    UIImage *createColorImage = [UIImage imageNamed:@"palatte"];
     [createColor setImage:createColorImage forState:UIControlStateNormal];
+    createColor.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+    createColor.backgroundColor = [UIColor darkGrayColor];
+
     [createColor addTarget:self action:@selector(createColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:createColor];
     
@@ -258,8 +267,8 @@ UIButton *currentColor;
     
     tView = [[UIView alloc]initWithFrame:CGRectMake(startX, startY, subviewWidth, subviewHeight)];
     [self.view addSubview:tView];
-    tView.backgroundColor = [UIColor grayColor];
-    //customizedColor.myUIColor;
+    //tView.backgroundColor = [UIColor grayColor];
+    tView.backgroundColor = customizedColor.myUIColor;
     tView.layer.cornerRadius = 10;
     tView.layer.masksToBounds = YES;
     
@@ -339,12 +348,17 @@ UIButton *currentColor;
 
 -(void)okSegue{
     [currentColor setBackgroundColor:customizedColor.myUIColor];
+    red = customizedColor.rValue / 255.0;
+    green = customizedColor.gValue / 255.0;
+    blue = customizedColor.bValue / 255.0;
+    
     [tView removeFromSuperview];
 }
 
 -(void)moveRedSlider:(id)sender{
     UISlider *slider = (UISlider*)sender;
     customizedColor.rValue = slider.value;
+    [customizedColor updateUIColor:customizedColor.rValue gValue:customizedColor.gValue bValue:customizedColor.bValue];
     UIColor *background = [UIColor colorWithRed:customizedColor.rValue/255.0 green:customizedColor.gValue/255.0 blue:customizedColor.bValue/255.0 alpha:1];
     tView.backgroundColor = background;
 }
@@ -352,6 +366,8 @@ UIButton *currentColor;
 -(void)moveGreenSlider:(id)sender{
     UISlider *slider = (UISlider*)sender;
     customizedColor.gValue = slider.value;
+    [customizedColor updateUIColor:customizedColor.rValue gValue:customizedColor.gValue bValue:customizedColor.bValue];
+
     UIColor *background = [UIColor colorWithRed:customizedColor.rValue/255.0 green:customizedColor.gValue/255.0 blue:customizedColor.bValue/255.0 alpha:1];
     tView.backgroundColor = background;
 }
@@ -359,6 +375,8 @@ UIButton *currentColor;
 -(void)moveBlueSlider:(id)sender{
     UISlider *slider = (UISlider*)sender;
     customizedColor.bValue = slider.value;
+    [customizedColor updateUIColor:customizedColor.rValue gValue:customizedColor.gValue bValue:customizedColor.bValue];
+
     UIColor *background = [UIColor colorWithRed:customizedColor.rValue/255.0 green:customizedColor.gValue/255.0 blue:customizedColor.bValue/255.0 alpha:1];
     tView.backgroundColor = background;
 }

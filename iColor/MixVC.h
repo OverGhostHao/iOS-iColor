@@ -14,6 +14,7 @@
 @interface MixVC : UIViewController<UITableViewDelegate,UITableViewDataSource>{
     NSUInteger numLine;
     ColorItem *colorTop;
+    ColorItem *colorBot;
     ColorItem *colorChange;
     UIView *tempView;
     UIButton *cancelButton;

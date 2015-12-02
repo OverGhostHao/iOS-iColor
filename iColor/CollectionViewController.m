@@ -71,6 +71,16 @@ NSArray *colors;
     cell.textLabel.text = tempC.hexString;
     [cell setCellColor:tempC];
     
+    ColorItem *textColor = [[ColorItem alloc]init];
+    if (tempC.rValue + tempC.gValue + tempC.bValue > 200) {
+        [textColor setRGB:tempC.rValue/2.0 gValue:tempC.gValue/2.0 bValue:tempC.bValue/2.0];
+    }else {
+        [textColor setRGB:255.0-tempC.rValue gValue:255.0-tempC.gValue bValue:255.0-tempC.bValue];
+    }
+    cell.textLabel.textColor = textColor.myUIColor;
+
+    
+    
     return cell;
 }
 

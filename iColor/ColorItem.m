@@ -62,4 +62,12 @@
     self.hexString = [NSString stringWithFormat:@"#%02X%02X%02X",(unsigned int)newRValue,(unsigned int)newGValue,(unsigned int)newBValue];
 }
 
+-(void) updateUIColor: (NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue {
+    UIColor *newColor = [[UIColor alloc]initWithRed:(CGFloat)newRValue/255 green:(CGFloat)newGValue/255 blue:(CGFloat)newBValue/255 alpha:1.0];
+    self.myUIColor = newColor;
+    self.hexString = [NSString stringWithFormat:@"#%02X%02X%02X",(unsigned int)newRValue,(unsigned int)newGValue,(unsigned int)newBValue];
+
+}
+
+
 @end

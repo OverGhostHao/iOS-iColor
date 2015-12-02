@@ -83,7 +83,17 @@
     ColorItem *tempColor = [[ColorItem alloc]init];
     tempColor = self.simpleColors[indexPath.row];
     cell.backgroundColor = tempColor.myUIColor;
+    ColorItem *textColor = [[ColorItem alloc]init];
+    if (tempColor.rValue + tempColor.gValue + tempColor.bValue > 200) {
+        [textColor setRGB:tempColor.rValue/2.0 gValue:tempColor.gValue/2.0 bValue:tempColor.bValue/2.0];
+    }else {
+        [textColor setRGB:255.0-tempColor.rValue gValue:255.0-tempColor.gValue bValue:255.0-tempColor.bValue];
+    }
+    cell.textLabel.textColor = textColor.myUIColor;
+
     cell.textLabel.text = self.simpleColorsHex[indexPath.row];
+    [cell.textLabel setFont:[UIFont fontWithName:@"American Typewriter" size:20]];
+
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;

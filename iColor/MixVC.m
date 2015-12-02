@@ -11,7 +11,6 @@
 #import "ColorItem.h"
 #import <QuartzCore/QuartzCore.h>
 #import "detailView.h"
-//#import "pickColorView.h"
 #import "detailMixView.h"
 
 @interface MixVC ()
@@ -114,24 +113,40 @@
         newC = [self generateRandomColor];
         [self.color addObject:newC];
     }
+//    [self.tableView reloadData];
+    for (int i=1; i<=(numLine-1); i++) {
+        ColorItem *colorNow = [[ColorItem alloc] init];
+        colorNow = [self mixColor:i andLastColor:colorBot];
+        [self.color replaceObjectAtIndex:i withObject:colorNow];
+    }
+    
     [self.tableView reloadData];
+
     
 }
 
 -(void)button1Action: (id)sender{
-    [self addView];
+    [self addView:1];
 }
 
--(void)addView{
+-(void)button2Action: (id)sender{
+    [self addView:2];
+}
+
+-(void)addView: (NSInteger) colorIdx{
     CGFloat subviewWidth = self.view.frame.size.width - 100;
     CGFloat subviewHeight = self.view.frame.size.height - 315;
     CGFloat startX = 50;
     CGFloat startY = 120;
     
-    colorTop = [self.color objectAtIndex:0];
+    if (colorIdx == 1) {
+        colorTop = [self.color objectAtIndex:0];
+    }else {
+        colorBot = [self.color objectAtIndex:numLine - 1];
+    }
     
     tempView = [[UIView alloc]initWithFrame:CGRectMake(startX, startY, subviewWidth, subviewHeight)];
-    tempView.backgroundColor = colorTop.myUIColor;
+    tempView.backgroundColor = (colorIdx == 1? colorTop.myUIColor : colorBot.myUIColor);
     tempView.layer.cornerRadius = 10;
     tempView.layer.masksToBounds = YES;
     
@@ -140,28 +155,39 @@
     UISlider *redSlider = [[UISlider alloc]initWithFrame:CGRectMake(20, 10, 220, 30)];
     redSlider.minimumValue = 0;
     redSlider.maximumValue = 255;
-    redSlider.value = colorTop.rValue;
+    redSlider.value = (colorIdx == 1? colorTop.rValue : colorBot.rValue);
     redSlider.minimumTrackTintColor = [UIColor colorWithRed:231/255.0 green:76/255.0 blue:60/255.0 alpha:1];
-    [redSlider addTarget:self action:@selector(moveRedSlider:) forControlEvents:UIControlEventValueChanged];
-    
+    if (colorIdx == 1) {
+        [redSlider addTarget:self action:@selector(moveRedSlider:) forControlEvents:UIControlEventValueChanged];
+    }else {
+        [redSlider addTarget:self action:@selector(moveRedSlider_:) forControlEvents:UIControlEventValueChanged];
+    }
     [tempView addSubview:redSlider];
     
     //green slider
     UISlider *greenSlider = [[UISlider alloc]initWithFrame:CGRectMake(20, 60, 220, 30)];
     greenSlider.minimumValue = 0;
     greenSlider.maximumValue = 255;
-    greenSlider.value = colorTop.gValue;
+    greenSlider.value = colorIdx == 1? colorTop.gValue : colorBot.gValue;
     greenSlider.minimumTrackTintColor = [UIColor colorWithRed:46/255.0 green:204/255.0 blue:113/255.0 alpha:1];
-    [greenSlider addTarget:self action:@selector(moveGreenSlider:) forControlEvents:UIControlEventValueChanged];
+    if (colorIdx == 1) {
+        [greenSlider addTarget:self action:@selector(moveGreenSlider:) forControlEvents:UIControlEventValueChanged];
+    }else {
+        [greenSlider addTarget:self action:@selector(moveGreenSlider_:) forControlEvents:UIControlEventValueChanged];
+    }
     [tempView addSubview:greenSlider];
     
     //blue slider
     UISlider *blueSlider = [[UISlider alloc]initWithFrame:CGRectMake(20, 110, 220, 30)];
     blueSlider.minimumValue = 0;
     blueSlider.maximumValue = 255;
-    blueSlider.value = colorTop.bValue;
+    blueSlider.value = (colorIdx == 1? colorTop.bValue: colorBot.bValue);
     blueSlider.minimumTrackTintColor = [UIColor colorWithRed:52/255.0 green:152/255.0 blue:219/255.0 alpha:1];
-    [blueSlider addTarget:self action:@selector(moveBlueSlider:) forControlEvents:UIControlEventValueChanged];
+    if (colorIdx == 1) {
+        [blueSlider addTarget:self action:@selector(moveBlueSlider:) forControlEvents:UIControlEventValueChanged];
+    }else {
+        [blueSlider addTarget:self action:@selector(moveBlueSlider_:) forControlEvents:UIControlEventValueChanged];
+    }
     [tempView addSubview:blueSlider];
     
     //cancle button
@@ -171,12 +197,16 @@
     CGFloat buttonStartY = tempView.frame.size.height - buttonHeight - 20;
     cancelButton= [[UIButton alloc]initWithFrame:CGRectMake(buttonStartX, buttonStartY, buttonWidth, buttonHeight)];
     [cancelButton addTarget:self action:@selector(cancleSegue) forControlEvents:UIControlEventTouchUpInside];
-    [cancelButton setTitle:@"Cancle" forState:UIControlStateNormal];
+    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
     cancelButton.tintColor = [UIColor whiteColor];
     cancelButton.layer.cornerRadius = 8.0;
     cancelButton.layer.masksToBounds = YES;
     ColorItem *buttonColor = [[ColorItem alloc]init];
-    [buttonColor setRGB:colorTop.rValue/2 gValue:colorTop.gValue/2 bValue:colorTop.bValue/2];
+    if (colorIdx == 1) {
+        [buttonColor setRGB:colorTop.rValue/2 gValue:colorTop.gValue/2 bValue:colorTop.bValue/2];
+    }else {
+        [buttonColor setRGB:colorBot.rValue/2 gValue:colorBot.gValue/2 bValue:colorBot.bValue/2];
+    }
     cancelButton.backgroundColor = buttonColor.myUIColor;
     
     [tempView addSubview:cancelButton];
@@ -184,7 +214,11 @@
     //ok button
     CGFloat buttonStartX1 = tempView.frame.size.width / 3*2 - buttonWidth / 2;
     okButton= [[UIButton alloc]initWithFrame:CGRectMake(buttonStartX1, buttonStartY, buttonWidth, buttonHeight)];
-    [okButton addTarget:self action:@selector(okSegue) forControlEvents:UIControlEventTouchUpInside];
+    if (colorIdx == 1) {
+        [okButton addTarget:self action:@selector(okSegue) forControlEvents:UIControlEventTouchUpInside];
+    }else {
+        [okButton addTarget:self action:@selector(okSegue_) forControlEvents:UIControlEventTouchUpInside];
+    }
     [okButton setTitle:@"OK" forState:UIControlStateNormal];
     okButton.tintColor = [UIColor whiteColor];
     okButton.layer.cornerRadius = 8.0;
@@ -216,55 +250,78 @@
 }
 
 -(void)okSegue{
-
     [self.color replaceObjectAtIndex:0 withObject:colorTop];
-    [self refreshUI];
+    for (int i=1; i<=(numLine-2); i++) {
+        ColorItem *colorNow = [[ColorItem alloc] init];
+        colorNow = [self mixColor:i andLastColor:colorBot];
+        [self.color replaceObjectAtIndex:i withObject:colorNow];
+    }
+
+    [self.tableView reloadData];
     [tempView removeFromSuperview];
 }
 
--(void) refreshUI {
+-(void)okSegue_{
+    //[self.color replaceObjectAtIndex:0 withObject:colorTop];
+    [self.color replaceObjectAtIndex:(numLine-1) withObject:colorBot];
+    for (int i=1; i<=(numLine-2); i++) {
+        ColorItem *colorNow = [[ColorItem alloc] init];
+        colorNow = [self mixColor:i andLastColor:colorBot];
+        [self.color replaceObjectAtIndex:i withObject:colorNow];
+    }
+
     [self.tableView reloadData];
+    [tempView removeFromSuperview];
 }
 
--(void)moveRedSlider:(id)sender{
+
+-(void)moveRedSlider:(id)sender {
     UISlider *slider = (UISlider*)sender;
     colorTop.rValue = slider.value;
+    [colorTop updateUIColor:colorTop.rValue gValue:colorTop.gValue bValue:colorTop.bValue];
     UIColor *background = [UIColor colorWithRed:colorTop.rValue/255.0 green:colorTop.gValue/255.0 blue:colorTop.bValue/255.0 alpha:1];
     tempView.backgroundColor = background;
-    NSLog(@"%li",colorTop.rValue);
     colorChange.rValue = colorTop.rValue;
 }
 
 -(void)moveGreenSlider:(id)sender{
     UISlider *slider = (UISlider*)sender;
     colorTop.gValue = slider.value;
+    [colorTop updateUIColor:colorTop.rValue gValue:colorTop.gValue bValue:colorTop.bValue];
     UIColor *background = [UIColor colorWithRed:colorTop.rValue/255.0 green:colorTop.gValue/255.0 blue:colorTop.bValue/255.0 alpha:1];
     tempView.backgroundColor = background;
-    colorChange.gValue = colorTop.gValue;
 }
 
 -(void)moveBlueSlider:(id)sender{
     UISlider *slider = (UISlider*)sender;
     colorTop.bValue = slider.value;
+    [colorTop updateUIColor:colorTop.rValue gValue:colorTop.gValue bValue:colorTop.bValue];
     UIColor *background = [UIColor colorWithRed:colorTop.rValue/255.0 green:colorTop.gValue/255.0 blue:colorTop.bValue/255.0 alpha:1];
     tempView.backgroundColor = background;
-    colorChange.bValue = colorTop.bValue;
 }
 
+-(void)moveRedSlider_:(id)sender {
+    UISlider *slider = (UISlider*)sender;
+    colorBot.rValue = slider.value;
+    [colorBot updateUIColor:colorBot.rValue gValue:colorBot.gValue bValue:colorBot.bValue];
+    UIColor *background = [UIColor colorWithRed:colorBot.rValue/255.0 green:colorBot.gValue/255.0 blue:colorBot.bValue/255.0 alpha:1];
+    tempView.backgroundColor = background;
+}
 
--(void)button2Action: (id)sender{
-    
-    ColorItem *testColorLast = [[ColorItem alloc]init];
-    testColorLast = [self generateRandomColor];
-    [self.color replaceObjectAtIndex:(numLine-1) withObject:testColorLast];
-    for (int i=1; i<=(numLine-2); i++) {
-        ColorItem *colorNow = [[ColorItem alloc] init];
-        colorNow = [self mixColor:i andLastColor:testColorLast];
-        [self.color replaceObjectAtIndex:i withObject:colorNow];
-    }
-    
-    [self.tableView reloadData];
-    
+-(void)moveGreenSlider_:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+    colorBot.gValue = slider.value;
+    [colorBot updateUIColor:colorBot.rValue gValue:colorBot.gValue bValue:colorBot.bValue];
+    UIColor *background = [UIColor colorWithRed:colorBot.rValue/255.0 green:colorBot.gValue/255.0 blue:colorBot.bValue/255.0 alpha:1];
+    tempView.backgroundColor = background;
+}
+
+-(void)moveBlueSlider_:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+    colorBot.bValue = slider.value;
+    [colorBot updateUIColor:colorBot.rValue gValue:colorBot.gValue bValue:colorBot.bValue];
+    UIColor *background = [UIColor colorWithRed:colorBot.rValue/255.0 green:colorBot.gValue/255.0 blue:colorBot.bValue/255.0 alpha:1];
+    tempView.backgroundColor = background;
 }
 
 
@@ -324,7 +381,15 @@
     thisColor = [self.color objectAtIndex:indexPath.row];
     cell.backgroundColor = thisColor.myUIColor;
     cell.textLabel.text = thisColor.hexString;
-    
+    ColorItem *textColor = [[ColorItem alloc]init];
+    if (thisColor.rValue + thisColor.gValue + thisColor.bValue > 200) {
+        [textColor setRGB:thisColor.rValue/2.0 gValue:thisColor.gValue/2.0 bValue:thisColor.bValue/2.0];
+    }else {
+        [textColor setRGB:255.0-thisColor.rValue gValue:255.0-thisColor.gValue bValue:255.0-thisColor.bValue];
+    }
+    cell.textLabel.textColor = textColor.myUIColor;
+    [cell.textLabel setFont:[UIFont fontWithName:@"American Typewriter" size:20]];
+
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
