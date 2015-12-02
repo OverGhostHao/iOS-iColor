@@ -12,19 +12,14 @@
 
 - (void)awakeFromNib {
     
-    
     UIView *bgView = [[UIView alloc]initWithFrame:self.bounds];
     self.backgroundView = bgView;
     ColorItem *c = [[ColorItem alloc]init];
     [c setRGB:255 gValue:100 bValue:20];
     self.backgroundView.backgroundColor = c.myUIColor;
-    
     self.layer.cornerRadius = 25;
     self.clipsToBounds = YES;
-    
     [self.textLabel setFont:[UIFont fontWithName:@"American Typewriter" size:20]];
-    
-    
 }
 
 -(void) setCellColor: (ColorItem*)color {

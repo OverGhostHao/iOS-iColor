@@ -15,7 +15,4 @@
 
 - (void) setContent:(ColorItem *)thisColor;
 
-
-
-
 @end

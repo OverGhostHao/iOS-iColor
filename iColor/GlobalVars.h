@@ -9,22 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface GlobalVars : NSObject {
-    
     NSMutableArray *savedColors_;
     NSMutableArray *savedImages_;
-    
-    
-    
-    
 }
 
 + (GlobalVars *)sharedInstance;
 
-
 @property(strong, nonatomic, readwrite) NSMutableArray *savedColors;
 @property(strong, nonatomic, readwrite) NSMutableArray *savedImages;
-
-
-
 
 @end

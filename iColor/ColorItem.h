@@ -19,8 +19,6 @@
 @property NSString* hexString;
 @property float brightness;
 
-@property BOOL saved;
-
 -(void) setRGB: (NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue;
 
 @end

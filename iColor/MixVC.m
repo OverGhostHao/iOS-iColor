@@ -10,6 +10,9 @@
 #import "SWRevealViewController.h"
 #import "ColorItem.h"
 #import <QuartzCore/QuartzCore.h>
+#import "detailView.h"
+//#import "pickColorView.h"
+#import "detailMixView.h"
 
 @interface MixVC ()
 
@@ -18,18 +21,12 @@
 @implementation MixVC
 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-//    UILabel *mixLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 200, 100, 200)];
-//    [mixLabel setText:@"Mixing"];
-//    [self.view addSubview:mixLabel];
-    
-    
-    //self.color = [NSMutableArray arrayWithObjects:[UIColor redColor],[UIColor greenColor],[UIColor yellowColor],[UIColor blueColor],[UIColor purpleColor], nil];
-    
-    //Set the list page for navigation
+
+    colorChange = [[ColorItem alloc] init];
+    numLine = 5;
+
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController) {
         [self.sidebarButton setTarget:self.revealViewController];
@@ -41,13 +38,6 @@
     self.navigationController.navigationBar.barTintColor = [UIColor darkGrayColor];
     self.navigationController.navigationBar.tintColor = [UIColor yellowColor];
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0], NSForegroundColorAttributeName, [UIFont fontWithName:@"Arial Rounded MT Bold" size:20], NSFontAttributeName, nil]];
-    
-    numLine = 5;
-    
-//    CGFloat x = self.view.frame.origin.x;
-//    CGFloat y = self.view.frame.origin.y+self.navigationController.navigationBar.layer.frame.size.height+100;
-//    CGFloat width = self.view.frame.size.width;
-//    CGFloat height = (self.view.frame.size.height-100)/5;
     
     self.tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen]applicationFrame] style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
@@ -129,26 +119,144 @@
 }
 
 -(void)button1Action: (id)sender{
-//    ColorItem *testColor = [[ColorItem alloc]init];
-//    [testColor setRGB:102 gValue:0 bValue:204];
-//    
-//    [self.color replaceObjectAtIndex:0 withObject:testColor];
-//    [self.tableView reloadData];
+    [self addView];
+}
+
+-(void)addView{
+    CGFloat subviewWidth = self.view.frame.size.width - 100;
+    CGFloat subviewHeight = self.view.frame.size.height - 315;
+    CGFloat startX = 50;
+    CGFloat startY = 120;
     
-    ColorItem *testColor = [[ColorItem alloc]init];
-    testColor = [self generateRandomColor];
-    [self.color replaceObjectAtIndex:0 withObject:testColor];
+    colorTop = [self.color objectAtIndex:0];
+    
+    tempView = [[UIView alloc]initWithFrame:CGRectMake(startX, startY, subviewWidth, subviewHeight)];
+    tempView.backgroundColor = colorTop.myUIColor;
+    tempView.layer.cornerRadius = 10;
+    tempView.layer.masksToBounds = YES;
+    
+    //set up the sliders
+    //red slider
+    UISlider *redSlider = [[UISlider alloc]initWithFrame:CGRectMake(20, 10, 220, 30)];
+    redSlider.minimumValue = 0;
+    redSlider.maximumValue = 255;
+    redSlider.value = colorTop.rValue;
+    redSlider.minimumTrackTintColor = [UIColor colorWithRed:231/255.0 green:76/255.0 blue:60/255.0 alpha:1];
+    [redSlider addTarget:self action:@selector(moveRedSlider:) forControlEvents:UIControlEventValueChanged];
+    
+    [tempView addSubview:redSlider];
+    
+    //green slider
+    UISlider *greenSlider = [[UISlider alloc]initWithFrame:CGRectMake(20, 60, 220, 30)];
+    greenSlider.minimumValue = 0;
+    greenSlider.maximumValue = 255;
+    greenSlider.value = colorTop.gValue;
+    greenSlider.minimumTrackTintColor = [UIColor colorWithRed:46/255.0 green:204/255.0 blue:113/255.0 alpha:1];
+    [greenSlider addTarget:self action:@selector(moveGreenSlider:) forControlEvents:UIControlEventValueChanged];
+    [tempView addSubview:greenSlider];
+    
+    //blue slider
+    UISlider *blueSlider = [[UISlider alloc]initWithFrame:CGRectMake(20, 110, 220, 30)];
+    blueSlider.minimumValue = 0;
+    blueSlider.maximumValue = 255;
+    blueSlider.value = colorTop.bValue;
+    blueSlider.minimumTrackTintColor = [UIColor colorWithRed:52/255.0 green:152/255.0 blue:219/255.0 alpha:1];
+    [blueSlider addTarget:self action:@selector(moveBlueSlider:) forControlEvents:UIControlEventValueChanged];
+    [tempView addSubview:blueSlider];
+    
+    //cancle button
+    CGFloat buttonWidth = 70.0;
+    CGFloat buttonHeight = 35.0;
+    CGFloat buttonStartX = tempView.frame.size.width / 3 - buttonWidth / 2;
+    CGFloat buttonStartY = tempView.frame.size.height - buttonHeight - 20;
+    cancelButton= [[UIButton alloc]initWithFrame:CGRectMake(buttonStartX, buttonStartY, buttonWidth, buttonHeight)];
+    [cancelButton addTarget:self action:@selector(cancleSegue) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton setTitle:@"Cancle" forState:UIControlStateNormal];
+    cancelButton.tintColor = [UIColor whiteColor];
+    cancelButton.layer.cornerRadius = 8.0;
+    cancelButton.layer.masksToBounds = YES;
+    ColorItem *buttonColor = [[ColorItem alloc]init];
+    [buttonColor setRGB:colorTop.rValue/2 gValue:colorTop.gValue/2 bValue:colorTop.bValue/2];
+    cancelButton.backgroundColor = buttonColor.myUIColor;
+    
+    [tempView addSubview:cancelButton];
+    
+    //ok button
+    CGFloat buttonStartX1 = tempView.frame.size.width / 3*2 - buttonWidth / 2;
+    okButton= [[UIButton alloc]initWithFrame:CGRectMake(buttonStartX1, buttonStartY, buttonWidth, buttonHeight)];
+    [okButton addTarget:self action:@selector(okSegue) forControlEvents:UIControlEventTouchUpInside];
+    [okButton setTitle:@"OK" forState:UIControlStateNormal];
+    okButton.tintColor = [UIColor whiteColor];
+    okButton.layer.cornerRadius = 8.0;
+    okButton.layer.masksToBounds = YES;
+    okButton.backgroundColor = buttonColor.myUIColor;
+    
+    [tempView addSubview:okButton];
+    
+    tempView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    
+    [self.view addSubview:tempView];
+    
+    [UIView animateWithDuration:0.3/1.5 animations:^{
+        tempView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3/2 animations:^{
+            tempView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3/2 animations:^{
+                tempView.transform = CGAffineTransformIdentity;
+            }];
+        }];
+    }];
+
+}
+
+-(void)cancleSegue{
+    [tempView removeFromSuperview];
+}
+
+-(void)okSegue{
+
+    [self.color replaceObjectAtIndex:0 withObject:colorTop];
+    [self refreshUI];
+    [tempView removeFromSuperview];
+}
+
+-(void) refreshUI {
     [self.tableView reloadData];
 }
+
+-(void)moveRedSlider:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+    colorTop.rValue = slider.value;
+    UIColor *background = [UIColor colorWithRed:colorTop.rValue/255.0 green:colorTop.gValue/255.0 blue:colorTop.bValue/255.0 alpha:1];
+    tempView.backgroundColor = background;
+    NSLog(@"%li",colorTop.rValue);
+    colorChange.rValue = colorTop.rValue;
+}
+
+-(void)moveGreenSlider:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+    colorTop.gValue = slider.value;
+    UIColor *background = [UIColor colorWithRed:colorTop.rValue/255.0 green:colorTop.gValue/255.0 blue:colorTop.bValue/255.0 alpha:1];
+    tempView.backgroundColor = background;
+    colorChange.gValue = colorTop.gValue;
+}
+
+-(void)moveBlueSlider:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+    colorTop.bValue = slider.value;
+    UIColor *background = [UIColor colorWithRed:colorTop.rValue/255.0 green:colorTop.gValue/255.0 blue:colorTop.bValue/255.0 alpha:1];
+    tempView.backgroundColor = background;
+    colorChange.bValue = colorTop.bValue;
+}
+
 
 -(void)button2Action: (id)sender{
     
     ColorItem *testColorLast = [[ColorItem alloc]init];
     testColorLast = [self generateRandomColor];
     [self.color replaceObjectAtIndex:(numLine-1) withObject:testColorLast];
-
-    
-    
     for (int i=1; i<=(numLine-2); i++) {
         ColorItem *colorNow = [[ColorItem alloc] init];
         colorNow = [self mixColor:i andLastColor:testColorLast];
@@ -218,15 +326,42 @@
     cell.textLabel.text = thisColor.hexString;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    NSLog(@"color: idx: %li, r: %li, g: %li, b: %li ", indexPath.row, thisColor.rValue, thisColor.gValue, thisColor.bValue);
     return cell;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return self.view.frame.size.height/(numLine+1);
-    return (self.tableView.frame.size.height-98)/numLine;
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    ColorItem *tc = [self.color objectAtIndex:indexPath.row];
+
+    CGFloat subviewWidth = self.view.frame.size.width - 100;
+    CGFloat subviewHeight = self.view.frame.size.height - 315;
+    CGFloat startX = 50;
+    CGFloat startY = 120;
+    
+    detailMixView *tempView1 = [[detailMixView alloc]initWithFrame:CGRectMake(startX, startY, subviewWidth, subviewHeight)];
+    [tempView1 setContent:tc];
+    
+    tempView1.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    
+    [self.view addSubview:tempView1];
+    
+    [UIView animateWithDuration:0.3/1.5 animations:^{
+        tempView1.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3/2 animations:^{
+            tempView1.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3/2 animations:^{
+                tempView1.transform = CGAffineTransformIdentity;
+            }];
+        }];
+    }];
+
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return (self.tableView.frame.size.height-98)/numLine;
+}
 
 
 - (void)didReceiveMemoryWarning {
@@ -234,17 +369,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

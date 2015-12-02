@@ -14,6 +14,11 @@
     CGFloat brush;
     CGFloat opacity;
     BOOL mouseSwiped;
+    
+    UIView *tView;
+    ColorItem *customizedColor;
+    UIButton *cancelbutton;
+    UIButton *okbutton;
 }
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;

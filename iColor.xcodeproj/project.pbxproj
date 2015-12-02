@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C7143C541BF72B470004B223 /* GuideLine in Resources */ = {isa = PBXBuildFile; fileRef = C7143C531BF72B470004B223 /* GuideLine */; };
-		C7143C581BF7CAC70004B223 /* CustomizedColorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7143C561BF7CAC70004B223 /* CustomizedColorVC.m */; };
-		C7143C591BF7CAC70004B223 /* CustomizedColorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7143C571BF7CAC70004B223 /* CustomizedColorVC.xib */; };
 		C7143C5D1BF7CB390004B223 /* SimpleColors.m in Sources */ = {isa = PBXBuildFile; fileRef = C7143C5B1BF7CB390004B223 /* SimpleColors.m */; };
 		C7143C5E1BF7CB390004B223 /* SimpleColors.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7143C5C1BF7CB390004B223 /* SimpleColors.xib */; };
 		C7143C611BF7CC570004B223 /* ColorItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C7143C601BF7CC570004B223 /* ColorItem.m */; };
@@ -17,6 +15,7 @@
 		C7143C711BF826250004B223 /* SidebarTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7143C6D1BF826250004B223 /* SidebarTVC.m */; };
 		C7143C721BF826250004B223 /* SidebarTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7143C6E1BF826250004B223 /* SidebarTVC.xib */; };
 		C7143C731BF826250004B223 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7143C701BF826250004B223 /* SWRevealViewController.m */; };
+		C73E96F21C0E96CF002045C7 /* detailMixView.m in Sources */ = {isa = PBXBuildFile; fileRef = C73E96F11C0E96CF002045C7 /* detailMixView.m */; };
 		C741F4471C0BA1AD00D672A6 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4421C0BA1AC00D672A6 /* CollectionViewCell.m */; };
 		C741F4481C0BA1AD00D672A6 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4441C0BA1AC00D672A6 /* CollectionViewController.m */; };
 		C741F4491C0BA1AD00D672A6 /* detailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C741F4461C0BA1AD00D672A6 /* detailView.m */; };
@@ -31,8 +30,6 @@
 		C7C854D71BF6E11D006E910F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C854D61BF6E11D006E910F /* Images.xcassets */; };
 		C7C854DA1BF6E11D006E910F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C854D81BF6E11D006E910F /* LaunchScreen.xib */; };
 		C7C854E61BF6E11D006E910F /* iColorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854E51BF6E11D006E910F /* iColorTests.m */; };
-		C7C854F21BF6E1C4006E910F /* CoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854F01BF6E1C4006E910F /* CoverVC.m */; };
-		C7C854F31BF6E1C4006E910F /* CoverVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C854F11BF6E1C4006E910F /* CoverVC.xib */; };
 		C7C854F71BF6E37C006E910F /* GenerateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854F51BF6E37C006E910F /* GenerateVC.m */; };
 		C7C854F81BF6E37C006E910F /* GenerateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C854F61BF6E37C006E910F /* GenerateVC.xib */; };
 		C7C854FC1BF6E42C006E910F /* DrawVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854FA1BF6E42C006E910F /* DrawVC.m */; };
@@ -53,9 +50,6 @@
 
 /* Begin PBXFileReference section */
 		C7143C531BF72B470004B223 /* GuideLine */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GuideLine; sourceTree = "<group>"; };
-		C7143C551BF7CAC70004B223 /* CustomizedColorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizedColorVC.h; sourceTree = "<group>"; };
-		C7143C561BF7CAC70004B223 /* CustomizedColorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizedColorVC.m; sourceTree = "<group>"; };
-		C7143C571BF7CAC70004B223 /* CustomizedColorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomizedColorVC.xib; sourceTree = "<group>"; };
 		C7143C5A1BF7CB390004B223 /* SimpleColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleColors.h; sourceTree = "<group>"; };
 		C7143C5B1BF7CB390004B223 /* SimpleColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleColors.m; sourceTree = "<group>"; };
 		C7143C5C1BF7CB390004B223 /* SimpleColors.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleColors.xib; sourceTree = "<group>"; };
@@ -67,6 +61,8 @@
 		C7143C6E1BF826250004B223 /* SidebarTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidebarTVC.xib; sourceTree = "<group>"; };
 		C7143C6F1BF826250004B223 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		C7143C701BF826250004B223 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		C73E96F01C0E96CF002045C7 /* detailMixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailMixView.h; sourceTree = "<group>"; };
+		C73E96F11C0E96CF002045C7 /* detailMixView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailMixView.m; sourceTree = "<group>"; };
 		C741F4411C0BA1AC00D672A6 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		C741F4421C0BA1AC00D672A6 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		C741F4431C0BA1AC00D672A6 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
@@ -94,9 +90,6 @@
 		C7C854DF1BF6E11D006E910F /* iColorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iColorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C854E41BF6E11D006E910F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C854E51BF6E11D006E910F /* iColorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iColorTests.m; sourceTree = "<group>"; };
-		C7C854EF1BF6E1C4006E910F /* CoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverVC.h; sourceTree = "<group>"; };
-		C7C854F01BF6E1C4006E910F /* CoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverVC.m; sourceTree = "<group>"; };
-		C7C854F11BF6E1C4006E910F /* CoverVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverVC.xib; sourceTree = "<group>"; };
 		C7C854F41BF6E37C006E910F /* GenerateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateVC.h; sourceTree = "<group>"; };
 		C7C854F51BF6E37C006E910F /* GenerateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateVC.m; sourceTree = "<group>"; };
 		C7C854F61BF6E37C006E910F /* GenerateVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenerateVC.xib; sourceTree = "<group>"; };
@@ -129,6 +122,8 @@
 		C7143C671BF7DBC40004B223 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				C73E96F01C0E96CF002045C7 /* detailMixView.h */,
+				C73E96F11C0E96CF002045C7 /* detailMixView.m */,
 				C741F4431C0BA1AC00D672A6 /* CollectionViewController.h */,
 				C741F4441C0BA1AC00D672A6 /* CollectionViewController.m */,
 				C741F4511C0BF4A800D672A6 /* MyImagesVC.h */,
@@ -144,18 +139,12 @@
 				C7143C5A1BF7CB390004B223 /* SimpleColors.h */,
 				C7143C5B1BF7CB390004B223 /* SimpleColors.m */,
 				C7143C5C1BF7CB390004B223 /* SimpleColors.xib */,
-				C7C854EF1BF6E1C4006E910F /* CoverVC.h */,
-				C7C854F01BF6E1C4006E910F /* CoverVC.m */,
-				C7C854F11BF6E1C4006E910F /* CoverVC.xib */,
 				C7C854F41BF6E37C006E910F /* GenerateVC.h */,
 				C7C854F51BF6E37C006E910F /* GenerateVC.m */,
 				C7C854F61BF6E37C006E910F /* GenerateVC.xib */,
 				C7C854FE1BF6E4CD006E910F /* MixVC.h */,
 				C7C854FF1BF6E4CD006E910F /* MixVC.m */,
 				C7C855001BF6E4CD006E910F /* MixVC.xib */,
-				C7143C551BF7CAC70004B223 /* CustomizedColorVC.h */,
-				C7143C561BF7CAC70004B223 /* CustomizedColorVC.m */,
-				C7143C571BF7CAC70004B223 /* CustomizedColorVC.xib */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -326,8 +315,6 @@
 				C7C854FD1BF6E42C006E910F /* DrawVC.xib in Resources */,
 				C7143C6B1BF825CF0004B223 /* Main.storyboard in Resources */,
 				C7143C5E1BF7CB390004B223 /* SimpleColors.xib in Resources */,
-				C7C854F31BF6E1C4006E910F /* CoverVC.xib in Resources */,
-				C7143C591BF7CAC70004B223 /* CustomizedColorVC.xib in Resources */,
 				C7C854F81BF6E37C006E910F /* GenerateVC.xib in Resources */,
 				C7143C721BF826250004B223 /* SidebarTVC.xib in Resources */,
 				C7C854DA1BF6E11D006E910F /* LaunchScreen.xib in Resources */,
@@ -358,13 +345,12 @@
 				C741F4491C0BA1AD00D672A6 /* detailView.m in Sources */,
 				C741F4561C0BF86900D672A6 /* MyImagesViewCell.m in Sources */,
 				C7143C5D1BF7CB390004B223 /* SimpleColors.m in Sources */,
-				C7C854F21BF6E1C4006E910F /* CoverVC.m in Sources */,
 				C7C854CF1BF6E11D006E910F /* AppDelegate.m in Sources */,
 				C741F4481C0BA1AD00D672A6 /* CollectionViewController.m in Sources */,
+				C73E96F21C0E96CF002045C7 /* detailMixView.m in Sources */,
 				C7C854CC1BF6E11D006E910F /* main.m in Sources */,
 				C7C855011BF6E4CD006E910F /* MixVC.m in Sources */,
 				C741F4611C0D467600D672A6 /* SimpleSavedColorVC.m in Sources */,
-				C7143C581BF7CAC70004B223 /* CustomizedColorVC.m in Sources */,
 				C741F4531C0BF4A800D672A6 /* MyImagesVC.m in Sources */,
 				C7C854FC1BF6E42C006E910F /* DrawVC.m in Sources */,
 				C741F4471C0BA1AD00D672A6 /* CollectionViewCell.m in Sources */,

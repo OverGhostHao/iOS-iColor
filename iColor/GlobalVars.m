@@ -27,14 +27,8 @@
     if (self) {
         savedColors_ = [NSMutableArray array];
         savedImages_ = [[NSMutableArray alloc] init];
-        // Note these aren't allocated as [[NSString alloc] init] doesn't provide a useful object
-        //savedColors_ = nil;
-        //savedImages_ = nil;
     }
     return self;
 }
-
-
-
 
 @end

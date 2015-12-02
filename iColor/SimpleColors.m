@@ -15,7 +15,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController) {
@@ -43,7 +42,6 @@
     [self.tableView setBackgroundColor:[UIColor colorWithRed:107/255.0 green:185/255.0 blue:240/255.0 alpha:1]];
 
     [self.view addSubview:self.tableView];
-    
     
 }
 

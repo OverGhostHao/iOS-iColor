@@ -15,8 +15,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
+    //Navigatio setting.
     SWRevealViewController *revealViewController = self.revealViewController;
     if (revealViewController) {
         [self.sidebarButton setTarget:self.revealViewController];
@@ -29,11 +29,11 @@
     self.navigationController.navigationBar.tintColor = [UIColor yellowColor];
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0], NSForegroundColorAttributeName, [UIFont fontWithName:@"Arial Rounded MT Bold" size:20], NSFontAttributeName, nil]];
     
-    
+    //Global variable setting.
     GlobalVars *globals = [GlobalVars sharedInstance];
     NSMutableArray *myColors = globals.savedColors;
     
-    
+    //Default colors setting.
     self.simpleColors = [[NSArray alloc]initWithArray:myColors];
     self.simpleColorsHex = [[NSMutableArray alloc] init];
     for (ColorItem *c in self.simpleColors) {
@@ -50,23 +50,17 @@
     
     //ADDING TABLEVIEW
     self.tableView = [[UITableView alloc]initWithFrame:[[UIScreen mainScreen]applicationFrame] style:UITableViewStylePlain];
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setBackgroundColor:[UIColor colorWithRed:107/255.0 green:185/255.0 blue:240/255.0 alpha:1]];
-
+    
+    //to eliminate the space margin under navigaiton bar.
     self.tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0);
-
     [self.view addSubview:self.tableView];
-    
-    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -75,7 +69,6 @@
     [dvc changeColor:cellText];
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.simpleColors.count;

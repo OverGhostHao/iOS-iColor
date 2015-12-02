@@ -1,31 +1,22 @@
 //
-//  detailView.m
-//  CollectionViewTest
+//  detailMixView.m
+//  iColor
 //
-//  Created by YuhanHao on 15/11/28.
-//  Copyright (c) 2015年 YuhanHao. All rights reserved.
+//  Created by Xinyu Yan on 11/30/15.
+//  Copyright © 2015 Skejul. All rights reserved.
 //
 
-#import "detailView.h"
+#import "detailMixView.h"
 
-@implementation detailView
-
-UIButton *backButton;
-UILabel *redLabel;
-UILabel *greenLabel;
-UILabel *blueLabel;
-UILabel *redValue;
-UILabel *greenValue;
-UILabel *blueValue;
-UILabel *alphaLabel;
-UILabel *alphaValue;
+@implementation detailMixView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
+    
     self.layer.cornerRadius = 10;
     self.layer.masksToBounds = YES;
-    
     [self setUpBackButton];
+    [self setUpSaveButton];
     [self setUpLabels];
 
     return self;
@@ -34,18 +25,42 @@ UILabel *alphaValue;
 - (void) setUpBackButton {
     CGFloat buttonWidth = 50.0;
     CGFloat buttonHeight = 35.0;
-    CGFloat buttonStartX = self.frame.size.width / 2 - buttonWidth / 2;
+    CGFloat buttonStartX = self.frame.size.width / 3*2 - buttonWidth / 2;
     CGFloat buttonStartY = self.frame.size.height - buttonHeight - 20;
     backButton = [[UIButton alloc]initWithFrame:CGRectMake(buttonStartX, buttonStartY, buttonWidth, buttonHeight)];
     [backButton addTarget:self action:@selector(backSegue) forControlEvents:UIControlEventTouchUpInside];
-    [backButton setTitle:@"Back" forState:UIControlStateNormal];
+    [backButton setTitle:@"OK" forState:UIControlStateNormal];
     backButton.tintColor = [UIColor whiteColor];
     backButton.layer.cornerRadius = 8.0;
     backButton.layer.masksToBounds = YES;
     [self addSubview:backButton];
 }
 
+-(void) setUpSaveButton{
+    CGFloat buttonWidth = 50.0;
+    CGFloat buttonHeight = 35.0;
+    CGFloat buttonStartX = self.frame.size.width / 3 - buttonWidth / 2;
+    CGFloat buttonStartY = self.frame.size.height - buttonHeight - 20;
+    saveButton = [[UIButton alloc]initWithFrame:CGRectMake(buttonStartX, buttonStartY, buttonWidth, buttonHeight)];
+    [saveButton addTarget:self action:@selector(saveSegue) forControlEvents:UIControlEventTouchUpInside];
+    [saveButton setTitle:@"Save" forState:UIControlStateNormal];
+    saveButton.tintColor = [UIColor whiteColor];
+    saveButton.layer.cornerRadius = 8.0;
+    saveButton.layer.masksToBounds = YES;
+    [self addSubview:saveButton];
+}
+
 - (void) backSegue {
+    [self removeFromSuperview];
+}
+
+- (void) saveSegue {
+    GlobalVars *globals = [GlobalVars sharedInstance];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.hexString contains[c] %@", mycolor.hexString];
+    NSArray *results = [globals.savedColors filteredArrayUsingPredicate:predicate];
+    if (results.count == 0) {
+        [globals.savedColors addObject:mycolor];
+    }
     [self removeFromSuperview];
 }
 
@@ -71,11 +86,17 @@ UILabel *alphaValue;
 
 - (void) setContent:(ColorItem *)thisColor {
     self.backgroundColor = thisColor.myUIColor;
-
+    mycolor = thisColor;
+    
     //back button setting.
     ColorItem *buttonColor = [[ColorItem alloc]init];
     [buttonColor setRGB:thisColor.rValue/2 gValue:thisColor.gValue/2 bValue:thisColor.bValue/2];
     backButton.backgroundColor = buttonColor.myUIColor;
+    
+    //save button setting.
+    ColorItem *buttonColor1 = [[ColorItem alloc]init];
+    [buttonColor1 setRGB:thisColor.rValue/2 gValue:thisColor.gValue/2 bValue:thisColor.bValue/2];
+    saveButton.backgroundColor = buttonColor.myUIColor;
     
     //labels setting.
     [redLabel setText:[NSString stringWithFormat:  @"     Red:              %li", thisColor.rValue]];
@@ -86,6 +107,10 @@ UILabel *alphaValue;
     [blueLabel setBackgroundColor:[UIColor colorWithRed:52/255.0 green:152/255.0 blue:219/255.0 alpha:1]];
     [alphaLabel setText:[NSString stringWithFormat:@"     Alpha:          %f", thisColor.brightness]];
     [alphaLabel setBackgroundColor:[UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1]];
+    
 }
+
+
+
 
 @end

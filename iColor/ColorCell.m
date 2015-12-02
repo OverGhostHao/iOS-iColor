@@ -34,7 +34,6 @@
 
 @synthesize myFont;
 
-
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier color:(ColorItem *)color{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
@@ -43,9 +42,6 @@
         rValue = color.rValue;
         gValue = color.gValue;
         bValue = color.bValue;
-        //NSLog(@"init %ld %ld %ld ",(long)rValue,(long)gValue, (long)bValue);
-
-        //self.backgroundColor = mycolor.myUIColor;
         self.textLabel.text = mycolor.hexString;
         [self createButtonSlider];
         [self collapseCell];
@@ -56,13 +52,11 @@
 -(void) createButtonSlider{
     
     myFont = [UIFont fontWithName:@"Arial Rounded MT Bold" size:20];
-    
     CGRect cellFrame = self.frame;
     CGFloat width = CGRectGetWidth(cellFrame);
     CGFloat height = CGRectGetHeight(cellFrame);
-    //NSLog(@"@",cellFrame);
-    
     self.contentView.frame = cellFrame;
+    
     //save button
     saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     saveButton.layer.cornerRadius = 10;
@@ -70,13 +64,11 @@
     [saveButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
     saveButton.titleLabel.font = myFont;
     saveButton.backgroundColor = [UIColor darkGrayColor];
-
     saveButton.frame = CGRectMake(width*0.15, height*4.8, 70, 50);
     [saveButton setTitle:@"Save" forState:UIControlStateNormal];
     [saveButton addTarget:self action:@selector(clickSaveButton) forControlEvents:UIControlEventTouchUpInside];
     saveButton.showsTouchWhenHighlighted = YES;
     [self addSubview:saveButton];
-    
     
     //ok button
     okButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -85,13 +77,11 @@
     [okButton setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
     okButton.titleLabel.font = myFont;
     okButton.backgroundColor = [UIColor darkGrayColor];
-
     okButton.frame = CGRectMake(width*0.85, height*4.8, 70, 50);
     [okButton setTitle:@"OK" forState:UIControlStateNormal];
     [okButton addTarget:self action:@selector(clickOkButton) forControlEvents:UIControlEventTouchUpInside];
     okButton.showsTouchWhenHighlighted = YES;
     [self addSubview:okButton];
-    
     
     //red slider
     redSlider = [[UISlider alloc]initWithFrame:CGRectMake(width*0.25, height*1.3, width*0.75, 10)];
@@ -100,7 +90,6 @@
     redSlider.value = rValue;
     redSlider.minimumTrackTintColor = [UIColor colorWithRed:231/255.0 green:76/255.0 blue:60/255.0 alpha:1];
     [redSlider addTarget:self action:@selector(moveRedSlider:) forControlEvents:UIControlEventValueChanged];
-    
     [self addSubview:redSlider];
     
     //green slider
@@ -163,7 +152,6 @@
     bIndicator.font = myFont;
     [self addSubview:bIndicator];
     
-    
 }
 
 -(void)collapseCell{
@@ -188,10 +176,6 @@
     rIndicator.hidden = YES;
     gIndicator.hidden = YES;
     bIndicator.hidden = YES;
-
-    
-    //NSLog(@"collapse %f %f %f %ld ",redSlider.value,greenSlider.value, blueSlider.value,(long)self.tag);
-    //NSLog(@"collapse %ld %ld %ld %ld ",(long)rValue,(long)gValue, (long)bValue,(long)self.tag);
 }
 
 -(void)expandCell{
@@ -216,13 +200,9 @@
     rIndicator.hidden = NO;
     gIndicator.hidden = NO;
     bIndicator.hidden = NO;
-    //NSLog(@"expand %f %f %f %ld ",redSlider.value,greenSlider.value, blueSlider.value,(long)self.tag);
-    //NSLog(@"expand %ld %ld %ld %ld ",(long)rValue,(long)gValue, (long)bValue,(long)self.tag);
 }
 
-
 -(void) clickSaveButton{
-    
     [mycolor setRGB:rValue gValue:gValue bValue:bValue];
     GlobalVars *globals = [GlobalVars sharedInstance];
     
@@ -231,13 +211,9 @@
     if (results.count == 0) {
         [globals.savedColors addObject:mycolor];
     }
-    
-    
 }
 
 -(void) clickOkButton{
-    //NSLog(@"click ok, %ld", (long)self.tag);
-    
     if ([self.delegate respondsToSelector:@selector(updateColor:newColor:)]){
         [mycolor setRGB:rValue gValue:gValue bValue:bValue];
         [self.delegate updateColor:self.tag newColor:mycolor];
@@ -247,41 +223,30 @@
 -(void)moveRedSlider:(id)sender{
     UISlider *slider = (UISlider*)sender;
     rValue = slider.value;
-    //NSLog(@"%ld %ld %ld",(long)rValue,(long)gValue,(long)bValue);
     UIColor *background = [UIColor colorWithRed:rValue/255.0 green:gValue/255.0 blue:bValue/255.0 alpha:1];
     self.backgroundColor = background;
     rIndicator.text = [NSString stringWithFormat:@"%ld",rValue];
-    //NSInteger index = self.tag;
 }
 
 -(void)moveGreenSlider:(id)sender{
     UISlider *slider = (UISlider*)sender;
     gValue = slider.value;
-    //NSLog(@"%ld %ld %ld",(long)rValue,(long)gValue,(long)bValue);
     UIColor *background = [UIColor colorWithRed:rValue/255.0 green:gValue/255.0 blue:bValue/255.0 alpha:1];
     self.backgroundColor = background;
     gIndicator.text = [NSString stringWithFormat:@"%ld",gValue];
-
 }
 
 -(void)moveBlueSlider:(id)sender{
     UISlider *slider = (UISlider*)sender;
     bValue = slider.value;
-    //NSLog(@"%ld %ld %ld",(long)rValue,(long)gValue,(long)bValue);
     UIColor *background = [UIColor colorWithRed:rValue/255.0 green:gValue/255.0 blue:bValue/255.0 alpha:1];
     self.backgroundColor = background;
     bIndicator.text = [NSString stringWithFormat:@"%ld",bValue];
-
 }
 
-- (void)awakeFromNib {
-    // Initialization code
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 

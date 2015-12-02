@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ColorItem.h"
+#import "ColorCell.h"
+#import "GlobalVars.h"
 
 @interface MixVC : UIViewController<UITableViewDelegate,UITableViewDataSource>{
     NSUInteger numLine;
+    ColorItem *colorTop;
+    ColorItem *colorChange;
+    UIView *tempView;
+    UIButton *cancelButton;
+    UIButton *okButton;
 }
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (nonatomic, strong) NSMutableArray *color;

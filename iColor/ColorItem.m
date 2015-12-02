@@ -10,12 +10,9 @@
 
 @implementation ColorItem
 
-@synthesize saved;
 @synthesize rValue;
 @synthesize gValue;
 @synthesize bValue;
-
-
 
 - (instancetype)init
 {
@@ -27,12 +24,11 @@
         self.myUIColor = [[UIColor alloc]init];
         self.hexString = @" ";
         self.brightness = 1.0;
-        self.saved = false;
-        
     }
     return self;
 }
 
+//implement encode/decode method to use global variable
 - (void)encodeWithCoder:(NSCoder *)encoder {
     //Encode properties, other class variables, etc
     [encoder encodeInteger: self.rValue forKey:@"rValue"];
@@ -41,7 +37,6 @@
     [encoder encodeObject: self.myUIColor forKey:@"myUIColor"];
     [encoder encodeObject: self.hexString forKey:@"hexString"];
     [encoder encodeFloat: self.brightness forKey:@"brightness"];
-    [encoder encodeBool: self.saved forKey:@"saved"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -53,26 +48,18 @@
         self.myUIColor = [decoder decodeObjectForKey:@"myUIColor"];
         self.hexString = [decoder decodeObjectForKey:@"hexString"];
         self.brightness = [decoder decodeFloatForKey:@"brightness"];
-        self.saved = [decoder decodeBoolForKey:@"saved"];
     }
     return self;
 }
 
-
-
-
+//set RGB to init.
 -(void) setRGB:(NSInteger)newRValue gValue:(NSInteger)newGValue bValue:(NSInteger)newBValue{
-
     UIColor *newColor = [[UIColor alloc]initWithRed:(CGFloat)newRValue/255 green:(CGFloat)newGValue/255 blue:(CGFloat)newBValue/255 alpha:1.0];
-    
     self.myUIColor = newColor;
     self.rValue = newRValue;
     self.gValue = newGValue;
     self.bValue = newBValue;
     self.hexString = [NSString stringWithFormat:@"#%02X%02X%02X",(unsigned int)newRValue,(unsigned int)newGValue,(unsigned int)newBValue];
-    //self = newColor;
-    
 }
-
 
 @end

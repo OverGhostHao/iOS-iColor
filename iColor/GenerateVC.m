@@ -64,8 +64,6 @@ NSMutableArray *currentColors;
         newC = [self generateRandomColor];
         [currentColors addObject:newC];
     }
-    //NSLog(@"%@", currentColors);
-    
     
 }
 
@@ -102,15 +100,15 @@ NSMutableArray *currentColors;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //UITableViewCell *cell = [[UITableViewCell alloc]init];
-    
     ColorItem *color = currentColors[indexPath.row];
+    
     //customized cell
     static NSString *cellID = @"cellID";
     ColorCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil){
         cell = [[ColorCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID color:color];
     }
+    
     //ColorItem *color = currentColors[indexPath.row];
     cell.rValue = color.rValue;
     cell.gValue = color.gValue;
@@ -122,8 +120,6 @@ NSMutableArray *currentColors;
     cell.backgroundColor = color.myUIColor;
     cell.textLabel.text = color.hexString;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //NSLog(@"create, %ld, %@", (long)indexPath.row, color.hexString);
-
     
     return cell;
 }
@@ -138,11 +134,10 @@ NSMutableArray *currentColors;
         [curerentSelectedCell expandCell];
     }
     else{
+        
         //select other row
         if (indexPath.row != selectedIndex.row){
             NSIndexPath *preSelected = selectedIndex;
-            //selectedIndex = nil;
-            
             selectedIndex = indexPath;
             
             //collapse current selected cell
@@ -150,8 +145,6 @@ NSMutableArray *currentColors;
             [tableView reloadRowsAtIndexPaths:preSelectedPath withRowAnimation:UITableViewRowAnimationNone];
             ColorCell *preSelectedCell = (ColorCell *)[self.generateColorTableView cellForRowAtIndexPath:preSelected];
             [preSelectedCell collapseCell];
-            
-            //selectedIndex = indexPath;
             
             //expand new selected cell
             [tableView reloadRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationNone];

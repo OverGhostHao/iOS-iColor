@@ -19,9 +19,10 @@
 
 @implementation DrawVC
 
+UIButton *currentColor;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     [self setUpMenu];
     
@@ -44,8 +45,7 @@
     blue = 0.0/255.0;
     brush = 5.0;
     opacity = 1.0;
-    
-    
+
 }
 
 -(void) setUpMenu {
@@ -79,7 +79,7 @@
     CGFloat palateHeight = currentColorWidth / 1.5;
     CGFloat currentColorX = viewX;
     CGFloat currentColorY = viewHeight - palateHeight;
-    UIButton *currentColor = [UIButton buttonWithType:UIButtonTypeCustom];
+    currentColor = [UIButton buttonWithType:UIButtonTypeCustom];
     [currentColor setTitle:@"current" forState:UIControlStateNormal];
     currentColor.frame = CGRectMake(currentColorX, currentColorY, currentColorWidth, palateHeight);
     
@@ -125,7 +125,7 @@
     createColor.frame = CGRectMake(createButtonX, createButtonY, createButtonWidth, createButtonHeight);
     UIImage *createColorImage = [UIImage imageNamed:@"rgb"];
     [createColor setImage:createColorImage forState:UIControlStateNormal];
-    //[createColor addTarget:self action:@selector(createColor:) forControlEvents:UIControlEventTouchUpInside];
+    [createColor addTarget:self action:@selector(createColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:createColor];
     
     // Draw / Erase / Clear
@@ -217,10 +217,7 @@
     [self.view addSubview:self.mainImage];
     [self.view addSubview:self.drawImage];
     
-    
 }
-
-
 
 -(void)changeColor:(NSString *)s {
     unsigned int hexInt = 0;
@@ -233,32 +230,154 @@
     UIColor *cc = [[UIColor alloc] initWithRed:red green:green blue:blue alpha:1.0];
     [self.currentC setBackgroundColor:cc];
 }
+
 - (void)simpleColor:(UIButton *) button {
     SimpleColors *sc = [[SimpleColors alloc] init];
     sc.draw = self;
     [self.navigationController pushViewController:sc animated:YES];
 }
+
 - (void)myColor:(UIButton *) button {
     SimpleSavedColorVC *mc = [[SimpleSavedColorVC alloc] init];
     mc.draw = self;
     [self.navigationController pushViewController:mc animated:YES];
 }
-//- (void)createColor:(UIButton *) button {
-//    MyColorsVC *mc = [[MyColorsVC alloc] init];
-//    [self.navigationController pushViewController:mc animated:YES];
-//}
+
+- (void)createColor:(UIButton *) button {
+    [self addView];
+}
+
+-(void)addView{
+    CGFloat subviewWidth = self.view.frame.size.width - 100;
+    CGFloat subviewHeight = self.view.frame.size.height - 315;
+    CGFloat startX = 50;
+    CGFloat startY = 120;
+    
+    customizedColor = [[ColorItem alloc]init];
+    [customizedColor setRGB:230 gValue:126 bValue:34];
+    
+    tView = [[UIView alloc]initWithFrame:CGRectMake(startX, startY, subviewWidth, subviewHeight)];
+    [self.view addSubview:tView];
+    tView.backgroundColor = [UIColor grayColor];
+    //customizedColor.myUIColor;
+    tView.layer.cornerRadius = 10;
+    tView.layer.masksToBounds = YES;
+    
+    //set up the sliders
+    //red slider
+    UISlider *redSlider = [[UISlider alloc]initWithFrame:CGRectMake(20, 10, 220, 30)];
+    redSlider.minimumValue = 0;
+    redSlider.maximumValue = 255;
+    redSlider.value = customizedColor.rValue;
+    redSlider.minimumTrackTintColor = [UIColor colorWithRed:231/255.0 green:76/255.0 blue:60/255.0 alpha:1];
+    [redSlider addTarget:self action:@selector(moveRedSlider:) forControlEvents:UIControlEventValueChanged];
+    [tView addSubview:redSlider];
+    
+    //green slider
+    UISlider *greenSlider = [[UISlider alloc]initWithFrame:CGRectMake(20, 60, 220, 30)];
+    greenSlider.minimumValue = 0;
+    greenSlider.maximumValue = 255;
+    greenSlider.value = customizedColor.gValue;
+    greenSlider.minimumTrackTintColor = [UIColor colorWithRed:46/255.0 green:204/255.0 blue:113/255.0 alpha:1];
+    [greenSlider addTarget:self action:@selector(moveGreenSlider:) forControlEvents:UIControlEventValueChanged];
+    [tView addSubview:greenSlider];
+    
+    //blue slider
+    UISlider *blueSlider = [[UISlider alloc]initWithFrame:CGRectMake(20, 110, 220, 30)];
+    blueSlider.minimumValue = 0;
+    blueSlider.maximumValue = 255;
+    blueSlider.value = customizedColor.bValue;
+    blueSlider.minimumTrackTintColor = [UIColor colorWithRed:52/255.0 green:152/255.0 blue:219/255.0 alpha:1];
+    [blueSlider addTarget:self action:@selector(moveBlueSlider:) forControlEvents:UIControlEventValueChanged];
+    [tView addSubview:blueSlider];
+    
+    //cancle button
+    CGFloat buttonWidth = 70.0;
+    CGFloat buttonHeight = 35.0;
+    CGFloat buttonStartX = tView.frame.size.width / 3 - buttonWidth / 2;
+    CGFloat buttonStartY = tView.frame.size.height - buttonHeight - 20;
+    cancelbutton= [[UIButton alloc]initWithFrame:CGRectMake(buttonStartX, buttonStartY, buttonWidth, buttonHeight)];
+    [cancelbutton addTarget:self action:@selector(cancleSegue) forControlEvents:UIControlEventTouchUpInside];
+    [cancelbutton setTitle:@"Cancel" forState:UIControlStateNormal];
+    cancelbutton.tintColor = [UIColor whiteColor];
+    cancelbutton.layer.cornerRadius = 8.0;
+    cancelbutton.layer.masksToBounds = YES;
+    ColorItem *buttonColor = [[ColorItem alloc]init];
+    [buttonColor setRGB:customizedColor.rValue/2 gValue:customizedColor.gValue/2 bValue:customizedColor.bValue/2];
+    cancelbutton.backgroundColor = buttonColor.myUIColor;
+    [tView addSubview:cancelbutton];
+    
+    //ok button
+    CGFloat buttonStartX1 = tView.frame.size.width / 3*2 - buttonWidth / 2;
+    okbutton= [[UIButton alloc]initWithFrame:CGRectMake(buttonStartX1, buttonStartY, buttonWidth, buttonHeight)];
+    [okbutton addTarget:self action:@selector(okSegue) forControlEvents:UIControlEventTouchUpInside];
+    [okbutton setTitle:@"OK" forState:UIControlStateNormal];
+    okbutton.tintColor = [UIColor whiteColor];
+    okbutton.layer.cornerRadius = 8.0;
+    okbutton.layer.masksToBounds = YES;
+    okbutton.backgroundColor = buttonColor.myUIColor;
+    [tView addSubview:okbutton];
+    
+    tView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    [UIView animateWithDuration:0.3/1.5 animations:^{
+        tView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3/2 animations:^{
+            tView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3/2 animations:^{
+                tView.transform = CGAffineTransformIdentity;
+            }];
+        }];
+    }];
+    
+}
+
+-(void)cancleSegue{
+    [tView removeFromSuperview];
+}
+
+-(void)okSegue{
+    [currentColor setBackgroundColor:customizedColor.myUIColor];
+    [tView removeFromSuperview];
+}
+
+-(void)moveRedSlider:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+    customizedColor.rValue = slider.value;
+    UIColor *background = [UIColor colorWithRed:customizedColor.rValue/255.0 green:customizedColor.gValue/255.0 blue:customizedColor.bValue/255.0 alpha:1];
+    tView.backgroundColor = background;
+}
+
+-(void)moveGreenSlider:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+    customizedColor.gValue = slider.value;
+    UIColor *background = [UIColor colorWithRed:customizedColor.rValue/255.0 green:customizedColor.gValue/255.0 blue:customizedColor.bValue/255.0 alpha:1];
+    tView.backgroundColor = background;
+}
+
+-(void)moveBlueSlider:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+    customizedColor.bValue = slider.value;
+    UIColor *background = [UIColor colorWithRed:customizedColor.rValue/255.0 green:customizedColor.gValue/255.0 blue:customizedColor.bValue/255.0 alpha:1];
+    tView.backgroundColor = background;
+}
+
 -(void) erase:(UIButton *) button {
     red = 1.0;
     green = 1.0;
     blue = 1.0;
 }
+
 -(void) draw:(UIButton *) button {
     UIColor *c = self.currentC.backgroundColor;
     [c getRed:&red green:&green blue:&blue alpha:nil];
 }
+
 -(void) clear:(UIButton *) button {
     self.mainImage.image = nil;
 }
+
 -(void) save:(UIButton *) button {
     UIImage *image = self.mainImage.image;
     if (image) {
@@ -269,12 +388,15 @@
         
     }
 }
+
 - (void)thin:(UIButton *) button {
     brush = 3.0;
 }
+
 - (void)normal:(UIButton *) button {
     brush = 5.0;
 }
+
 - (void)thick:(UIButton *) button {
     brush = 10.0;
 }
@@ -328,8 +450,6 @@
     UIGraphicsEndImageContext();
     
 }
-
-
 
 
 @end
