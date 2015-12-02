@@ -102,7 +102,7 @@ UIButton *currentColor;
     [simpleColor setImage:simpleColorImage forState:UIControlStateNormal];
     simpleColor.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
     simpleColor.backgroundColor = [UIColor colorWithRed:255/255.0 green:204/255.0 blue:0/255.0 alpha:1];
-
+    simpleColor.showsTouchWhenHighlighted = YES;
     [simpleColor addTarget:self action:@selector(simpleColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:simpleColor];
     
@@ -118,6 +118,7 @@ UIButton *currentColor;
     [myColor setImage:myColorImage forState:UIControlStateNormal];
     myColor.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
     myColor.backgroundColor = [UIColor colorWithRed:255/255.0 green:204/255.0 blue:0/255.0 alpha:1];
+    myColor.showsTouchWhenHighlighted = YES;
 
     [myColor addTarget:self action:@selector(myColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:myColor];
@@ -134,6 +135,7 @@ UIButton *currentColor;
     [createColor setImage:createColorImage forState:UIControlStateNormal];
     createColor.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
     createColor.backgroundColor = [UIColor colorWithRed:255/255.0 green:204/255.0 blue:0/255.0 alpha:1];
+    createColor.showsTouchWhenHighlighted = YES;
 
     [createColor addTarget:self action:@selector(createColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:createColor];
@@ -150,6 +152,8 @@ UIButton *currentColor;
     UIImage *drawImage = [UIImage imageNamed:@"pencil1"];
     [draw setImage:drawImage forState:UIControlStateNormal];
     draw.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+    draw.showsTouchWhenHighlighted = YES;
+
     
     [draw addTarget:self action:@selector(draw:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:draw];
@@ -164,7 +168,9 @@ UIButton *currentColor;
     UIImage *eraseImage = [UIImage imageNamed:@"Eraser1"];
     [erase setImage:eraseImage forState:UIControlStateNormal];
     erase.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+    erase.showsTouchWhenHighlighted = YES;
 
+    
     [erase addTarget:self action:@selector(erase:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:erase];
     
@@ -178,6 +184,7 @@ UIButton *currentColor;
     UIImage *clearImage = [UIImage imageNamed:@"trashbin1"];
     [clear setImage:clearImage forState:UIControlStateNormal];
     clear.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+    clear.showsTouchWhenHighlighted = YES;
 
     [clear addTarget:self action:@selector(clear:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:clear];
@@ -195,6 +202,7 @@ UIButton *currentColor;
     [thin setImage:thinImage forState:UIControlStateNormal];
     thin.imageEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15);
     thin.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+    thin.showsTouchWhenHighlighted = YES;
 
     [thin addTarget:self action:@selector(thin:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:thin];
@@ -211,6 +219,7 @@ UIButton *currentColor;
     [normal setImage:normalImage forState:UIControlStateNormal];
     normal.imageEdgeInsets = UIEdgeInsetsMake( 8, 8, 8, 8);
     normal.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+    normal.showsTouchWhenHighlighted = YES;
 
     [normal addTarget:self action:@selector(normal:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:normal];
@@ -225,6 +234,7 @@ UIButton *currentColor;
     UIImage *thickImage = [UIImage imageNamed:@"dot_test"];
     [thick setImage:thickImage forState:UIControlStateNormal];
     thick.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+    thick.showsTouchWhenHighlighted = YES;
 
     [thick addTarget:self action:@selector(thick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:thick];
