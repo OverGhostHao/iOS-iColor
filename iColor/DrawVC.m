@@ -83,9 +83,10 @@ UIButton *currentColor;
     [currentColor setTitle:@"current" forState:UIControlStateNormal];
     currentColor.frame = CGRectMake(currentColorX, currentColorY, currentColorWidth, palateHeight);
     
-    [currentColor setTitleColor:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0] forState:UIControlStateNormal];
+    [currentColor setTitleColor:[UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1] forState:UIControlStateNormal];
     currentColor.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:22];
-    currentColor.backgroundColor = [UIColor darkGrayColor];
+    //currentColor.backgroundColor = [UIColor darkGrayColor];
+    currentColor.backgroundColor = [UIColor colorWithRed:255/255.0 green:204/255.0 blue:0/255.0 alpha:1];
     [self.view addSubview:currentColor];
     self.currentC = currentColor;
     
@@ -100,7 +101,7 @@ UIButton *currentColor;
     UIImage *simpleColorImage = [UIImage imageNamed:@"simpleColors"];
     [simpleColor setImage:simpleColorImage forState:UIControlStateNormal];
     simpleColor.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-    simpleColor.backgroundColor = [UIColor darkGrayColor];
+    simpleColor.backgroundColor = [UIColor colorWithRed:255/255.0 green:204/255.0 blue:0/255.0 alpha:1];
 
     [simpleColor addTarget:self action:@selector(simpleColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:simpleColor];
@@ -116,7 +117,7 @@ UIButton *currentColor;
     UIImage *myColorImage = [UIImage imageNamed:@"favorite"];
     [myColor setImage:myColorImage forState:UIControlStateNormal];
     myColor.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-    myColor.backgroundColor = [UIColor darkGrayColor];
+    myColor.backgroundColor = [UIColor colorWithRed:255/255.0 green:204/255.0 blue:0/255.0 alpha:1];
 
     [myColor addTarget:self action:@selector(myColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:myColor];
@@ -132,7 +133,7 @@ UIButton *currentColor;
     UIImage *createColorImage = [UIImage imageNamed:@"palatte"];
     [createColor setImage:createColorImage forState:UIControlStateNormal];
     createColor.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-    createColor.backgroundColor = [UIColor darkGrayColor];
+    createColor.backgroundColor = [UIColor colorWithRed:255/255.0 green:204/255.0 blue:0/255.0 alpha:1];
 
     [createColor addTarget:self action:@selector(createColor:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:createColor];
@@ -141,7 +142,6 @@ UIButton *currentColor;
     
     // Draw
     UIButton *draw = [UIButton buttonWithType:UIButtonTypeCustom];
-    [draw setTitle:@"draw" forState:UIControlStateNormal];
     CGFloat drawButtonWidth = viewWidth / 6.0;
     CGFloat functionBoardHeight = drawButtonWidth;
     CGFloat drawButtonX = 0;
@@ -149,12 +149,13 @@ UIButton *currentColor;
     draw.frame = CGRectMake(drawButtonX, drawButtonY, drawButtonWidth, functionBoardHeight);
     UIImage *drawImage = [UIImage imageNamed:@"pencil1"];
     [draw setImage:drawImage forState:UIControlStateNormal];
+    draw.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+    
     [draw addTarget:self action:@selector(draw:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:draw];
     
     // Erase
     UIButton *erase = [UIButton buttonWithType:UIButtonTypeCustom];
-    [erase setTitle:@"eraser" forState:UIControlStateNormal];
     CGFloat eraseButtonWidth = drawButtonWidth;
     CGFloat eraseButtonHeight = functionBoardHeight;
     CGFloat eraseButtonX = viewX + drawButtonWidth;
@@ -162,12 +163,13 @@ UIButton *currentColor;
     erase.frame = CGRectMake(eraseButtonX, eraseButtonY, eraseButtonWidth, eraseButtonHeight);
     UIImage *eraseImage = [UIImage imageNamed:@"Eraser1"];
     [erase setImage:eraseImage forState:UIControlStateNormal];
+    erase.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+
     [erase addTarget:self action:@selector(erase:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:erase];
     
     // Clear
     UIButton *clear = [UIButton buttonWithType:UIButtonTypeCustom];
-    [clear setTitle:@"clear" forState:UIControlStateNormal];
     CGFloat clearButtonWidth = drawButtonWidth;
     CGFloat clearButtonHeight = functionBoardHeight;
     CGFloat clearButtonX = eraseButtonX + eraseButtonWidth;
@@ -175,6 +177,8 @@ UIButton *currentColor;
     clear.frame = CGRectMake(clearButtonX, clearButtonY, clearButtonWidth, clearButtonHeight);
     UIImage *clearImage = [UIImage imageNamed:@"trashbin1"];
     [clear setImage:clearImage forState:UIControlStateNormal];
+    clear.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+
     [clear addTarget:self action:@selector(clear:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:clear];
     
@@ -182,41 +186,46 @@ UIButton *currentColor;
     
     // thin
     UIButton *thin = [UIButton buttonWithType:UIButtonTypeCustom];
-    [thin setTitle:@"thin" forState:UIControlStateNormal];
     CGFloat thinButtonWidth = viewWidth / 6.0;
     CGFloat thinButtonHeight = functionBoardHeight;
     CGFloat thinButtonX = clearButtonX + clearButtonWidth;
     CGFloat thinButtonY = drawButtonY;
     thin.frame = CGRectMake(thinButtonX, thinButtonY, thinButtonWidth, thinButtonHeight);
-    UIImage *thinImage = [UIImage imageNamed:@"dot1"];
+    UIImage *thinImage = [UIImage imageNamed:@"dot_test"];
     [thin setImage:thinImage forState:UIControlStateNormal];
+    thin.imageEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15);
+    thin.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+
     [thin addTarget:self action:@selector(thin:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:thin];
     
     // medium
     UIButton *normal = [UIButton buttonWithType:UIButtonTypeCustom];
-    [normal setTitle:@"normal" forState:UIControlStateNormal];
     CGFloat normalButtonWidth = viewWidth / 6.0;
     CGFloat normalButtonHeight = functionBoardHeight;
     CGFloat normalButtonX = thinButtonX + thinButtonWidth;
     CGFloat normalButtonY = drawButtonY;
     normal.frame = CGRectMake(normalButtonX, normalButtonY, normalButtonWidth, normalButtonHeight);
     thin.frame = CGRectMake(thinButtonX, thinButtonY, thinButtonWidth, thinButtonHeight);
-    UIImage *normalImage = [UIImage imageNamed:@"dot2"];
+    UIImage *normalImage = [UIImage imageNamed:@"dot_test"];
     [normal setImage:normalImage forState:UIControlStateNormal];
+    normal.imageEdgeInsets = UIEdgeInsetsMake( 8, 8, 8, 8);
+    normal.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+
     [normal addTarget:self action:@selector(normal:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:normal];
     
     // thick
     UIButton *thick = [UIButton buttonWithType:UIButtonTypeCustom];
-    [thick setTitle:@"thick" forState:UIControlStateNormal];
     CGFloat thickButtonWidth = viewWidth / 6.0;
     CGFloat thickButtonHeight = functionBoardHeight;
     CGFloat thickButtonX = normalButtonX + normalButtonWidth;
     CGFloat thickButtonY = drawButtonY;
     thick.frame = CGRectMake(thickButtonX, thickButtonY, thickButtonWidth, thickButtonHeight);
-    UIImage *thickImage = [UIImage imageNamed:@"dot3"];
+    UIImage *thickImage = [UIImage imageNamed:@"dot_test"];
     [thick setImage:thickImage forState:UIControlStateNormal];
+    thick.backgroundColor = [UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1];
+
     [thick addTarget:self action:@selector(thick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:thick];
     
