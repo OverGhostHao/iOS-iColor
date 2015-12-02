@@ -218,8 +218,8 @@
     [thick addTarget:self action:@selector(thick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:thick];
     
-    self.drawImage = [[UIImageView alloc]initWithFrame:CGRectMake(viewX, viewY, viewWidth, viewHeight - viewY - palateHeight - (NSInteger)functionBoardHeight)];
-    self.mainImage = [[UIImageView alloc]initWithFrame:CGRectMake(viewX, viewY, viewWidth, viewHeight - viewY - palateHeight - (NSInteger)functionBoardHeight)];
+    self.drawImage = [[UIImageView alloc]initWithFrame:CGRectMake(viewX, viewY, viewWidth, (int)(viewHeight - viewY - palateHeight - functionBoardHeight))];
+    self.mainImage = [[UIImageView alloc]initWithFrame:CGRectMake(viewX, viewY, viewWidth, (int)(viewHeight - viewY - palateHeight - functionBoardHeight))];
     
     [self.view addSubview:self.mainImage];
     [self.view addSubview:self.drawImage];
