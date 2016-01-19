@@ -209,7 +209,18 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.hexString contains[c] %@", mycolor.hexString];
     NSArray *results = [globals.savedColors filteredArrayUsingPredicate:predicate];
     if (results.count == 0) {
-        [globals.savedColors addObject:mycolor];
+        //[globals.savedColors addObject:mycolor];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSData *encodedObject = [defaults objectForKey:@"savedMyColors"];
+        NSMutableArray *preColors = [[NSMutableArray alloc] init];
+        preColors = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+        [preColors addObject:mycolor];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"savedMyColors"];
+        NSData *newData = [NSKeyedArchiver archivedDataWithRootObject:preColors];
+        [defaults setObject:newData forKey:@"savedMyColors"];
+        [defaults synchronize];
+        
     }
 }
 

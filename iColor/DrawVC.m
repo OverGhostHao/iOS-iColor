@@ -40,8 +40,8 @@ UIButton *currentColor;
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:1 green:1 blue:0.447 alpha:1.0], NSForegroundColorAttributeName, [UIFont fontWithName:@"Arial Rounded MT Bold" size:20], NSFontAttributeName, nil]];
     
     //draw init
-    red = 0.0/255.0;
-    green = 0.0/255.0;
+    red = 255.0/255.0;
+    green = 204.0/255.0;
     blue = 0.0/255.0;
     brush = 5.0;
     opacity = 1.0;
@@ -85,7 +85,6 @@ UIButton *currentColor;
     
     [currentColor setTitleColor:[UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1] forState:UIControlStateNormal];
     currentColor.titleLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:22];
-    //currentColor.backgroundColor = [UIColor darkGrayColor];
     currentColor.backgroundColor = [UIColor colorWithRed:255/255.0 green:204/255.0 blue:0/255.0 alpha:1];
     [self.view addSubview:currentColor];
     self.currentC = currentColor;
@@ -147,6 +146,7 @@ UIButton *currentColor;
     CGFloat drawButtonWidth = viewWidth / 6.0;
     CGFloat functionBoardHeight = drawButtonWidth;
     CGFloat drawButtonX = 0;
+    
     CGFloat drawButtonY = viewHeight - palateHeight - functionBoardHeight;
     draw.frame = CGRectMake(drawButtonX, drawButtonY, drawButtonWidth, functionBoardHeight);
     UIImage *drawImage = [UIImage imageNamed:@"pencil1"];
@@ -408,7 +408,8 @@ UIButton *currentColor;
 
 -(void) draw:(UIButton *) button {
     UIColor *c = self.currentC.backgroundColor;
-    [c getRed:&red green:&green blue:&blue alpha:nil];
+    [c getRed:&(red) green:&green blue:&blue alpha:nil];
+    
 }
 
 -(void) clear:(UIButton *) button {

@@ -12,6 +12,7 @@
 #import "MixVC.h"
 #import "CollectionViewController.h"
 #import "MyImagesVC.h"
+#import "ColorItem.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

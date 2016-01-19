@@ -47,8 +47,13 @@ NSArray *colors;
     
     self.view.backgroundColor = [UIColor colorWithRed:107/255.0 green:185/255.0 blue:240/255.0 alpha:1];
 
-    GlobalVars *globals = [GlobalVars sharedInstance];
-    myColors = globals.savedColors;
+//    GlobalVars *globals = [GlobalVars sharedInstance];
+//    myColors = globals.savedColors;
+   
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *encodedObject = [defaults objectForKey:@"savedMyColors"];
+    myColors = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+    
     
 }
 

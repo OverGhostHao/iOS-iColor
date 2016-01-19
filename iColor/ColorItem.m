@@ -28,7 +28,7 @@
     return self;
 }
 
-//implement encode/decode method to use global variable
+//implement encode/decode method to confront to NSCoder protocol
 - (void)encodeWithCoder:(NSCoder *)encoder {
     //Encode properties, other class variables, etc
     [encoder encodeInteger: self.rValue forKey:@"rValue"];
