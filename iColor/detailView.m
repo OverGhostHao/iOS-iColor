@@ -10,15 +10,15 @@
 
 @implementation detailView
 
-UIButton *backButton;
-UILabel *redLabel;
-UILabel *greenLabel;
-UILabel *blueLabel;
-UILabel *redValue;
-UILabel *greenValue;
-UILabel *blueValue;
-UILabel *alphaLabel;
-UILabel *alphaValue;
+@synthesize backButton;
+@synthesize redLabel;
+@synthesize greenLabel;
+@synthesize blueLabel;
+@synthesize redValue;
+@synthesize greenValue;
+@synthesize blueValue;
+@synthesize alphaLabel;
+@synthesize alphaValue;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -78,11 +78,11 @@ UILabel *alphaValue;
     backButton.backgroundColor = buttonColor.myUIColor;
     
     //labels setting.
-    [redLabel setText:[NSString stringWithFormat:  @"     Red:              %li", thisColor.rValue]];
+    [redLabel setText:[NSString stringWithFormat:  @"     Red:              %li", (long)thisColor.rValue]];
     [redLabel setBackgroundColor:[UIColor colorWithRed:231/255.0 green:76/255.0 blue:60/255.0 alpha:1]];
-    [greenLabel setText:[NSString stringWithFormat:@"     Green:          %li", thisColor.gValue]];
+    [greenLabel setText:[NSString stringWithFormat:@"     Green:          %li", (long)thisColor.gValue]];
     [greenLabel setBackgroundColor:[UIColor colorWithRed:46/255.0 green:204/255.0 blue:113/255.0 alpha:1]];
-    [blueLabel setText:[NSString stringWithFormat: @"     Blue:             %li", thisColor.bValue]];
+    [blueLabel setText:[NSString stringWithFormat: @"     Blue:             %li", (long)thisColor.bValue]];
     [blueLabel setBackgroundColor:[UIColor colorWithRed:52/255.0 green:152/255.0 blue:219/255.0 alpha:1]];
     [alphaLabel setText:[NSString stringWithFormat:@"     Alpha:          %f", thisColor.brightness]];
     [alphaLabel setBackgroundColor:[UIColor colorWithRed:155/255.0 green:89/255.0 blue:182/255.0 alpha:1]];

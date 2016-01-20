@@ -19,15 +19,18 @@
     // Override point for customization after application launch.
     
     //set up a pre-set color in savedColors.
-    ColorItem *black = [[ColorItem alloc]init];
-    NSMutableArray *arr = [[NSMutableArray alloc]init];
-    [arr addObject:black];
-    [black setRGB:0 gValue:0 bValue:0];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:data forKey:@"savedMyColors"];
-    [defaults synchronize];
-    
+    if(![[[defaults dictionaryRepresentation] allKeys] containsObject:@"savedMyColors"]){
+        ColorItem *black = [[ColorItem alloc]init];
+        [black setRGB:0 gValue:0 bValue:0];
+        NSMutableArray *arr = [[NSMutableArray alloc]init];
+        [arr addObject:black];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arr];
+        [defaults setObject:data forKey:@"savedMyColors"];
+        [defaults synchronize];
+    }
+
     
     return YES;
 }

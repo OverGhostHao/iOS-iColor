@@ -13,6 +13,7 @@
 
 #import "CollectionViewCell.h"
 #import "detailView.h"
+#import "detailView2.h"
 
 @interface CollectionViewController ()
 
@@ -104,7 +105,7 @@ NSArray *colors;
     CGFloat startX = 50;
     CGFloat startY = 120;
     
-    detailView *tempView = [[detailView alloc]initWithFrame:CGRectMake(startX, startY, subviewWidth, subviewHeight)];
+    detailView2 *tempView = [[detailView2 alloc]initWithFrame:CGRectMake(startX, startY, subviewWidth, subviewHeight)];
     [tempView setContent:tc];
     
     tempView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
@@ -121,6 +122,12 @@ NSArray *colors;
             }];
         }];
     }];
+    
+    [self.collectionView reloadData];
+}
+
+- (void) collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath  {
+    [self.collectionView reloadData];
 }
 
 

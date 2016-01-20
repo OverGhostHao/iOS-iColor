@@ -1,19 +1,21 @@
 //
-//  detailView.h
-//  CollectionViewTest
+//  detailView2.h
+//  iColor
 //
-//  Created by YuhanHao on 15/11/28.
-//  Copyright (c) 2015年 YuhanHao. All rights reserved.
+//  Created by YuhanHao on 16/1/20.
+//  Copyright (c) 2016年 Skejul. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
 #import "ColorItem.h"
 
-@interface detailView : UIView
+
+@interface detailView2 : UIView
 
 @property UIButton *backButton;
+@property UIButton *deleteButton;
+
 @property UILabel *redLabel;
 @property UILabel *greenLabel;
 @property UILabel *blueLabel;
@@ -23,7 +25,7 @@
 @property UILabel *alphaLabel;
 @property UILabel *alphaValue;
 
-
+@property ColorItem *currentColor;
 
 
 - (void) setContent:(ColorItem *)thisColor;

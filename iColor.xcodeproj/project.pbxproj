@@ -36,6 +36,7 @@
 		C7C854FD1BF6E42C006E910F /* DrawVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C854FB1BF6E42C006E910F /* DrawVC.xib */; };
 		C7C855011BF6E4CD006E910F /* MixVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C854FF1BF6E4CD006E910F /* MixVC.m */; };
 		C7C855021BF6E4CD006E910F /* MixVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C855001BF6E4CD006E910F /* MixVC.xib */; };
+		C7E7DD0A1C4FF5CA00521A40 /* detailView2.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E7DD091C4FF5CA00521A40 /* detailView2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		C7C854FE1BF6E4CD006E910F /* MixVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixVC.h; sourceTree = "<group>"; };
 		C7C854FF1BF6E4CD006E910F /* MixVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixVC.m; sourceTree = "<group>"; };
 		C7C855001BF6E4CD006E910F /* MixVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MixVC.xib; sourceTree = "<group>"; };
+		C7E7DD081C4FF5CA00521A40 /* detailView2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailView2.h; sourceTree = "<group>"; };
+		C7E7DD091C4FF5CA00521A40 /* detailView2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailView2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,8 @@
 				C7143C601BF7CC570004B223 /* ColorItem.m */,
 				C741F4451C0BA1AC00D672A6 /* detailView.h */,
 				C741F4461C0BA1AD00D672A6 /* detailView.m */,
+				C7E7DD081C4FF5CA00521A40 /* detailView2.h */,
+				C7E7DD091C4FF5CA00521A40 /* detailView2.m */,
 				C741F4571C0CF76A00D672A6 /* ColorCell.h */,
 				C741F4581C0CF76A00D672A6 /* ColorCell.m */,
 				C741F4591C0CF76A00D672A6 /* ColorCell.xib */,
@@ -340,6 +345,7 @@
 			files = (
 				C7143C731BF826250004B223 /* SWRevealViewController.m in Sources */,
 				C7143C611BF7CC570004B223 /* ColorItem.m in Sources */,
+				C7E7DD0A1C4FF5CA00521A40 /* detailView2.m in Sources */,
 				C7143C711BF826250004B223 /* SidebarTVC.m in Sources */,
 				C741F45A1C0CF76A00D672A6 /* ColorCell.m in Sources */,
 				C741F4491C0BA1AD00D672A6 /* detailView.m in Sources */,
